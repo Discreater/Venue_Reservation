@@ -1,4 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/Discreater/Venue_Reservation
 eclipse.preferences.version=1
 encoding//WebContent/includes/menu.jsp=UTF-8
-encoding//WebContent/login.jsp=UTF-8
 encoding//WebContent/test/test.jsp=UTF-8
+encoding//WebContent/user_act/join.jsp=UTF-8
+encoding//WebContent/user_act/login.jsp=UTF-8
