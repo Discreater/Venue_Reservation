@@ -17,8 +17,42 @@ function checkName(){
 		$('#count-msg').html("输入3-10个字母或数字或下划线，需以字母开头");
 		return false;
 	}
+	var xhr = ajaxFunction();
+	xhr.onreadystatechange = function(){
+		//处理后台返回的数据
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				var data = xhr.responseText;
+				$('#count-msg').html(data);
+			}
+		}
+	}
+	
+    //规定发送数据的形式（post/get），url，以及传输方式(同步/异步)
+    xhr.open("post","./LoginServlet?timeStamp="+new Date().getTime(),true);
+    //post方式需要加下边这句，get方式不需要
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //将页面输入数据发送到后台
+    xhr.send("username="+name);
+
 	$('#count-msg').empty();
 	return true;
+}
+
+function ajaxFunction() {
+    var xmlHttp;
+    try {
+        xmlHttp = new XMLHttpRequest();
+    } catch(e) {
+        try {
+            xmlHttp = new ActiveXObject("Msxm12.XMLHTTP");
+        } catch(e) {
+            try {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch(e) {}
+        }
+    }
+    return xmlHttp;
 }
 
 function checkPassword(){
