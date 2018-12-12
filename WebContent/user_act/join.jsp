@@ -21,11 +21,16 @@
 			<div class="login_form">
 				<form id="Login" name="Login" method="post" onsubmit="" action="">
 					<div class="login-item">
-						<span>用户名：</span> <input type="text" id="username" name="UserName"
+						<span>用户名：</span> <input type="text" id="username" name="username"
 							class="login_input"> <span id="count-msg" class="error"></span>
 					</div>
 					<div class="login-item">
-						<span>密 码：</span> <input type="password" id="password"
+						<span>邮箱：</span> <input type="text" id="usermail" name="usermail"
+							class="login_input"> <span id="user-mail-msg"
+							class="error"></span>
+					</div>
+					<div class="login-item">
+						<span>密码：</span> <input type="password" id="password"
 							name="password" class="login_input"> <span
 							id="password-msg" class="error"></span>
 					</div>
@@ -35,7 +40,7 @@
 							id="password-msg-second" class="error"></span>
 					</div>
 					<div class="login-sub">
-						<input type="submit" name="Submit" value="注册" onclick=""/> 
+						<input type="submit" name="Submit" value="注册" onclick="" />
 					</div>
 				</form>
 			</div>
