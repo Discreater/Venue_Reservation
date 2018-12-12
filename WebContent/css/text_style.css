@@ -1,13 +1,5 @@
 @charset "UTF-8";
-.list_element
-{
-	color: #0080ff;
-}
 .text
 {
 	color: black;
 }
-a:link{color:#0080ff;}
-a:visited{color:#800080;}
-a:hover{color:#ff0080;}
-a:activate{color:green;}
