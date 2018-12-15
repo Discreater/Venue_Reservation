@@ -1,4 +1,4 @@
-package db.iter;
+package db.inter;
 
 import java.io.Serializable;
 import java.util.List;
