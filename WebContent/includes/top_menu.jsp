@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link type="text/css" href="/Venue_Reservation/css/menu.css" rel="stylesheet">
 </head>
 <body>
 <div>
-<ul class="menu">
+<ul class="menu" height="60" width="300">
 	<li><a href="">场馆一览</a></li>
 	<li><a href="">场馆预约</a></li>
 	<li><a href="">预约信息</a></li>

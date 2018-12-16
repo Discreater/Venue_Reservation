@@ -1,20 +1,27 @@
 @charset "UTF-8";
 
-ul.menu {
-	list-style-type: none;
-	margin:10px;
-	border:10px;
-	padding:10px;
-	float:left;	
+ul.list {
+	list-style-type:none;
+	overflow:scroll;
+	width:300px;
+	height:500px;
 }
 
-ul.menu li {
-	float: left;
-	padding: 10;			/* Set list in raw */
+ol.list {
+	list-style-type:none;
 }
-/* Styles for link with different status */
-ul.menu li a:link {
-	/* Initial */
+.list li a:link{
+	display: block;
+	padding: 0px 0px;
+	background: #808080;
+	color: #ffffff;
+	text-decoration: none;
+	border-right: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	border-top: 10px solid #808080;
+	border-bottom: 10px solid #808080;
+}
+.list li a:visited{
 	display: block;
 	padding: 8px 50px;
 	background: #808080;
@@ -25,9 +32,7 @@ ul.menu li a:link {
 	border-top: 10px solid #808080;
 	border-bottom: 10px solid #808080;
 }
-
-ul.menu li a:visited {
-	/* Clicked */
+.list li a:hover{
 	display: block;
 	padding: 8px 50px;
 	background: #808080;
@@ -38,22 +43,7 @@ ul.menu li a:visited {
 	border-top: 10px solid #808080;
 	border-bottom: 10px solid #808080;
 }
-
-ul.menu li a:hover {
-	/* Mouse on */
-	display: block;
-	padding: 8px 50px;
-	background: #c0c0c0;
-	color: #000000;
-	text-decoration: none;
-	border-right: 1px solid #c0c0c0;
-	border-left: 1px solid #c0c0c0;
-	border-top: 10px solid #c0c0c0;
-	border-bottom: 10px solid #c0c0c0;
-}
-
-ul.menu li a:active {
-	/* On click */
+.list li a:active{
 	display: block;
 	padding: 8px 50px;
 	background: #808080;
