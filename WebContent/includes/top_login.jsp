@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<div >
 	<%
 		VrAdmin vrAdmin = null;
 		VrCustomer vrCustomer = null;
@@ -32,5 +33,6 @@
 	<%
 		}
 	%>
+	</div>
 </body>
 </html>
