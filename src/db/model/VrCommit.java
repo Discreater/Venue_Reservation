@@ -10,12 +10,18 @@ public class VrCommit {
 	private String commitState = "wait";
 	private String commitContext = null;
 	private Date commitSubmitTime = null;
-	private Integer cust_id = null;
-	private Integer admin_id = null;
-	
+	private Integer custId = null;
+	private Integer adminId = null;
+	private String commitType = "short";
 	
 	public Integer getCommitId() {
 		return commitId;
+	}
+	public String getCommitType() {
+		return commitType;
+	}
+	public void setCommitType(String commitType) {
+		this.commitType = commitType;
 	}
 	public void setCommitId(Integer commitId) {
 		this.commitId = commitId;
@@ -38,17 +44,17 @@ public class VrCommit {
 	public void setCommitSubmitTime(Date commitSubmitTime) {
 		this.commitSubmitTime = commitSubmitTime;
 	}
-	public Integer getCust_id() {
-		return cust_id;
+	public Integer getCustId() {
+		return custId;
 	}
-	public void setCust_id(Integer cust_id) {
-		this.cust_id = cust_id;
+	public void setCustId(Integer custId) {
+		this.custId = custId;
 	}
-	public Integer getAdmin_id() {
-		return admin_id;
+	public Integer getAdminId() {
+		return adminId;
 	}
-	public void setAdmin_id(Integer admin_id) {
-		this.admin_id = admin_id;
+	public void setAdminId(Integer adminId) {
+		this.adminId = adminId;
 	}
 	
 	
