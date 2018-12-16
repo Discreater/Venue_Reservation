@@ -9,16 +9,16 @@ import java.util.List;
  *
  */
 public class VrCustomer {
-	private Integer custId;
-	private String custName;
-	private String custPassword;
-	private String realName;
-	private String custPhone;
-	private String custEmail;
-	private String custAddress;
-	private String custZipcode;
-	private Date custDatetime;
-	private List<VrOrder> orders;
+	private Integer custId = null;
+	private String custName = null;
+	private String custPassword = null;
+	private String realName = null;
+	private String custPhone = null;
+	private String custEmail = null;
+	private String custAddress = null;
+	private String custZipcode = null;
+	private Date custDatetime = null;
+	private List<VrOrder> orders = null;
 	
 	public VrCustomer() {
 		super();

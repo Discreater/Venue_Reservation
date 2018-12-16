@@ -18,8 +18,8 @@ public class VrVenueDao implements IVrVenueDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "insert into order" + " (venue_name, venue_ownerName, "
-					+ "venue_ownerPhone, venue_ownerEmail, " + "venue_ownerAddress, venue_pictrue,"
+			String sql = "insert into venue" + " (venue_name, venue_ownerName, "
+					+ "venue_ownerPhone, venue_ownerEmail, " + "venue_ownerAddress, venue_picture,"
 					+ "venue_address, venue_info, " + "venue_state) " + "values(?,?,?,?,?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getVenueName());

@@ -8,16 +8,16 @@ import java.sql.Date;
  *
  */
 public class VrOrder {
-	private Integer ordId;
-	private Date ordSubmitTime;	// 订单提交时间
-	private Date ordDealTime;	// 订单处理时间
-	private Date useStartTime;	// 场馆开始占用时间
-	private Date useEndTime;	// 场馆结束占用时间
-	private String ordStatus;
-	private String ordRejectReason;
-	private Integer custId;
-	private Integer adminId;
-	private Integer venueId;
+	private Integer ordId = null;
+	private Date ordSubmitTime = null;	// 订单提交时间
+	private Date ordDealTime = null;	// 订单处理时间
+	private Date useStartTime = null;	// 场馆开始占用时间
+	private Date useEndTime = null;	// 场馆结束占用时间
+	private String ordStatus = null;
+	private String ordRejectReason = null;
+	private Integer custId = null;
+	private Integer adminId = null;
+	private Integer venueId = null;
 	
 	public Integer getCustId() {
 		return custId;

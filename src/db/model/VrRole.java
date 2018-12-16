@@ -6,9 +6,9 @@ package db.model;
  *
  */
 public class VrRole {
-	private Integer roleId;
-	private String roleName;
-	private VrAdmin vrAdmin;
+	private Integer roleId = null;
+	private String roleName = null;
+	private VrAdmin vrAdmin = null;
 	
 	public VrRole() {
 		super();

@@ -8,19 +8,22 @@ import java.sql.Date;
  *
  */
 public class VrVenue {
-	private Integer venueId;
-	private String venueName;
+	private Integer venueId = null;
+	private String venueName = null;
 	
-	private String venueOwnerName;		// 拥有者
-	private String venueOwnerPhone;
-	private String venueOwnerEmail;
-	private String venueOwnerAddress;
+	private String venueOwnerName = null;		// 拥有者
+	private String venueOwnerPhone = null;
+	private String venueOwnerEmail = null;
+	private String venueOwnerAddress = null;
 	
-	private String venuePicture;
-	private String venueAddress;
-	private String venueInfo;
-	private String venueState;
-	private Date venueCreateTime;
+	private String venuePicture = null;
+	private String venueAddress = null;
+	private String venueInfo = null;
+	/**
+	 * valid,invalid
+	 */
+	private String venueState = null;
+	private Date venueCreateTime = null;
 	
 	
 	

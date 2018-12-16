@@ -6,8 +6,8 @@ package db.model;
  *
  */
 public class VrCategory {
-	private Integer catId;
-	private String catName;
+	private Integer catId = null;
+	private String catName = null;
 	
 	public VrCategory() {
 		super();

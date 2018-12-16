@@ -9,11 +9,11 @@ import java.util.List;
  *
  */
 public class VrAdmin {
-	private Integer adminId;
-	private String adminName;
-	private String adminPassword;
-	private Date adminCreatTime;
-	private List<VrRole> vrRoleList;
+	private Integer adminId = null;
+	private String adminName = null;
+	private String adminPassword = null;
+	private Date adminCreatTime = null;
+	private List<VrRole> vrRoleList = null;
 	
 	public VrAdmin() {
 		super();
