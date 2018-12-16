@@ -1,10 +1,12 @@
 package db.inter;
 
+import java.util.List;
+
 import db.model.VrCustomer;
 
 public interface IVrCustomerDao extends IBaseDao<VrCustomer, Integer>{
 	/**
-	 * 检查用
+	 * 按name和password查找用户
 	 * @param custName
 	 * @param custPassword
 	 * @return
@@ -12,11 +14,11 @@ public interface IVrCustomerDao extends IBaseDao<VrCustomer, Integer>{
 	VrCustomer findOne(String custName, String custPassword);
 	
 	/**
-	 * 检查重名用
+	 * 按name查找用户
 	 * @param custName
 	 * @return
 	 */
 	VrCustomer findByName(String custName);
-//  List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo);
-//	Integer findCount(String custName);
+	List<VrCustomer> findPage(String catName, Integer pageSize, Integer pageNo);
+	Integer findCount(String catName);
 }

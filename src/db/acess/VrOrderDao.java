@@ -132,7 +132,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
@@ -168,7 +168,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));

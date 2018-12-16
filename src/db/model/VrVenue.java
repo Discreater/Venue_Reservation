@@ -1,7 +1,6 @@
 package db.model;
 
 import java.sql.Date;
-import java.util.List;
 
 /**
  * 场馆数据
@@ -19,10 +18,18 @@ public class VrVenue {
 	
 	private String venuePicture;
 	private String venueAddress;
+	private String venueInfo;
 	private String venueState;
 	private Date venueCreateTime;
 	
 	
+	
+	public String getVenueInfo() {
+		return venueInfo;
+	}
+	public void setVenueInfo(String venueInfo) {
+		this.venueInfo = venueInfo;
+	}
 	public Integer getVenueId() {
 		return venueId;
 	}
