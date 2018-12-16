@@ -9,10 +9,10 @@
 <body>
 <div>
 <ul class="menu" height="60" width="300">
-	<li><a href="">场馆一览</a></li>
-	<li><a href="">场馆预约</a></li>
-	<li><a href="">预约信息</a></li>
-	<li><a href="">反馈意见</a></li>
+	<li><a href="/Venue_Reservation/main_pages/all_venue.jsp">场馆一览</a></li>
+	<li><a href="/Venue_Reservation/main_pages/all_venue.jsp">场馆预约</a></li>
+	<li><a href="/Venue_Reservation/main_pages/all_venue.jsp">预约信息</a></li>
+	<li><a href="/Venue_Reservation/main_pages/all_venue.jsp">反馈意见</a></li>
 </ul>
 </div>
 

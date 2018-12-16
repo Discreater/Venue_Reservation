@@ -5,31 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 
 import db.acess.VrAdminDao;
-import db.acess.VrVenueDao;
 import db.model.VrAdmin;
-import db.model.VrVenue;
 
 public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-		testInsertVrVenue();
+		testfindVrAdmin();
 
 
 	}
-	
-	public static void testInsertVrVenue() {
-		VrVenueDao vrVenueDao = new VrVenueDao();
-		VrVenue vrVenue = new VrVenue();
-		vrVenue.setVenueName("ACNU");
-		vrVenue.setVenueOwnerName("Znuer");
-		vrVenue.setVenueOwnerPhone("923456");
-		vrVenue.setVenueAddress("A金沙江");
-		vrVenue.setVenueInfo("z无");
-		vrVenue.setVenueState("valid");
-		vrVenueDao.insert(vrVenue);
-	}
-	
 	public static void testfindVrAdmin() {
 		List<VrAdmin> vrAdmins = new ArrayList<>();
 		VrAdminDao vrAdminDao = new VrAdminDao(); 

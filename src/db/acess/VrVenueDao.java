@@ -47,7 +47,7 @@ public class VrVenueDao implements IVrVenueDao {
 		try {
 			connection = MySQLHelper.getConnection();
 			String sql = "update order set " + "venue_name=?, venue_ownerName=?, "
-					+ "venue_ownerPhone=?, venue_ownerEmail=?, " + "venue_ownerAddress=?, venue_pictrue=?,"
+					+ "venue_ownerPhone=?, venue_ownerEmail=?, " + "venue_ownerAddress=?, venue_picture=?,"
 					+ "venue_address=?, venue_info=?, " + "venue_state=? where venue_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getVenueName());
@@ -106,7 +106,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -141,7 +141,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -177,7 +177,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -238,7 +238,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -275,7 +275,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -312,7 +312,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -349,7 +349,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
@@ -386,7 +386,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueOwnerName(rSet.getString("venue_ownerName"));
 				vrVenue.setVenueOwnerPhone(rSet.getString("venue_ownerPhone"));
 				vrVenue.setVenueOwnerAddress(rSet.getString("venue_ownerAddress"));
-				vrVenue.setVenuePicture(rSet.getString("venue_pictrue"));
+				vrVenue.setVenuePicture(rSet.getString("venue_picture"));
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));

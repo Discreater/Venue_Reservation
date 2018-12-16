@@ -5,10 +5,7 @@
 <head>
 <link href="/Venue_Reservation/css/list.css" type="text/css" rel="stylesheet">
 <link href="/Venue_Reservation/css/table.css" type="text/css" rel="stylesheet">
-<!--
--->
 <script type="text/javascript" src="/Venue_Reservation/js/jquery-latest.js"></script>
-<style type="text/css" src="Venue_Reservation/css/table.css"></style>
 <meta charset="UTF-8">
 <title>Test List Style</title>
 </head>
