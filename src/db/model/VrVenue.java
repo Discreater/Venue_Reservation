@@ -12,45 +12,17 @@ public class VrVenue {
 	private Integer venueId;
 	private String venueName;
 	
-	private String venueOwner;		// 拥有者
-	private String venueOwnerGender;
+	private String venueOwnerName;		// 拥有者
 	private String venueOwnerPhone;
 	private String venueOwnerEmail;
-	private String venueOwnerAdress;
+	private String venueOwnerAddress;
 	
 	private String venuePicture;
-	private String venueAdress;
+	private String venueAddress;
+	private String venueState;
 	private Date venueCreateTime;
-	private List<VrOrder> orders;
 	
-	public VrVenue() {
-		super();
-	}
-
-	public VrVenue(Integer venueId, String venueName, String venueOwner, String venueOwnerGender,
-			String venueOwnerPhone, String venueOwnerEmail, String venueOwnerAdress, String venuePicture,
-			String venueAdress, Date venueCreateTime, List<VrOrder> orders) {
-		super();
-		this.venueId = venueId;
-		this.venueName = venueName;
-		this.venueOwner = venueOwner;
-		this.venueOwnerGender = venueOwnerGender;
-		this.venueOwnerPhone = venueOwnerPhone;
-		this.venueOwnerEmail = venueOwnerEmail;
-		this.venueOwnerAdress = venueOwnerAdress;
-		this.venuePicture = venuePicture;
-		this.venueAdress = venueAdress;
-		this.venueCreateTime = venueCreateTime;
-		this.orders = orders;
-	}
-
-
-	public Date getVenueCreateTime() {
-		return venueCreateTime;
-	}
-	public void setVenueCreateTime(Date venueCreateTime) {
-		this.venueCreateTime = venueCreateTime;
-	}	
+	
 	public Integer getVenueId() {
 		return venueId;
 	}
@@ -63,17 +35,11 @@ public class VrVenue {
 	public void setVenueName(String venueName) {
 		this.venueName = venueName;
 	}
-	public String getVenueOwner() {
-		return venueOwner;
+	public String getVenueOwnerName() {
+		return venueOwnerName;
 	}
-	public void setVenueOwner(String venueOwner) {
-		this.venueOwner = venueOwner;
-	}
-	public String getVenueOwnerGender() {
-		return venueOwnerGender;
-	}
-	public void setVenueOwnerGender(String venueOwnerGender) {
-		this.venueOwnerGender = venueOwnerGender;
+	public void setVenueOwnerName(String venueOwnerName) {
+		this.venueOwnerName = venueOwnerName;
 	}
 	public String getVenueOwnerPhone() {
 		return venueOwnerPhone;
@@ -87,11 +53,11 @@ public class VrVenue {
 	public void setVenueOwnerEmail(String venueOwnerEmail) {
 		this.venueOwnerEmail = venueOwnerEmail;
 	}
-	public String getVenueOwnerAdress() {
-		return venueOwnerAdress;
+	public String getVenueOwnerAddress() {
+		return venueOwnerAddress;
 	}
-	public void setVenueOwnerAdress(String venueOwnerAdress) {
-		this.venueOwnerAdress = venueOwnerAdress;
+	public void setVenueOwnerAddress(String venueOwnerAddress) {
+		this.venueOwnerAddress = venueOwnerAddress;
 	}
 	public String getVenuePicture() {
 		return venuePicture;
@@ -99,17 +65,26 @@ public class VrVenue {
 	public void setVenuePicture(String venuePicture) {
 		this.venuePicture = venuePicture;
 	}
-	public String getVenueAdress() {
-		return venueAdress;
+	public String getVenueAddress() {
+		return venueAddress;
 	}
-	public void setVenueAdress(String venueAdress) {
-		this.venueAdress = venueAdress;
+	public void setVenueAddress(String venueAddress) {
+		this.venueAddress = venueAddress;
 	}
-	public List<VrOrder> getOrders() {
-		return orders;
+	public String getVenueState() {
+		return venueState;
 	}
-	public void setOrders(List<VrOrder> orders) {
-		this.orders = orders;
-	} 
+	public void setVenueState(String venueState) {
+		this.venueState = venueState;
+	}
+	public Date getVenueCreateTime() {
+		return venueCreateTime;
+	}
+	public void setVenueCreateTime(Date venueCreateTime) {
+		this.venueCreateTime = venueCreateTime;
+	}
+
+	
+
 	
 }

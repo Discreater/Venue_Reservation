@@ -1,7 +1,5 @@
 package db.inter;
 
-import java.util.List;
-
 import db.model.VrCustomer;
 
 public interface IVrCustomerDao extends IBaseDao<VrCustomer, Integer>{
@@ -19,6 +17,6 @@ public interface IVrCustomerDao extends IBaseDao<VrCustomer, Integer>{
 	 * @return
 	 */
 	VrCustomer findByName(String custName);
-	List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo);
-	Integer findCount(String custName);
+//  List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo);
+//	Integer findCount(String custName);
 }

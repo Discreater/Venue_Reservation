@@ -273,64 +273,64 @@ public class VrCustomerDao implements IVrCustomerDao {
 		return vrCustomer;
 	}
 
-	@Override
-	public List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo) {
-		Connection connection = null;
-		PreparedStatement pStatement = null;
-		ResultSet rSet = null;
-		List<VrCustomer> list = new ArrayList<>();
-		try {
-			connection = MySQLHelper.getConnection();
-			String sql = "select * from customer limit " + (pageNo - 1) * pageSize + "," + pageSize + " where cust_name=?";
-			pStatement = connection.prepareStatement(sql);
-			pStatement.setString(1, custName);
-			rSet = pStatement.executeQuery();
-			VrCustomer vrCustomer = null;
-			while (rSet.next()) {
-				vrCustomer = new VrCustomer();
-				vrCustomer.setCustId(rSet.getInt("cust_id"));
-				vrCustomer.setCustName(rSet.getString("cust_name"));
-				vrCustomer.setCustPassword(rSet.getString("cust_password"));
-				vrCustomer.setCustEmail(rSet.getString("cust_email"));
-				vrCustomer.setRealName(rSet.getString("cust_realName"));
-				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
-				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
-				list.add(vrCustomer);
-			}
-		} catch (Exception e) {
-			System.err.println(e);
-		} finally {
-			MySQLHelper.closeResult(rSet);
-			MySQLHelper.closePreparedStatement(pStatement);
-			MySQLHelper.closeConnection(connection);
-		}
-		return list;
-	}
-
-	@Override
-	public Integer findCount(String custName) {
-		Connection connection = null;
-		PreparedStatement pStatement = null;
-		ResultSet rSet = null;
-		int num = 0;
-		try {
-			connection = MySQLHelper.getConnection();
-			String sql = "select count(*) as count from customer where cust_name=?";
-			pStatement = connection.prepareStatement(sql);
-			pStatement.setString(1, custName);
-			rSet = pStatement.executeQuery();
-			if (rSet.next()) {
-				num = rSet.getInt("count");
-			}
-		} catch (Exception e) {
-			System.err.println(e);
-		} finally {
-			MySQLHelper.closeResult(rSet);
-			MySQLHelper.closePreparedStatement(pStatement);
-			MySQLHelper.closeConnection(connection);
-		}
-		return num;
-	}
-
+//	@Override
+//	public List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo) {
+//		Connection connection = null;
+//		PreparedStatement pStatement = null;
+//		ResultSet rSet = null;
+//		List<VrCustomer> list = new ArrayList<>();
+//		try {
+//			connection = MySQLHelper.getConnection();
+//			String sql = "select * from customer limit " + (pageNo - 1) * pageSize + "," + pageSize + " where cust_name=?";
+//			pStatement = connection.prepareStatement(sql);
+//			pStatement.setString(1, custName);
+//			rSet = pStatement.executeQuery();
+//			VrCustomer vrCustomer = null;
+//			while (rSet.next()) {
+//				vrCustomer = new VrCustomer();
+//				vrCustomer.setCustId(rSet.getInt("cust_id"));
+//				vrCustomer.setCustName(rSet.getString("cust_name"));
+//				vrCustomer.setCustPassword(rSet.getString("cust_password"));
+//				vrCustomer.setCustEmail(rSet.getString("cust_email"));
+//				vrCustomer.setRealName(rSet.getString("cust_realName"));
+//				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
+//				vrCustomer.setCustAddress(rSet.getString("cust_address"));
+//				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+//				list.add(vrCustomer);
+//			}
+//		} catch (Exception e) {
+//			System.err.println(e);
+//		} finally {
+//			MySQLHelper.closeResult(rSet);
+//			MySQLHelper.closePreparedStatement(pStatement);
+//			MySQLHelper.closeConnection(connection);
+//		}
+//		return list;
+//	}
+//
+//	@Override
+//	public Integer findCount(String custName) {
+//		Connection connection = null;
+//		PreparedStatement pStatement = null;
+//		ResultSet rSet = null;
+//		int num = 0;
+//		try {
+//			connection = MySQLHelper.getConnection();
+//			String sql = "select count(*) as count from customer where cust_name=?";
+//			pStatement = connection.prepareStatement(sql);
+//			pStatement.setString(1, custName);
+//			rSet = pStatement.executeQuery();
+//			if (rSet.next()) {
+//				num = rSet.getInt("count");
+//			}
+//		} catch (Exception e) {
+//			System.err.println(e);
+//		} finally {
+//			MySQLHelper.closeResult(rSet);
+//			MySQLHelper.closePreparedStatement(pStatement);
+//			MySQLHelper.closeConnection(connection);
+//		}
+//		return num;
+//	}
+//
 }

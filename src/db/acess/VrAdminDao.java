@@ -24,7 +24,7 @@ public class VrAdminDao implements IVrAdminDao {
 			pStatement.setString(2, obj.getAdminPassword());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
@@ -44,7 +44,7 @@ public class VrAdminDao implements IVrAdminDao {
 			pStatement.setInt(3, obj.getAdminId());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
@@ -62,7 +62,7 @@ public class VrAdminDao implements IVrAdminDao {
 			pStatement.setInt(1, id);
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-			
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
