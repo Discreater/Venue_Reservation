@@ -5,15 +5,36 @@ import java.util.Iterator;
 import java.util.List;
 
 import db.acess.VrAdminDao;
+import db.acess.VrVenueDao;
 import db.model.VrAdmin;
+import db.model.VrVenue;
 
 public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-		testfindVrAdmin();
+		testfindpage();
 
 
+	}
+	
+	public static void testfindpage() {
+		VrVenueDao vrVenueDao=new VrVenueDao();
+		List<VrVenue> allList=vrVenueDao.findPageByAddress("a", 6, 1);
+		Iterator<VrVenue> iterator=allList.iterator();
+		while(iterator.hasNext()) {
+			VrVenue v=iterator.next();
+			System.out.println(v.getVenueName());
+		}
+	}
+	public static void testFindAll() {
+		VrVenueDao vrVenueDao=new VrVenueDao();
+		List<VrVenue> allList=vrVenueDao.findAll();
+		Iterator<VrVenue> iterator=allList.iterator();
+		while(iterator.hasNext()) {
+			VrVenue v=iterator.next();
+			System.out.println(v.getVenueName());
+		}
 	}
 	public static void testfindVrAdmin() {
 		List<VrAdmin> vrAdmins = new ArrayList<>();

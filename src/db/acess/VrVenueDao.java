@@ -226,7 +226,7 @@ public class VrVenueDao implements IVrVenueDao {
 		List<VrVenue> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from venue where venue_name like '%?' limit "+ (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from venue  where locate(?,venue_name) limit "+ (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, catVenueName);
 			rSet = pStatement.executeQuery();
@@ -263,7 +263,7 @@ public class VrVenueDao implements IVrVenueDao {
 		List<VrVenue> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from venue where venue_ownerName like '%?' limit "+ (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from venue  where locate(?,venue_ownerName) limit "+ (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, catOwnerName);
 			rSet = pStatement.executeQuery();
@@ -300,7 +300,7 @@ public class VrVenueDao implements IVrVenueDao {
 		List<VrVenue> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from venue where venue_address like '%?' limit "+ (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from venue where locate(?,venue_address) limit "+ (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, catVenueAddress);
 			rSet = pStatement.executeQuery();
@@ -337,7 +337,7 @@ public class VrVenueDao implements IVrVenueDao {
 		List<VrVenue> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from venue where venue_info like '%?' limit "+ (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from venue  where locate(?,venue_info) limit "+ (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, catInfo);
 			rSet = pStatement.executeQuery();

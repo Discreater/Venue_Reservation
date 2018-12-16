@@ -18,7 +18,7 @@ public class VrOrderDao implements IVrOrderDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "insert into order" + " (order_dealTime, order_useStartTime, "
+			String sql = "insert into order " + "(order_dealTime, order_useStartTime, "
 					+ "order_useEndTime, order_state, " + "order_rejectReason, customer_cust_id,"
 					+ "admin_admin_id, venue_venue_id) " + "values(?,?,?,?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
