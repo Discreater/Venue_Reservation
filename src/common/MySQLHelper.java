@@ -12,31 +12,32 @@ import java.sql.SQLException;
  *
  */
 public class MySQLHelper {
-	public static Connection connect1() {
+	public static Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/venue_reservation?characterEncoding=gbk", "root", "159753");
-			System.out.println("数据库连接失败");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/venue_reservation?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false", "root", "159753");
+			System.out.println("数据库连接成功");
 			return connection;
 		}catch (SQLException e) {
 			System.out.println("数据库连接失败");
+			System.out.println(e);
 		} catch (ClassNotFoundException e) {
 			System.out.println("驱动加载失败");
 		}
 		return null;
 	}
 	
-	public static void closeResult(ResultSet rs) {
+	public static void closeResult(ResultSet rSet) {
 		try {
-			rs.close();
+			rSet.close();
 		}catch (Exception e) {
 			System.out.println("关闭结果集时出错");
 		}
 	}
 	
-	public static void closePreparedStatement(PreparedStatement ps) {
+	public static void closePreparedStatement(PreparedStatement pStatement) {
 		try {
-			ps.close();
+			pStatement.close();
 		}catch (SQLException e) {
 			System.out.println("关闭preparedStatement时出错");
 		}

@@ -20,6 +20,25 @@ public class VrCustomer {
 	private Date custDatetime;
 	private List<VrOrder> orders;
 	
+	public VrCustomer() {
+		super();
+	}
+	public VrCustomer(Integer custId, String custName, String custPassword, String realName, String custPhone,
+			String custEmail, String custAddress, String custZipcode, Date custDatetime, List<VrOrder> orders) {
+		super();
+		this.custId = custId;
+		this.custName = custName;
+		this.custPassword = custPassword;
+		this.realName = realName;
+		this.custPhone = custPhone;
+		this.custEmail = custEmail;
+		this.custAddress = custAddress;
+		this.custZipcode = custZipcode;
+		this.custDatetime = custDatetime;
+		this.orders = orders;
+	}
+
+
 	public List<VrOrder> getOrders() {
 		return orders;
 	}

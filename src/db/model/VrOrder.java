@@ -18,6 +18,23 @@ public class VrOrder {
 	
 	private String ordStatus;
 
+	public VrOrder() {
+		super();
+	}
+	
+	public VrOrder(Integer ordId, VrVenue ordVenue, Date ordSubmitTime, Date ordDealTime, Date useStartTime,
+			Date useEndTime, String ordStatus) {
+		super();
+		this.ordId = ordId;
+		this.ordVenue = ordVenue;
+		this.ordSubmitTime = ordSubmitTime;
+		this.ordDealTime = ordDealTime;
+		this.useStartTime = useStartTime;
+		this.useEndTime = useEndTime;
+		this.ordStatus = ordStatus;
+	}
+
+
 	public Integer getOrdId() {
 		return ordId;
 	}

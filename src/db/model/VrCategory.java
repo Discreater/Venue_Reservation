@@ -9,6 +9,16 @@ public class VrCategory {
 	private Integer catId;
 	private String catName;
 	
+	public VrCategory() {
+		super();
+	}
+	
+	public VrCategory(Integer catId, String catName) {
+		super();
+		this.catId = catId;
+		this.catName = catName;
+	}
+
 	public Integer getCatId() {
 		return catId;
 	}

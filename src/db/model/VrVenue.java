@@ -1,5 +1,6 @@
 package db.model;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -19,8 +20,37 @@ public class VrVenue {
 	
 	private String venuePicture;
 	private String venueAdress;
+	private Date venueCreateTime;
 	private List<VrOrder> orders;
 	
+	public VrVenue() {
+		super();
+	}
+
+	public VrVenue(Integer venueId, String venueName, String venueOwner, String venueOwnerGender,
+			String venueOwnerPhone, String venueOwnerEmail, String venueOwnerAdress, String venuePicture,
+			String venueAdress, Date venueCreateTime, List<VrOrder> orders) {
+		super();
+		this.venueId = venueId;
+		this.venueName = venueName;
+		this.venueOwner = venueOwner;
+		this.venueOwnerGender = venueOwnerGender;
+		this.venueOwnerPhone = venueOwnerPhone;
+		this.venueOwnerEmail = venueOwnerEmail;
+		this.venueOwnerAdress = venueOwnerAdress;
+		this.venuePicture = venuePicture;
+		this.venueAdress = venueAdress;
+		this.venueCreateTime = venueCreateTime;
+		this.orders = orders;
+	}
+
+
+	public Date getVenueCreateTime() {
+		return venueCreateTime;
+	}
+	public void setVenueCreateTime(Date venueCreateTime) {
+		this.venueCreateTime = venueCreateTime;
+	}	
 	public Integer getVenueId() {
 		return venueId;
 	}

@@ -9,6 +9,19 @@ public class VrRole {
 	private Integer roleId;
 	private String roleName;
 	private VrAdmin vrAdmin;
+	
+	public VrRole() {
+		super();
+	}
+	
+	public VrRole(Integer roleId, String roleName, VrAdmin vrAdmin) {
+		super();
+		this.roleId = roleId;
+		this.roleName = roleName;
+		this.vrAdmin = vrAdmin;
+	}
+
+
 	public Integer getRoleId() {
 		return roleId;
 	}

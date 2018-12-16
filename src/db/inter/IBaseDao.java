@@ -16,6 +16,13 @@ public interface IBaseDao<T,ID extends Serializable> {
 	void delete(ID id);		// 删除
 	T findById(ID id);		// 根据主键查找
 	List<T> findAll();		// 查询所有
+	
+	/**
+	 * 返回某页所有信息
+	 * @param pageSize
+	 * @param pageNo 页数从1开始
+	 * @return
+	 */
 	List<T> findPage(int pageSize, int pageNo);	// 分页查询所有
 	int findCount();		// 查询所有总数
 }

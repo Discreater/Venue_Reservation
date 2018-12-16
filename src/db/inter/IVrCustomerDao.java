@@ -5,9 +5,20 @@ import java.util.List;
 import db.model.VrCustomer;
 
 public interface IVrCustomerDao extends IBaseDao<VrCustomer, Integer>{
-	// 用户登录
+	/**
+	 * 检查用
+	 * @param custName
+	 * @param custPassword
+	 * @return
+	 */
 	VrCustomer findOne(String custName, String custPassword);
 	
-	List<VrCustomer> findPage(String custName, Integer PageSize, Integer pageNo);
+	/**
+	 * 检查重名用
+	 * @param custName
+	 * @return
+	 */
+	VrCustomer findByName(String custName);
+	List<VrCustomer> findPage(String custName, Integer pageSize, Integer pageNo);
 	Integer findCount(String custName);
 }
