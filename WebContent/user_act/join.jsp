@@ -19,7 +19,7 @@
 		<div class="loginwarrp">
 			<div class="logo">注册</div>
 			<div class="login_form">
-				<form id="Login" name="Login" method="post" onsubmit="" action="">
+				<form id="Login" name="Login" method="post" onsubmit="return validate()" action="check_join.jsp">
 					<div class="login-item">
 						<span>用户名：</span> <input type="text" id="username" name="username"
 							class="login_input"> <span id="count-msg" class="error"></span>

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.acess.VrCustomerDao;
+import db.model.VrCustomer;
+
 /**
  * Servlet implementation class JoinServlet
  */
@@ -32,19 +35,20 @@ public class JoinServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=utf-8");
-		// 定义输出流
-		PrintWriter out = response.getWriter();
-		// 获取前端页面输入数据
-		String username = request.getParameter("username");
-		// 测试打印，测试接收前台数据是否成功
-		System.out.println(username);
-		// 进行比较并作出响应。
-		if (username == null || username.equals("")) {
-			out.println("请输入用户名 ");
-		} else if ("sa".equals(username)) {
-			out.println("该用户名已经存在");
-		} else {
-			out.println("可以注册");
+		PrintWriter out=response.getWriter();
+		//获取提交数据;
+		String username=request.getParameter("username");
+		VrCustomer vrCustomer = new VrCustomerDao().findByName(username);
+		if(vrCustomer != null){	// 用户名重复
+			out.println("<script language=\"javascript\">");
+			out.println("alert(\"此用户已经被占用请重新注册\");");
+			out.println("history.back();");
+			out.println("</script>");
+		}else{
+			out.println("<script language=\"javascript\">");
+			out.println("alert(\"注册成功\");");
+			out.println("history.back();");
+			out.println("</script>");
 		}
 
 	}

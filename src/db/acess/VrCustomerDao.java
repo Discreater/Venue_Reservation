@@ -29,7 +29,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 			pStatement.setString(6, obj.getCustAddress());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
@@ -72,7 +72,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 			pStatement.setInt(1, id);
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
@@ -104,7 +104,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -138,7 +138,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -172,7 +172,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -197,7 +197,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				num = rSet.getInt("count");
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -214,7 +214,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 		VrCustomer vrCustomer = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from customer where customer_name=?, customer_password=?";
+			String sql = "select * from customer where cust_name=?, cust_password=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, custName);
 			pStatement.setString(2, custPassword);
@@ -231,7 +231,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -248,7 +248,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 		VrCustomer vrCustomer = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from customer where customer_name=?";
+			String sql = "select * from customer where cust_name=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, custName);
 			rSet = pStatement.executeQuery();
@@ -264,7 +264,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -299,7 +299,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -324,7 +324,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				num = rSet.getInt("count");
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
