@@ -11,21 +11,25 @@
 </head>
 <body>
 	<%
+		VrAdmin vrAdmin = null;
+		VrCustomer vrCustomer = null;
 		if (session.getAttribute("Admin") != null) {
-			VrAdmin vrAdmin = (VrAdmin) session.getAttribute("Admin");
+			vrAdmin = (VrAdmin) session.getAttribute("Admin");
 	%>
-	<a href=""><%=vrAdmin.getAdminName()%>，管理员您好！</a>
+	<a href="/Venue_Reservation//user_room/admin.jsp"><%=vrAdmin.getAdminName()%> ,管理员您好！</a>|
+	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
 		} else if (session.getAttribute("Customer") != null) {
-			VrCustomer vrCustomer = (VrCustomer) session.getAttribute("Customer");
+			vrCustomer = (VrCustomer) session.getAttribute("Customer");
 	%>
-	<a href=""><%=vrCustomer.getCustName()%>，你好！</a>
+	<a href="/Venue_Reservation//user_room/customer.jsp"><%=vrCustomer.getCustName()%> ,你好！</a>|
+	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
-		}else{
-			%>
-			<a href="/Venue_Reservation/user_act/login.jsp">登录</a>|
-			<a href="/Venue_Reservation/user_act/join.jsp">注册</a>
-			<%
+		} else {
+	%>
+	<a href="/Venue_Reservation/user_act/login.jsp">登录</a>|
+	<a href="/Venue_Reservation/user_act/join.jsp">注册</a>
+	<%
 		}
 	%>
 </body>
