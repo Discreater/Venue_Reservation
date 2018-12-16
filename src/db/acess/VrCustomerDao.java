@@ -214,7 +214,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 		VrCustomer vrCustomer = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from customer where cust_name=?, cust_password=?";
+			String sql = "select * from customer where cust_name=? and cust_password=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, custName);
 			pStatement.setString(2, custPassword);

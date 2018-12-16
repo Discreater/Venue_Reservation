@@ -34,3 +34,10 @@ function checkPassword(){
 	$('#password-msg').empty();
 	return true;
 }
+
+function validate(){
+	if(checkName() == true && checkPassword() == true){
+		return true;
+	return false;
+	}
+}

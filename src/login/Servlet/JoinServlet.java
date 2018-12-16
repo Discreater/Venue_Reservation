@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.acess.VrAdminDao;
 import db.acess.VrCustomerDao;
+import db.model.VrAdmin;
 import db.model.VrCustomer;
 
 /**
@@ -39,7 +41,8 @@ public class JoinServlet extends HttpServlet {
 		//获取提交数据;
 		String username=request.getParameter("username");
 		VrCustomer vrCustomer = new VrCustomerDao().findByName(username);
-		if(vrCustomer != null){	// 用户名重复
+		VrAdmin vrAdmin = new VrAdminDao().findByName(username);
+		if(vrCustomer != null || vrAdmin != null){	// 用户名重复
 			out.println("<script language=\"javascript\">");
 			out.println("alert(\"此用户已经被占用请重新注册\");");
 			out.println("history.back();");

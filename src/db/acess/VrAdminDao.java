@@ -11,7 +11,35 @@ import db.inter.IVrAdminDao;
 import db.model.VrAdmin;
 
 public class VrAdminDao implements IVrAdminDao {
-
+	@Override
+	public VrAdmin findByName(String adminName) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		VrAdmin vrAdmin = null;
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from admin where admin_name=?";
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, adminName);
+			rSet = pStatement.executeQuery();
+			if(rSet.next()) {
+				vrAdmin = new VrAdmin();
+				vrAdmin.setAdminId(rSet.getInt("admin_id"));
+				vrAdmin.setAdminName(rSet.getString("admin_name"));
+				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
+				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+			}
+		}catch (Exception e) {
+			System.err.println(e);
+		}finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
+		}
+		return vrAdmin;
+	}
+	
 	@Override
 	public void insert(VrAdmin obj) {
 		Connection connection = null;
@@ -90,7 +118,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -120,7 +148,7 @@ public class VrAdminDao implements IVrAdminDao {
 				list.add(vrAdmin);
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -151,7 +179,7 @@ public class VrAdminDao implements IVrAdminDao {
 				list.add(vrAdmin);
 			}
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -176,7 +204,7 @@ public class VrAdminDao implements IVrAdminDao {
 				num =rSet.getInt("count"); 
 			}
 		}catch (Exception e) {
-			
+			System.err.println(e);
 		}finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);
@@ -193,7 +221,7 @@ public class VrAdminDao implements IVrAdminDao {
 		VrAdmin vrAdmin = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from admin where admin_name=?, admin_password=?";
+			String sql = "select * from admin where admin_name=? and admin_password=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, adminName);
 			pStatement.setString(2, admimnPassword);
@@ -206,7 +234,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
 			}
 		}catch (Exception e) {
-			
+			System.err.println(e);
 		}finally {
 			MySQLHelper.closeResult(rSet);
 			MySQLHelper.closePreparedStatement(pStatement);

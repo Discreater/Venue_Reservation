@@ -9,7 +9,6 @@ import java.util.List;
 import common.MySQLHelper;
 import db.inter.IVrCommitDao;
 import db.model.VrCommit;
-import db.model.VrOrder;
 
 public class VrCommitDao implements IVrCommitDao {
 
