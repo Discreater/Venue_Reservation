@@ -17,7 +17,7 @@
 	src="/Venue_Reservation/js/jquery-latest.js"></script>
 <script type="text/javascript">
 	function findAll() {
-		window.location.href = "/Venue_Reservation/main_pages/search_venue.jsp?search=&findall=";
+		window.location.href = "";
 	}
 </script>
 </head>
@@ -25,7 +25,6 @@
 	<%@ include file="/includes/header.jsp"%>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		boolean loginStatus = vrCustomer!=null;
 		//判断是否登陆：未登录：
 		if (!loginStatus) {
 	%>
@@ -57,7 +56,7 @@
 	<form action="/Venue_Reservation/main_pages/search_venue.jsp">
 		<input id="search" name="search" type="text" value="<%=value%>">
 		<input type="submit" value="查找"> <input type="button"
-			value="查找所有" onclick="findAll()">
+			value="查找所有" onclick="window.href='/Venue_Reservation/main_pages/search_venue.jsp?search=&findall='">
 	</form>
 	</div>
 	<%
