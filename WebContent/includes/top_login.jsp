@@ -15,7 +15,7 @@
 	<%
 		if (adminLogin) {			
 	%>
-	<a href="/Venue_Reservation//user_room/admin.jsp"><%=vrAdmin.getAdminName()%> ,管理员您好！</a>|
+	<a href="/Venue_Reservation/user_room/admin/admin.jsp"><%=vrAdmin.getAdminName()%> ,管理员您好！</a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
 		} else if (customerLogin) {

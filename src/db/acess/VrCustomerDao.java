@@ -97,7 +97,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setCustId(rSet.getInt("cust_id"));
 				vrCustomer.setCustName(rSet.getString("cust_name"));
 				vrCustomer.setCustPassword(rSet.getString("cust_password"));
-				vrCustomer.setCustDatetime(rSet.getDate("creat_time"));
+				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
 				vrCustomer.setCustEmail(rSet.getString("cust_email"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
@@ -281,7 +281,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 		List<VrCustomer> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from customer where cust_name like '%?' limit " + (pageNo - 1) * pageSize + "," + pageSize + " ";
+			String sql = "select * from customer where locate(?,cust_name) limit " + (pageNo - 1) * pageSize + "," + pageSize + " ";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, catName);
 			rSet = pStatement.executeQuery();

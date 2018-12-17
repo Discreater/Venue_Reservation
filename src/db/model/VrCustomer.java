@@ -16,28 +16,8 @@ public class VrCustomer {
 	private String custPhone = null;
 	private String custEmail = null;
 	private String custAddress = null;
-	private String custZipcode = null;
 	private Date custDatetime = null;
 	private List<VrOrder> orders = null;
-	
-	public VrCustomer() {
-		super();
-	}
-	public VrCustomer(Integer custId, String custName, String custPassword, String realName, String custPhone,
-			String custEmail, String custAddress, String custZipcode, Date custDatetime, List<VrOrder> orders) {
-		super();
-		this.custId = custId;
-		this.custName = custName;
-		this.custPassword = custPassword;
-		this.realName = realName;
-		this.custPhone = custPhone;
-		this.custEmail = custEmail;
-		this.custAddress = custAddress;
-		this.custZipcode = custZipcode;
-		this.custDatetime = custDatetime;
-		this.orders = orders;
-	}
-
 
 	public List<VrOrder> getOrders() {
 		return orders;
@@ -86,12 +66,6 @@ public class VrCustomer {
 	}
 	public void setCustAddress(String custAddress) {
 		this.custAddress = custAddress;
-	}
-	public String getCustZipcode() {
-		return custZipcode;
-	}
-	public void setCustZipcode(String custZipcode) {
-		this.custZipcode = custZipcode;
 	}
 	public Date getCustDatetime() {
 		return custDatetime;
