@@ -9,33 +9,13 @@
 <!-- include necessary files: -->
 <link href="/Venue_Reservation/css/info_card.css" type="text/css"
 	rel="stylesheet">
-<!-- loading venue info -->
-<%
-	VrVenueDao vrVenueDao = new VrVenueDao();
-	VrVenue thisVrVenue = null;
-	boolean idOk = true;
-	String venueId = request.getParameter("venue_id");
-	if (venueId == null) {
-		idOk = false;
-	} else {
-		thisVrVenue = vrVenueDao.findById(Integer.parseInt(venueId));
-	}if(thisVrVenue==null){
-		idOk=false;
-%>
-<script type="text/javascript">
-	alert("请求参数出错！");
-	window.history.back();
-</script>
-<%
-	} else {
-		String venueName;
-		venueName=new String(thisVrVenue.getVenueName());
-		
-%>
+<!-- loading venue info given var: venueId, venueName, idOk -->
+<%@ include file="/includes/venue_id_handler.jsp" %>
 <title>场馆信息 - <%=venueName%></title>
 </head>
 <body>
 	<%@ include file="/includes/header.jsp"%>
+	
 	<h1>
 		<%=venueName%>
 	</h1>
@@ -79,8 +59,11 @@
 	</tfoot>
 	</table>
 	</div>
-</body>
-<%
+	<script type="text/javascript">
+	function sendRequest(venueId){
+		window.location.href="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id="+venueId;
 	}
-%>
+	</script>
+	<input type="button" value="心动了，预定一下！" onclick="sendRequest(<%=venueId %>)">
+</body>
 </html>

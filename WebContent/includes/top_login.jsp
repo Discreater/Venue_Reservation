@@ -11,17 +11,14 @@
 </head>
 <body>
 <div >
+	<%@ include file="/includes/login_status_handler.jsp" %>
 	<%
-		VrAdmin vrAdmin = null;
-		VrCustomer vrCustomer = null;
-		if (session.getAttribute("Admin") != null) {
-			vrAdmin = (VrAdmin) session.getAttribute("Admin");
+		if (adminLogin) {			
 	%>
 	<a href="/Venue_Reservation//user_room/admin.jsp"><%=vrAdmin.getAdminName()%> ,管理员您好！</a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
-		} else if (session.getAttribute("Customer") != null) {
-			vrCustomer = (VrCustomer) session.getAttribute("Customer");
+		} else if (customerLogin) {
 	%>
 	<a href="/Venue_Reservation//user_room/customer.jsp"><%=vrCustomer.getCustName()%> ,你好！</a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
