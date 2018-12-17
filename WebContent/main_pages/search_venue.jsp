@@ -25,7 +25,7 @@
 	<%@ include file="/includes/header.jsp"%>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		boolean loginStatus = true;
+		boolean loginStatus = vrCustomer!=null;
 		//判断是否登陆：未登录：
 		if (!loginStatus) {
 	%>
