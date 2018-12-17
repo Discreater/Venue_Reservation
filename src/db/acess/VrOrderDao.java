@@ -18,9 +18,9 @@ public class VrOrderDao implements IVrOrderDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "insert into order " + "(order_dealTime, order_useStartTime, "
+			String sql = "insert into `order` " + "(order_dealTime, order_useStartTime, "
 					+ "order_useEndTime, order_state, " + "order_rejectReason, customer_cust_id,"
-					+ "admin_admin_id, venue_venue_id) " + "values(?,?,?,?,?,?,?,?)";
+					+ "admin_admin_id, venue_venue_id, order_submitReason) " + "values(?,?,?,?,?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setDate(1, obj.getOrdDealTime());
 			pStatement.setDate(2, obj.getUseStartTime());
@@ -30,6 +30,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setInt(6, obj.getCustId());
 			pStatement.setInt(7, obj.getAdminId());
 			pStatement.setInt(8, obj.getVenueId());
+			pStatement.setString(9, obj.getOrdSubmitReason());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);
@@ -45,9 +46,9 @@ public class VrOrderDao implements IVrOrderDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "update order set" + " order_dealTime=?, order_useStartTime=?, "
+			String sql = "update `order` set" + " order_dealTime=?, order_useStartTime=?, "
 					+ "order_useEndTime=?, order_state=?, " + "order_rejectReason=?, customer_cust_id=?,"
-					+ "admin_admin_id=?, venue_venue_id=? " + "where order_id=?";
+					+ "admin_admin_id=?, venue_venue_id=?, order_submitReason=?" + "where order_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setDate(1, obj.getOrdDealTime());
 			pStatement.setDate(2, obj.getUseStartTime());
@@ -57,7 +58,8 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setInt(6, obj.getCustId());
 			pStatement.setInt(7, obj.getAdminId());
 			pStatement.setInt(8, obj.getVenueId());
-			pStatement.setInt(9, obj.getOrdId());
+			pStatement.setString(9, obj.getOrdSubmitReason());
+			pStatement.setInt(10, obj.getOrdId());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);
@@ -73,7 +75,7 @@ public class VrOrderDao implements IVrOrderDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "delete from order where order_id=?";
+			String sql = "delete from `order` where order_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, id);
 			pStatement.executeUpdate();
@@ -93,7 +95,7 @@ public class VrOrderDao implements IVrOrderDao {
 		VrOrder vrOrder = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from order where order_id=?";
+			String sql = "select * from `order` where order_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, id);
 			rSet = pStatement.executeQuery();
@@ -109,6 +111,7 @@ public class VrOrderDao implements IVrOrderDao {
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 			}
 		} catch (Exception e) {
 			System.err.println(e);
@@ -128,7 +131,7 @@ public class VrOrderDao implements IVrOrderDao {
 		List<VrOrder> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from order";
+			String sql = "select * from `order`";
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
@@ -144,6 +147,7 @@ public class VrOrderDao implements IVrOrderDao {
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 				list.add(vrOrder);
 			}
 		} catch (Exception e) {
@@ -164,7 +168,7 @@ public class VrOrderDao implements IVrOrderDao {
 		List<VrOrder> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from order limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from `order` limit " + (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
@@ -180,6 +184,7 @@ public class VrOrderDao implements IVrOrderDao {
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 				list.add(vrOrder);
 			}
 		} catch (Exception e) {
@@ -200,7 +205,7 @@ public class VrOrderDao implements IVrOrderDao {
 		int num = 0;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select count(*) as count from order";
+			String sql = "select count(*) as count from `order`";
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			if (rSet.next()) {
@@ -224,7 +229,7 @@ public class VrOrderDao implements IVrOrderDao {
 		List<VrOrder> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from order where customer_cust_id=? limit " + (pageNo - 1) * pageSize + ","
+			String sql = "select * from `order` where customer_cust_id=? limit " + (pageNo - 1) * pageSize + ","
 					+ pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, custId);
@@ -242,6 +247,7 @@ public class VrOrderDao implements IVrOrderDao {
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 				list.add(vrOrder);
 			}
 		} catch (Exception e) {
@@ -262,7 +268,7 @@ public class VrOrderDao implements IVrOrderDao {
 		List<VrOrder> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from order where admin_admin_id=? limit " + (pageNo - 1) * pageSize + ","
+			String sql = "select * from `order` where admin_admin_id=? limit " + (pageNo - 1) * pageSize + ","
 					+ pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, adminId);
@@ -280,6 +286,7 @@ public class VrOrderDao implements IVrOrderDao {
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 				list.add(vrOrder);
 			}
 		} catch (Exception e) {
@@ -299,7 +306,7 @@ public List<VrOrder> findByVenueId(Integer venueId, Integer pageSize, Integer pa
 	List<VrOrder> list = new ArrayList<>();
 	try {
 		connection = MySQLHelper.getConnection();
-		String sql = "select * from order where venue_venue_id=? limit " + (pageNo - 1) * pageSize + ","
+		String sql = "select * from `order` where venue_venue_id=? limit " + (pageNo - 1) * pageSize + ","
 				+ pageSize;
 		pStatement = connection.prepareStatement(sql);
 		pStatement.setInt(1, venueId);
@@ -317,6 +324,7 @@ public List<VrOrder> findByVenueId(Integer venueId, Integer pageSize, Integer pa
 			vrOrder.setCustId(rSet.getInt("customer_cust_id"));
 			vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
 			vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+			vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
 			list.add(vrOrder);
 		}
 	} catch (Exception e) {
@@ -336,7 +344,7 @@ public List<VrOrder> findByVenueId(Integer venueId, Integer pageSize, Integer pa
 		int num = 0;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select count(*) as count from order where customer_cust_id=?";
+			String sql = "select count(*) as count from `order` where customer_cust_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, custId);
 			rSet = pStatement.executeQuery();

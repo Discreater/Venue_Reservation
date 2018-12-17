@@ -18,7 +18,15 @@ public class VrOrder {
 	private Integer custId = null;
 	private Integer adminId = null;
 	private Integer venueId = null;
+	private String ordSubmitReason = null;
 	
+	
+	public String getOrdSubmitReason() {
+		return ordSubmitReason;
+	}
+	public void setOrdSubmitReason(String ordSubmitReason) {
+		this.ordSubmitReason = ordSubmitReason;
+	}
 	public Integer getCustId() {
 		return custId;
 	}
