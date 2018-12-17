@@ -61,7 +61,7 @@
 	</div>
 	<script type="text/javascript">
 	function sendRequest(venueId){
-		window.location.href="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id="+venueId;
+		window.location.href="/Venue_Reservation/main_pages/reservation_form.jsp?venue_id="+venueId;
 	}
 	</script>
 	<input type="button" value="心动了，预定一下！" onclick="sendRequest(<%=venueId %>)">

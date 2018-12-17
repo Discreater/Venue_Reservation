@@ -9,18 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>场馆预约系统 - 查询结果</title>
-<!-- include necessary files: -->
-
-<link href="/Venue_Reservation/css/table.css" type="text/css"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="/Venue_Reservation/js/jquery-latest.js"></script>
-<script type="text/javascript">
-	function findAll() {
-		window.location.href = "";
-	}
-</script>
-</head>
 <body>
 	<%@ include file="/includes/header.jsp"%>
 	<%
@@ -56,7 +44,7 @@
 	<form action="/Venue_Reservation/main_pages/search_venue.jsp">
 		<input id="search" name="search" type="text" value="<%=value%>">
 		<input type="submit" value="查找"> <input type="button"
-			value="查找所有" onclick="window.href='/Venue_Reservation/main_pages/search_venue.jsp?search=&findall='">
+			value="查找所有" onclick="window.location.href='/Venue_Reservation/main_pages/search_venue.jsp?search=&findall='">
 	</form>
 	</div>
 	<%
@@ -93,8 +81,6 @@
 				}
 	%>
 	<!-- using script for sorting table -->
-	<script type="text/javascript"
-		src="/Venue_Reservation/js/sort_table.js"></script>
 	<div>
 	<table id="tableSort" class="sortable_table">
 		<thead>

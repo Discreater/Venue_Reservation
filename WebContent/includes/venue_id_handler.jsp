@@ -16,11 +16,13 @@
 	VrVenue thisVrVenue = null;
 	boolean idOk = true;
 	String venueName=null;
-	String venueId = request.getParameter("venue_id");
-	if (venueId == null) {
+	String venueIdInUrl = request.getParameter("venue_id");
+	int venueId=-1;
+	if (venueIdInUrl == null) {
 		idOk = false;
 	} else {
-		thisVrVenue = vrVenueDao.findById(Integer.parseInt(venueId));
+		venueId=Integer.parseInt(venueIdInUrl);
+		thisVrVenue = vrVenueDao.findById(venueId);
 	}if(thisVrVenue==null){
 		idOk=false;
 %>

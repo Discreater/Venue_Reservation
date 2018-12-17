@@ -52,8 +52,7 @@
 			}
 	%>
 	<!-- using script for sorting table -->
-	<script type="text/javascript"
-		src="/Venue_Reservation/js/sort_table.js"></script>
+
 	<table id="tableSort" class="sortable_table">
 		<thead>
 			<tr>

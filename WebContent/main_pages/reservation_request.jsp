@@ -1,55 +1,37 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="db.model.*" %>
 <%@ page import="db.acess.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <!-- loading venue info -->
-<%
-	VrVenueDao vrVenueDao = new VrVenueDao();
-	VrVenue thisVrVenue = null;
-	boolean idOk = true;
-	String venueId = request.getParameter("venue_id");
-	if (venueId == null) {
-		idOk = false;
-	} else {
-		thisVrVenue = vrVenueDao.findById(Integer.parseInt(venueId));
-	}
-	if (thisVrVenue == null) {
-		idOk = false;
-%>
-<script type="text/javascript">
-	alert("请求参数出错！");
-	window.history.back();
-</script>
-<%
-	} else {
-		String venueName;
-		venueName = new String(thisVrVenue.getVenueName());
-%>
+<%@ include file="/includes/venue_id_handler.jsp" %>
 <title>场馆预约 - <%=venueName%></title>
 </head>
 <body>
 	<%@ include file="/includes/header.jsp"%>
 	<%
-		request.setCharacterEncoding("UTF-8");
-		if (!customerLogin) {
-		//判断是否以用户登陆：未登录：
-	%>
-		<script type="text/javascript">
-			alert("请先登陆！");
-			window.location.href = "/Venue_Reservation/user_act/login.jsp"
-		</script>
-	<%
-		} else {
-				//已登录
-				
+		VrOrderDao vrOrderDao=new VrOrderDao();
+		Date requestTime=new Date();
+		SimpleDateFormat tmp=new SimpleDateFormat("yyyy-MM-dd ");
+		String startTimeInUrl=request.getParameter("start_time");
+		String endTimeInUrl=request.getParameter("end_time");
+		Date startTime=new Date();
+		Date endTime=new Date();
+		boolean venueNotOccupied=true;
+		/*
+		List<VrOrder> vrOrders=vrOrderDao.findByVenueId(venueId, vrOrderDao.findCount(), 0);//获取所有与该场馆有关的预约
+		if(vrOrders.size()==0){
+			//无预约，直接成功
+			venueNotOccupied=true;
+		}else{
+			//有预约，判断
 		}
-	%>
-	<%
-		}
+		*/
 	%>
 </body>
 </html>

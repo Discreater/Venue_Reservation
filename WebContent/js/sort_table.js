@@ -31,7 +31,7 @@
             });
  
             //显示效果，不重要
-            //$("tbody tr").removeClass();//先移除tbody下tr的所有css类
+            $("tbody tr").removeClass();//先移除tbody下tr的所有css类
             $("tbody tr").mouseover(function(){
                 var tds=$(this).find("td");
                 for(var i=0;i<tds.length;i++){
