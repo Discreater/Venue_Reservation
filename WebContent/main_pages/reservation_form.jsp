@@ -11,20 +11,7 @@
 <title>场馆预约 - <%=venueName%></title>
 </head>
 <body>
-	<%@ include file="/includes/header.jsp"%>
-	<%
-		request.setCharacterEncoding("UTF-8");
-		if (!customerLogin) {
-		//判断是否以用户登陆：未登录：
-	%>
-		<script type="text/javascript">
-			alert("请先登陆！");
-			window.location.href = "/Venue_Reservation/user_act/login.jsp"
-		</script>
-	<%
-		} else {
-				//已登录
-	%>
+	<%@ include file="/includes/header_for_customer.jsp" %>
 	<div class="reservation_form">
 		<form action="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id=<%=venueId %>">
 			<table>
@@ -50,8 +37,6 @@
 			</table>
 		</form>
 	</div>
-	<%		
-		}
-	%>
+
 </body>
 </html>

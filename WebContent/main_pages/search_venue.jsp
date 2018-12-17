@@ -10,18 +10,8 @@
 <meta charset="UTF-8">
 <title>场馆预约系统 - 查询结果</title>
 <body>
-	<%@ include file="/includes/header.jsp"%>
+	<%@ include file="/includes/header.jsp" %>
 	<%
-		request.setCharacterEncoding("UTF-8");
-		//判断是否登陆：未登录：
-		if (!loginStatus) {
-	%>
-	<script type="text/javascript">
-		alert("请先登陆！");
-		window.location.href = "/Venue_Reservation/user_act/login.jsp"
-	</script>
-	<%
-		} else {
 			//已登录：			
 			String input = request.getParameter("search");
 			boolean findAll = request.getParameter("findall") != null;
@@ -133,7 +123,6 @@
 		</tfoot>
 	</table>
 	<%
-		}
 		}
 	%>
 	</div>

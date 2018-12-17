@@ -18,19 +18,8 @@
 
 </head>
 <body>
-	<%@ include file="/includes/header.jsp"%>
+	<%@ include file="/includes/header.jsp" %>
 	<%
-		request.setCharacterEncoding("UTF-8");
-		//判断是否登陆：登录：
-		if (!loginStatus) {
-	%>
-	<script type="text/javascript">
-		alert("请先登陆！");
-		window.location.href = "/Venue_Reservation/user_act/login.jsp"
-	</script>
-	<%
-		} else {
-			//已登录：
 			//行数与列数设置：
 			int rawSize;//列数
 			int colSize;//行数
@@ -101,9 +90,6 @@
 			</tr>
 		</tfoot>
 	</table>
-	<%
-		}
-	%>
 
 </body>
 </html>

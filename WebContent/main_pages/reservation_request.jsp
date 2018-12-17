@@ -13,7 +13,7 @@
 <title>场馆预约 - <%=venueName%></title>
 </head>
 <body>
-	<%@ include file="/includes/header.jsp"%>
+	<%@ include file="/includes/header_for_customer.jsp"%>
 	<%
 		VrOrderDao vrOrderDao=new VrOrderDao();
 		Date requestTime=new Date();
