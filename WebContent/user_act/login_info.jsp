@@ -9,7 +9,7 @@
 <body>
 	<%
 		String info = (String)request.getAttribute("info");
-		if ( info == null || "登陆失败".equals(info)) {
+		if ( info == null || "登录失败".equals(info)) {
 	%>
 	<script type="text/javascript">
 		alert("登录失败！");
@@ -19,7 +19,7 @@
 		} else {
 	%>
 	<script type="text/javascript">
-		alert("登陆成功！");
+		alert("登录成功！");
 		window.location.href = "/Venue_Reservation/index.jsp";
 	</script>
 	<%
