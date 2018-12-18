@@ -47,13 +47,6 @@
 			else{
 				nameChecked = "checked";
 			}
-			if (customers != null) {
-				Iterator<VrCustomer> iterator = customers.iterator();
-				while (iterator.hasNext()) {
-					VrCustomer in = iterator.next();
-					System.out.println(in.getCustName());
-				}
-			}
 			if(input==null){
 				input="";
 			}

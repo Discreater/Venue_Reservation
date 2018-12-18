@@ -1,21 +1,35 @@
 package test;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import db.acess.VrAdminDao;
 import db.acess.VrCustomerDao;
+import db.acess.VrOrderDao;
 import db.acess.VrVenueDao;
 import db.model.VrAdmin;
 import db.model.VrCustomer;
+import db.model.VrOrder;
 import db.model.VrVenue;
 
 public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-
+		testInsertOrder();
+	}
+	private static void testInsertOrder() {
+		VrOrderDao vrOrderDao = new VrOrderDao();
+		VrOrder vrOrder = new VrOrder();
+		vrOrder.setOrdDealTime(new Timestamp(110, 1, 1, 1, 1, 1, 0));
+		vrOrder.setUseStartTime(new Timestamp(110, 2, 1, 1, 1, 1, 0));
+		vrOrder.setUseEndTime(new Timestamp(110, 2, 2, 1, 1, 1, 0));
+		vrOrder.setOrdSubmitReason("第二次预约着玩");
+		vrOrder.setCustId(2);
+		vrOrder.setVenueId(5);
+		vrOrderDao.insert(vrOrder);
 	}
 	public static void testUpdate() {
 		VrCustomerDao vrCustomerDao = new VrCustomerDao();

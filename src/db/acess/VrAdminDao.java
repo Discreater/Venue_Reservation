@@ -28,7 +28,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminId(rSet.getInt("admin_id"));
 				vrAdmin.setAdminName(rSet.getString("admin_name"));
 				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
-				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+				vrAdmin.setAdminCreatTime(rSet.getTimestamp("creat_time"));
 			}
 		}catch (Exception e) {
 			System.err.println(e);
@@ -115,7 +115,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminId(rSet.getInt("admin_id"));
 				vrAdmin.setAdminName(rSet.getString("admin_name"));
 				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
-				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+				vrAdmin.setAdminCreatTime(rSet.getTimestamp("creat_time"));
 			}
 		} catch (Exception e) {
 			System.err.println(e);
@@ -144,7 +144,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminId(rSet.getInt("admin_id"));
 				vrAdmin.setAdminName(rSet.getString("admin_name"));
 				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
-				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+				vrAdmin.setAdminCreatTime(rSet.getTimestamp("creat_time"));
 				list.add(vrAdmin);
 			}
 		} catch (Exception e) {
@@ -175,7 +175,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminId(rSet.getInt("admin_id"));
 				vrAdmin.setAdminName(rSet.getString("admin_name"));
 				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
-				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+				vrAdmin.setAdminCreatTime(rSet.getTimestamp("creat_time"));
 				list.add(vrAdmin);
 			}
 		} catch (Exception e) {
@@ -231,7 +231,7 @@ public class VrAdminDao implements IVrAdminDao {
 				vrAdmin.setAdminId(rSet.getInt("admin_id"));
 				vrAdmin.setAdminName(rSet.getString("admin_name"));
 				vrAdmin.setAdminPassword(rSet.getString("admin_password"));
-				vrAdmin.setAdminCreatTime(rSet.getDate("creat_time"));
+				vrAdmin.setAdminCreatTime(rSet.getTimestamp("creat_time"));
 			}
 		}catch (Exception e) {
 			System.err.println(e);

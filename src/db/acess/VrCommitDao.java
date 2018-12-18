@@ -27,7 +27,7 @@ public class VrCommitDao implements IVrCommitDao {
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getCommitState());
 			pStatement.setString(2, obj.getCommitContext());
-			pStatement.setDate(3, obj.getCommitSubmitTime());
+			pStatement.setTimestamp(3, obj.getCommitSubmitTime());
 			pStatement.setInt(4, obj.getCustId());
 			pStatement.setInt(5, obj.getAdminId());
 			pStatement.setString(6, obj.getCommitType());
@@ -55,7 +55,7 @@ public class VrCommitDao implements IVrCommitDao {
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getCommitState());
 			pStatement.setString(2, obj.getCommitContext());
-			pStatement.setDate(3, obj.getCommitSubmitTime());
+			pStatement.setTimestamp(3, obj.getCommitSubmitTime());
 			pStatement.setInt(4, obj.getCustId());
 			pStatement.setInt(5, obj.getAdminId());
 			pStatement.setString(6, obj.getCommitType());
@@ -104,7 +104,7 @@ public class VrCommitDao implements IVrCommitDao {
 				vrCommit.setCommitId(rSet.getInt("commit_id"));
 				vrCommit.setCommitState(rSet.getString("commit_state"));
 				vrCommit.setCommitContext(rSet.getString("commit_context"));
-				vrCommit.setCommitSubmitTime(rSet.getDate("commit_submitTime"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
 				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
 				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
 				vrCommit.setCommitType(rSet.getString("commit_type"));
@@ -136,7 +136,7 @@ public class VrCommitDao implements IVrCommitDao {
 				vrCommit.setCommitId(rSet.getInt("commit_id"));
 				vrCommit.setCommitState(rSet.getString("commit_state"));
 				vrCommit.setCommitContext(rSet.getString("commit_context"));
-				vrCommit.setCommitSubmitTime(rSet.getDate("commit_submitTime"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
 				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
 				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
 				vrCommit.setCommitType(rSet.getString("commit_type"));
@@ -169,7 +169,7 @@ public class VrCommitDao implements IVrCommitDao {
 				vrCommit.setCommitId(rSet.getInt("commit_id"));
 				vrCommit.setCommitState(rSet.getString("commit_state"));
 				vrCommit.setCommitContext(rSet.getString("commit_context"));
-				vrCommit.setCommitSubmitTime(rSet.getDate("commit_submitTime"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
 				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
 				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
 				vrCommit.setCommitType(rSet.getString("commit_type"));
@@ -227,7 +227,7 @@ public class VrCommitDao implements IVrCommitDao {
 				vrCommit.setCommitId(rSet.getInt("commit_id"));
 				vrCommit.setCommitState(rSet.getString("commit_state"));
 				vrCommit.setCommitContext(rSet.getString("commit_context"));
-				vrCommit.setCommitSubmitTime(rSet.getDate("commit_submitTime"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
 				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
 				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
 				vrCommit.setCommitType(rSet.getString("commit_type"));
@@ -261,7 +261,7 @@ public class VrCommitDao implements IVrCommitDao {
 				vrCommit.setCommitId(rSet.getInt("commit_id"));
 				vrCommit.setCommitState(rSet.getString("commit_state"));
 				vrCommit.setCommitContext(rSet.getString("commit_context"));
-				vrCommit.setCommitSubmitTime(rSet.getDate("commit_submitTime"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
 				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
 				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
 				vrCommit.setCommitType(rSet.getString("commit_type"));

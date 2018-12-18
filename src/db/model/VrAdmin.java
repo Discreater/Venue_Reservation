@@ -1,6 +1,6 @@
 package db.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -12,26 +12,14 @@ public class VrAdmin {
 	private Integer adminId = null;
 	private String adminName = null;
 	private String adminPassword = null;
-	private Date adminCreatTime = null;
+	private Timestamp adminCreatTime = null;
 	private List<VrRole> vrRoleList = null;
 	
-	public VrAdmin() {
-		super();
-	}
-	public VrAdmin(Integer adminId, String adminName, String adminPassword, Date adminCreatTime,
-			List<VrRole> vrRoleList) {
-		super();
-		this.adminId = adminId;
-		this.adminName = adminName;
-		this.adminPassword = adminPassword;
-		this.adminCreatTime = adminCreatTime;
-		this.vrRoleList = vrRoleList;
-	}
 	
-	public Date getAdminCreatTime() {
+	public Timestamp getAdminCreatTime() {
 		return adminCreatTime;
 	}
-	public void setAdminCreatTime(Date adminCreatTime) {
+	public void setAdminCreatTime(Timestamp adminCreatTime) {
 		this.adminCreatTime = adminCreatTime;
 	}
 	public Integer getAdminId() {

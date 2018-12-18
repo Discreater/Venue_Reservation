@@ -1,6 +1,6 @@
 package db.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -16,9 +16,16 @@ public class VrCustomer {
 	private String custPhone = null;
 	private String custEmail = null;
 	private String custAddress = null;
-	private Date custDatetime = null;
+	private Timestamp custDatetime = null;
 	private List<VrOrder> orders = null;
 
+	
+	public Timestamp getCustDatetime() {
+		return custDatetime;
+	}
+	public void setCustDatetime(Timestamp custDatetime) {
+		this.custDatetime = custDatetime;
+	}
 	public List<VrOrder> getOrders() {
 		return orders;
 	}
@@ -67,10 +74,5 @@ public class VrCustomer {
 	public void setCustAddress(String custAddress) {
 		this.custAddress = custAddress;
 	}
-	public Date getCustDatetime() {
-		return custDatetime;
-	}
-	public void setCustDatetime(Date custDatetime) {
-		this.custDatetime = custDatetime;
-	}
+
 }

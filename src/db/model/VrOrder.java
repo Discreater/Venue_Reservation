@@ -1,6 +1,6 @@
 package db.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * 订单数据
@@ -9,18 +9,42 @@ import java.sql.Date;
  */
 public class VrOrder {
 	private Integer ordId = null;
-	private Date ordSubmitTime = null;	// 订单提交时间
-	private Date ordDealTime = null;	// 订单处理时间
-	private Date useStartTime = null;	// 场馆开始占用时间
-	private Date useEndTime = null;	// 场馆结束占用时间
-	private String ordStatus = null;
-	private String ordRejectReason = null;
+	private Timestamp ordSubmitTime = null;	// 订单提交时间
+	private Timestamp ordDealTime = null;	// 订单处理时间
+	private Timestamp useStartTime = null;	// 场馆开始占用时间
+	private Timestamp useEndTime = null;	// 场馆结束占用时间
+	private String ordStatus = "wait";
+	private String ordRejectReason = "";
 	private Integer custId = null;
 	private Integer adminId = null;
 	private Integer venueId = null;
-	private String ordSubmitReason = null;
+	private String ordSubmitReason = "";
 	
 	
+	public Timestamp getOrdSubmitTime() {
+		return ordSubmitTime;
+	}
+	public void setOrdSubmitTime(Timestamp ordSubmitTime) {
+		this.ordSubmitTime = ordSubmitTime;
+	}
+	public Timestamp getOrdDealTime() {
+		return ordDealTime;
+	}
+	public void setOrdDealTime(Timestamp ordDealTime) {
+		this.ordDealTime = ordDealTime;
+	}
+	public Timestamp getUseStartTime() {
+		return useStartTime;
+	}
+	public void setUseStartTime(Timestamp useStartTime) {
+		this.useStartTime = useStartTime;
+	}
+	public Timestamp getUseEndTime() {
+		return useEndTime;
+	}
+	public void setUseEndTime(Timestamp useEndTime) {
+		this.useEndTime = useEndTime;
+	}
 	public String getOrdSubmitReason() {
 		return ordSubmitReason;
 	}
@@ -52,30 +76,7 @@ public class VrOrder {
 	public void setOrdId(Integer ordId) {
 		this.ordId = ordId;
 	}
-	public Date getOrdSubmitTime() {
-		return ordSubmitTime;
-	}
-	public void setOrdSubmitTime(Date ordSubmitTime) {
-		this.ordSubmitTime = ordSubmitTime;
-	}
-	public Date getOrdDealTime() {
-		return ordDealTime;
-	}
-	public void setOrdDealTime(Date ordDealTime) {
-		this.ordDealTime = ordDealTime;
-	}
-	public Date getUseStartTime() {
-		return useStartTime;
-	}
-	public void setUseStartTime(Date useStartTime) {
-		this.useStartTime = useStartTime;
-	}
-	public Date getUseEndTime() {
-		return useEndTime;
-	}
-	public void setUseEndTime(Date useEndTime) {
-		this.useEndTime = useEndTime;
-	}
+	
 	public String getOrdStatus() {
 		return ordStatus;
 	}

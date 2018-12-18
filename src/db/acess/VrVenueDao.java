@@ -110,7 +110,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 			}
 		} catch (Exception e) {
 			System.err.println(e);
@@ -145,7 +145,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -181,7 +181,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -242,7 +242,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -279,7 +279,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -316,7 +316,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -353,7 +353,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {
@@ -390,7 +390,7 @@ public class VrVenueDao implements IVrVenueDao {
 				vrVenue.setVenueAddress(rSet.getString("venue_address"));
 				vrVenue.setVenueInfo(rSet.getString("venue_info"));
 				vrVenue.setVenueState(rSet.getString("venue_state"));
-				vrVenue.setVenueCreateTime(rSet.getDate("create_time"));
+				vrVenue.setVenueCreateTime(rSet.getTimestamp("create_time"));
 				list.add(vrVenue);
 			}
 		} catch (Exception e) {

@@ -1,6 +1,6 @@
 package db.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class VrCommit {
 	private Integer commitId = null;
@@ -9,11 +9,19 @@ public class VrCommit {
 	 */
 	private String commitState = "wait";
 	private String commitContext = null;
-	private Date commitSubmitTime = null;
+	private Timestamp commitSubmitTime = null;
 	private Integer custId = null;
 	private Integer adminId = null;
 	private String commitType = "short";
 	
+	
+	
+	public Timestamp getCommitSubmitTime() {
+		return commitSubmitTime;
+	}
+	public void setCommitSubmitTime(Timestamp commitSubmitTime) {
+		this.commitSubmitTime = commitSubmitTime;
+	}
 	public Integer getCommitId() {
 		return commitId;
 	}
@@ -38,12 +46,7 @@ public class VrCommit {
 	public void setCommitContext(String commitContext) {
 		this.commitContext = commitContext;
 	}
-	public Date getCommitSubmitTime() {
-		return commitSubmitTime;
-	}
-	public void setCommitSubmitTime(Date commitSubmitTime) {
-		this.commitSubmitTime = commitSubmitTime;
-	}
+
 	public Integer getCustId() {
 		return custId;
 	}

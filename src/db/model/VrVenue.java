@@ -1,6 +1,7 @@
 package db.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * 场馆数据
@@ -23,10 +24,16 @@ public class VrVenue {
 	 * valid,invalid
 	 */
 	private String venueState = "valid";
-	private Date venueCreateTime = null;
+	private Timestamp venueCreateTime = null;
 	
 	
 	
+	public Timestamp getVenueCreateTime() {
+		return venueCreateTime;
+	}
+	public void setVenueCreateTime(Timestamp venueCreateTime) {
+		this.venueCreateTime = venueCreateTime;
+	}
 	public String getVenueInfo() {
 		return venueInfo;
 	}
@@ -86,12 +93,6 @@ public class VrVenue {
 	}
 	public void setVenueState(String venueState) {
 		this.venueState = venueState;
-	}
-	public Date getVenueCreateTime() {
-		return venueCreateTime;
-	}
-	public void setVenueCreateTime(Date venueCreateTime) {
-		this.venueCreateTime = venueCreateTime;
 	}
 
 	

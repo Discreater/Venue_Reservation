@@ -97,7 +97,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setCustId(rSet.getInt("cust_id"));
 				vrCustomer.setCustName(rSet.getString("cust_name"));
 				vrCustomer.setCustPassword(rSet.getString("cust_password"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
 				vrCustomer.setCustEmail(rSet.getString("cust_email"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
@@ -134,7 +134,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {
@@ -168,7 +168,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {
@@ -228,7 +228,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 			}
 		} catch (Exception e) {
 			System.err.println(e);
@@ -261,7 +261,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 			}
 		} catch (Exception e) {
 			System.err.println(e);
@@ -295,7 +295,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 				vrCustomer.setRealName(rSet.getString("cust_realName"));
 				vrCustomer.setCustPhone(rSet.getString("cust_phone"));
 				vrCustomer.setCustAddress(rSet.getString("cust_address"));
-				vrCustomer.setCustDatetime(rSet.getDate("create_time"));
+				vrCustomer.setCustDatetime(rSet.getTimestamp("create_time"));
 				list.add(vrCustomer);
 			}
 		} catch (Exception e) {

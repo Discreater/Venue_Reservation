@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		// 测试数据
-		System.out.println(username + " " + password);
+		// System.out.println(username + " " + password);
 		HttpSession session = null;
 		
 		VrAdmin vrAdmin = new VrAdminDao().findOne(username, password);

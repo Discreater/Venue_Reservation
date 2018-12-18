@@ -11,6 +11,44 @@ import db.inter.IVrOrderDao;
 import db.model.VrOrder;
 
 public class VrOrderDao implements IVrOrderDao {
+	@Override
+	public List<VrOrder> findByState(String orderState, Integer pageSize, Integer pageNo) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		List<VrOrder> list = new ArrayList<>();
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from `order` where order_state=? limit " + (pageNo - 1) * pageSize + ","
+					+ pageSize;
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, orderState);
+			rSet = pStatement.executeQuery();
+			VrOrder vrOrder = null;
+			if (rSet.next()) {
+				vrOrder = new VrOrder();
+				vrOrder.setOrdId(rSet.getInt("order_id"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
+				vrOrder.setOrdStatus(rSet.getString("order_state"));
+				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
+				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
+				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
+				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
+				list.add(vrOrder);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
+		}
+		return list;
+	}
 
 	@Override
 	public void insert(VrOrder obj) {
@@ -19,21 +57,19 @@ public class VrOrderDao implements IVrOrderDao {
 		try {
 			connection = MySQLHelper.getConnection();
 			String sql = "insert into `order` " + "(order_dealTime, order_useStartTime, "
-					+ "order_useEndTime, order_state, " + "order_rejectReason, customer_cust_id,"
-					+ "admin_admin_id, venue_venue_id, order_submitReason) " + "values(?,?,?,?,?,?,?,?,?)";
+					+ "order_useEndTime, customer_cust_id,"
+					+ "venue_venue_id, order_submitReason) " + "values(?,?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
-			pStatement.setDate(1, obj.getOrdDealTime());
-			pStatement.setDate(2, obj.getUseStartTime());
-			pStatement.setDate(3, obj.getUseEndTime());
-			pStatement.setString(4, obj.getOrdStatus());
-			pStatement.setString(5, obj.getOrdRejectReason());
-			pStatement.setInt(6, obj.getCustId());
-			pStatement.setInt(7, obj.getAdminId());
-			pStatement.setInt(8, obj.getVenueId());
-			pStatement.setString(9, obj.getOrdSubmitReason());
+			System.err.println(sql);
+			pStatement.setTimestamp(1, obj.getOrdDealTime());
+			pStatement.setTimestamp(2, obj.getUseStartTime());
+			pStatement.setTimestamp(3, obj.getUseEndTime());
+			pStatement.setInt(4, obj.getCustId());
+			pStatement.setInt(5, obj.getVenueId());
+			pStatement.setString(6, obj.getOrdSubmitReason());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-			System.err.println(e);
+			System.err.println(e.getMessage());
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);
@@ -50,9 +86,9 @@ public class VrOrderDao implements IVrOrderDao {
 					+ "order_useEndTime=?, order_state=?, " + "order_rejectReason=?, customer_cust_id=?,"
 					+ "admin_admin_id=?, venue_venue_id=?, order_submitReason=?" + "where order_id=?";
 			pStatement = connection.prepareStatement(sql);
-			pStatement.setDate(1, obj.getOrdDealTime());
-			pStatement.setDate(2, obj.getUseStartTime());
-			pStatement.setDate(3, obj.getUseEndTime());
+			pStatement.setTimestamp(1, obj.getOrdDealTime());
+			pStatement.setTimestamp(2, obj.getUseStartTime());
+			pStatement.setTimestamp(3, obj.getUseEndTime());
 			pStatement.setString(4, obj.getOrdStatus());
 			pStatement.setString(5, obj.getOrdRejectReason());
 			pStatement.setInt(6, obj.getCustId());
@@ -102,10 +138,10 @@ public class VrOrderDao implements IVrOrderDao {
 			if (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
-				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-				vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-				vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-				vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
 				vrOrder.setOrdStatus(rSet.getString("order_state"));
 				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
@@ -138,10 +174,10 @@ public class VrOrderDao implements IVrOrderDao {
 			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
-				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-				vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-				vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-				vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
 				vrOrder.setOrdStatus(rSet.getString("order_state"));
 				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
@@ -175,10 +211,10 @@ public class VrOrderDao implements IVrOrderDao {
 			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
-				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-				vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-				vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-				vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
 				vrOrder.setOrdStatus(rSet.getString("order_state"));
 				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
@@ -238,10 +274,10 @@ public class VrOrderDao implements IVrOrderDao {
 			if (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
-				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-				vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-				vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-				vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
 				vrOrder.setOrdStatus(rSet.getString("order_state"));
 				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
@@ -277,10 +313,10 @@ public class VrOrderDao implements IVrOrderDao {
 			if (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
-				vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-				vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-				vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-				vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
 				vrOrder.setOrdStatus(rSet.getString("order_state"));
 				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
 				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
@@ -298,44 +334,46 @@ public class VrOrderDao implements IVrOrderDao {
 		}
 		return list;
 	}
-@Override
-public List<VrOrder> findByVenueId(Integer venueId, Integer pageSize, Integer pageNo) {
-	Connection connection = null;
-	PreparedStatement pStatement = null;
-	ResultSet rSet = null;
-	List<VrOrder> list = new ArrayList<>();
-	try {
-		connection = MySQLHelper.getConnection();
-		String sql = "select * from `order` where venue_venue_id=? limit " + (pageNo - 1) * pageSize + ","
-				+ pageSize;
-		pStatement = connection.prepareStatement(sql);
-		pStatement.setInt(1, venueId);
-		rSet = pStatement.executeQuery();
-		VrOrder vrOrder = null;
-		if (rSet.next()) {
-			vrOrder = new VrOrder();
-			vrOrder.setOrdId(rSet.getInt("order_id"));
-			vrOrder.setOrdSubmitTime(rSet.getDate("order_submitTime"));
-			vrOrder.setOrdDealTime(rSet.getDate("order_dealTime"));
-			vrOrder.setUseStartTime(rSet.getDate("order_useStartTime"));
-			vrOrder.setUseEndTime(rSet.getDate("order_useEndTime"));
-			vrOrder.setOrdStatus(rSet.getString("order_state"));
-			vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
-			vrOrder.setCustId(rSet.getInt("customer_cust_id"));
-			vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
-			vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
-			vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
-			list.add(vrOrder);
+
+	@Override
+	public List<VrOrder> findByVenueId(Integer venueId, Integer pageSize, Integer pageNo) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		List<VrOrder> list = new ArrayList<>();
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from `order` where venue_venue_id=? limit " + (pageNo - 1) * pageSize + ","
+					+ pageSize;
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, venueId);
+			rSet = pStatement.executeQuery();
+			VrOrder vrOrder = null;
+			if (rSet.next()) {
+				vrOrder = new VrOrder();
+				vrOrder.setOrdId(rSet.getInt("order_id"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
+				vrOrder.setOrdStatus(rSet.getString("order_state"));
+				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
+				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
+				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
+				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
+				list.add(vrOrder);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
 		}
-	} catch (Exception e) {
-		System.err.println(e);
-	} finally {
-		MySQLHelper.closeResult(rSet);
-		MySQLHelper.closePreparedStatement(pStatement);
-		MySQLHelper.closeConnection(connection);
+		return list;
 	}
-	return list;
-}
+
 	@Override
 	public Integer findCount(Integer custId) {
 		Connection connection = null;
