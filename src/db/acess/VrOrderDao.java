@@ -25,7 +25,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setString(1, orderState);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
@@ -56,17 +56,15 @@ public class VrOrderDao implements IVrOrderDao {
 		PreparedStatement pStatement = null;
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "insert into `order` " + "(order_dealTime, order_useStartTime, "
+			String sql = "insert into `order` " + "(order_useStartTime, "
 					+ "order_useEndTime, customer_cust_id,"
-					+ "venue_venue_id, order_submitReason) " + "values(?,?,?,?,?,?)";
+					+ "venue_venue_id, order_submitReason) " + "values(?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
-			System.err.println(sql);
-			pStatement.setTimestamp(1, obj.getOrdDealTime());
-			pStatement.setTimestamp(2, obj.getUseStartTime());
-			pStatement.setTimestamp(3, obj.getUseEndTime());
-			pStatement.setInt(4, obj.getCustId());
-			pStatement.setInt(5, obj.getVenueId());
-			pStatement.setString(6, obj.getOrdSubmitReason());
+			pStatement.setTimestamp(1, obj.getUseStartTime());
+			pStatement.setTimestamp(2, obj.getUseEndTime());
+			pStatement.setInt(3, obj.getCustId());
+			pStatement.setInt(4, obj.getVenueId());
+			pStatement.setString(5, obj.getOrdSubmitReason());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -271,7 +269,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setInt(1, custId);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
@@ -310,7 +308,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setInt(1, adminId);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
@@ -349,7 +347,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setInt(1, venueId);
 			rSet = pStatement.executeQuery();
 			VrOrder vrOrder = null;
-			if (rSet.next()) {
+			while (rSet.next()) {
 				vrOrder = new VrOrder();
 				vrOrder.setOrdId(rSet.getInt("order_id"));
 				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));

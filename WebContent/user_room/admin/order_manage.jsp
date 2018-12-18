@@ -28,7 +28,9 @@
 		String waitChecked = "";
 		String allChecked = "";
 		if ("wait".equals(type)) {
-			orders = vrOrderDao.findByState("wait", vrOrderDao.findCount(), 1);
+			int t = vrOrderDao.findCount();
+			System.out.println(t);
+			orders = vrOrderDao.findByState("wait", t, 1);
 			waitChecked = "checked";
 		} else if ("all".equals(type)) {
 			orders = vrOrderDao.findAll();
@@ -140,7 +142,7 @@
 						<!-- data here --> <%
  	if (col == 0) {
  %> <a
-						href="/Venue_Reservation/user_room/admin/user_info.jsp?cust_id=<%=orders.get(raw).getCustId()%>">
+						href="/Venue_Reservation/user_room/admin/order_info.jsp?order_id=<%=orders.get(raw).getOrdId()%>">
 							<%=data[raw][col]%>
 					</a> <%
  	} else {
