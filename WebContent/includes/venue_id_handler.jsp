@@ -2,15 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="db.acess.VrVenueDao"%>
 <%@ page import="db.model.VrVenue"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<div>
-	<!-- loading venue info -->
+
 <%
 	VrVenueDao vrVenueDao = new VrVenueDao();
 	VrVenue thisVrVenue = null;
@@ -35,6 +27,4 @@
 		venueName=new String(thisVrVenue.getVenueName());
 	}
 %>
-</div>
-</body>
-</html>
+

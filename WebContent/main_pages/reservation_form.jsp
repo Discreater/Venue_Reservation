@@ -32,15 +32,15 @@
 						<td><%=venueName %></td>
 						<td><input type="datetime-local" name="start_time" id="start_time"></td>
 						<td><input type="datetime-local" name="end_time" id="end_time"></td>
-						<td><input type="text" value="在此输入预约申请理由"></td>		
+						<td><input type="text" name="request_reason" id="request_reason" value="在此输入预约申请理由"></td>		
 					</tr>
 				</tbody>
 				<tfoot>
-					<tr><td><input type="submit" id="submit" value="提交订单"></td></tr>
+					<button id="submit">提交订单</button>
 				</tfoot>
 			</table>
 		</form>
 	</div>
-	<button id="testsubmit">click</button>
+	
 </body>
 </html>

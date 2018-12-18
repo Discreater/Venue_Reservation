@@ -1,4 +1,6 @@
-<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="common.Convert"%>
+<%@ page import="java.sql.Timestamp"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="db.model.*" %>
@@ -14,24 +16,48 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp"%>
+
 	<%
 		VrOrderDao vrOrderDao=new VrOrderDao();
-		Date requestTime=new Date();
-		SimpleDateFormat tmp=new SimpleDateFormat("yyyy-MM-dd ");
+		Timestamp requestTime=new Timestamp(System.currentTimeMillis());		
 		String startTimeInUrl=request.getParameter("start_time");
 		String endTimeInUrl=request.getParameter("end_time");
-		Date startTime=new Date();
-		Date endTime=new Date();
-		boolean venueNotOccupied=true;
-		/*
-		List<VrOrder> vrOrders=vrOrderDao.findByVenueId(venueId, vrOrderDao.findCount(), 0);//获取所有与该场馆有关的预约
+		Timestamp startTime=Convert.urlParamaterToTimestamp(startTimeInUrl);
+		Timestamp endTime=Convert.urlParamaterToTimestamp(endTimeInUrl);
+		List<VrOrder> vrOrders=vrOrderDao.findByVenueId(venueId, vrOrderDao.findCount(), 1);//获取所有与该场馆有关的预约
+		VrOrder vrOrder=new VrOrder();
+		vrOrder.setCustId(vrCustomer.getCustId());
+		vrOrder.setUseStartTime(startTime);
+		vrOrder.setUseEndTime(endTime);
+		vrOrder.setVenueId(venueId);
+		vrOrder.setOrdSubmitReason(request.getParameter("request_reason"));//创建订单，填入信息
 		if(vrOrders.size()==0){
-			//无预约，直接成功
-			venueNotOccupied=true;
+			//无预约，直接成功			
+			vrOrderDao.insert(vrOrder);
 		}else{
-			//有预约，判断
+			//有预约，判断该时间段是否被占用/被预约
+			boolean venueOccupied=false;//是否有通过的订单
+			boolean venueRequested=false;//是否有相关订单
+			Iterator iterator=vrOrders.iterator();
+			while(iterator.hasNext()){
+				VrOrder aVrOrder=(VrOrder)iterator.next();
+				String orderStatus=aVrOrder.getOrdStatus();
+				//以下逻辑可优化顺序，但此处为了清楚不作优化
+				if("reject".equals(orderStatus)){//无需理会被拒绝的订单
+					continue;
+				}else if("wait".equals(orderStatus)){
+					if(Convert.orderTimeConflict(aVrOrder, vrOrder)){
+						venueRequested=true;
+					}
+				}else if("pass".equals(orderStatus)){
+					if(Convert.orderTimeConflict(aVrOrder, vrOrder)){
+						venueOccupied=true;
+						break;
+					}
+				}
+			}
 		}
-		*/
+		
 	%>
 </body>
 </html>

@@ -14,7 +14,7 @@ function convertDate(date){
     var day = date.getDate();
     var hour=date.getHours();
     var minute=date.getMinutes();
-    var currentdate = year + "-" + add0IfSingle(month+1) + "-" + add0IfSingle(day) + " " + add0IfSingle(hour) + ":" + add0IfSingle(minute) ;
+    var currentdate = year + "-" + add0IfSingle(month+1) + "-" + add0IfSingle(day) + "-" + add0IfSingle(hour) + "-" + add0IfSingle(minute) ;
     return currentdate;
 }
 function convertTime(time){
@@ -28,15 +28,14 @@ $(document).ready(function(){
         var endTime=$("#end_time").val();
         startTime=convertTime(startTime);
         endTime=convertTime(endTime);
-        var nowTime=convertDate(nowDate);
-        alert("loading dates:" + nowDate);
-        alert("loading times:" + nowTime + " --- " + startTime + " --- " + endTime);
+        var nowTime=convertDate(nowDate);        
        if(nowTime>=startTime){
            alert("现在是："+nowTime+"，已经超过了指定的预约起始时间！");
-           history.back();
        }else if(startTime>=endTime){
             alert("预约起始时间 必须大于 预约截止时间！");
-            history.back();
+        }else{
+        	var url="/Venue_Reservation/main_pages/reservation_request.jsp";
+        	window.location.href=url;
         }
 	});
 });
