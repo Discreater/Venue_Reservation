@@ -72,6 +72,7 @@
 	<div>
 		<a href="/Venue_Reservation/user_room/admin/user_manage.jsp"><button>取消修改</button></a>
 		<form action="/Venue_Reservation/user_act/cust_infoChange.jsp">
+			用户ID:<input type="text" name="id" value=<%=cust.getCustId()%> readonly="readonly"><br/>
 			<input type="checkbox" name="delete" value="true">确定删除<br>
 			<input type="submit" value="删除用户">
 		</form>
