@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>场馆预约系统-个人空间</title>
+<title>场馆预约系统-用户管理</title>
 <link href="/Venue_Reservation/css/table.css" type="text/css"
 	rel="stylesheet">
 	<script type="text/javascript"
@@ -58,7 +58,7 @@
 				input="";
 			}
 		%>
-
+		<h2>用户管理</h2>
 		<form action="/Venue_Reservation/user_room/admin/user_manage.jsp">
 			<input id="search" name="search" type="text" value="<%=input%>">
 			<input type="radio" name="type" value="name" <%=nameChecked %>>按昵称查找

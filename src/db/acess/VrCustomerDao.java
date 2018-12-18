@@ -43,7 +43,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 		try {
 			connection = MySQLHelper.getConnection();
 			String sql = "update customer set " + "cust_name=?, cust_password=?, cust_email=?, "
-					+ "cust_realName=?, cust_phone=?, cust_address=?" + "where cust_id=?";
+					+ "cust_realName=?, cust_phone=?, cust_address=?" + " where cust_id=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getCustName());
 			pStatement.setString(2, obj.getCustPassword());
@@ -54,7 +54,7 @@ public class VrCustomerDao implements IVrCustomerDao {
 			pStatement.setInt(7, obj.getCustId());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);

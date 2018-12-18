@@ -32,7 +32,7 @@
 		if(id!=0){
 			cust = new VrCustomerDao().findById(id);
 		}
-		if(cust == null){
+		if(cust == null || id == 0){
 			%>
 			<script>
 				alert("请求参数非法!");
@@ -40,12 +40,14 @@
 			</script>
 			<%
 		}
+		try{
 	%>
 	<div>
 		<form>
 		原用户信息:
 			用户ID:<input type="text" name="id" value=<%=cust.getCustId()%> readonly="readonly"><br/>
 			用户昵称:<input type="text" name="name" value=<%=cust.getCustName() %> readonly="readonly"><br/>
+			用户密码:<input type="text" name="password" value=<%=cust.getCustPassword() %> readonly="readonly"><br/>
 			用户邮箱:<input type="text" name="email" value=<%= cust.getCustEmail() %> readonly="readonly"><br/>
 			真实姓名:<input type="text" name="real_name" value=<%= cust.getRealName() %> readonly="readonly"><br/>
 			电话号码:<input type="text" name="phone" value=<%= cust.getCustPhone() %> readonly="readonly"><br/>
@@ -58,12 +60,13 @@
 		修改信息:
 			用户ID:<input type="text" name="id" value=<%=cust.getCustId()%> readonly="readonly"><br/>
 			用户昵称:<input type="text" name="name" value=<%=cust.getCustName() %> ><br/>
+			用户密码:<input type="text" name="password" value=<%=cust.getCustPassword() %>><br/>
 			用户邮箱:<input type="text" name="email" value=<%= cust.getCustEmail() %> ><br/>
 			真实姓名:<input type="text" name="real_name" value=<%= cust.getRealName() %> ><br/>
 			电话号码:<input type="text" name="phone" value=<%= cust.getCustPhone() %>><br/>
 			用户地址:<input type="text" name="address" value=<%= cust.getCustAddress() %>><br/>
 			创建时间:<input type="text" name="date_time" value=<%= cust.getCustDatetime() %> readonly="readonly"><br/>
-			<input type="submit" value="提交">
+			<input type="submit" value="提交修改">
 		</form>
 	</div>
 	<div>
@@ -73,5 +76,15 @@
 			<input type="submit" value="删除用户">
 		</form>
 	</div>
+	<% 
+		}catch(Exception e){
+			%>
+			<script>
+				alert("请求参数非法!");
+				window.location.href = "/Venue_Reservation/index.jsp"
+			</script>
+			<%
+		}
+	%>
 </body>
 </html>
