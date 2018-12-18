@@ -1,10 +1,12 @@
 package test;
 
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import common.Convert;
 import db.acess.VrAdminDao;
 import db.acess.VrCustomerDao;
 import db.acess.VrOrderDao;
@@ -18,11 +20,14 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-		testInsertOrder();
+		Date date = new Date();
+		Timestamp timestamp;
+		System.out.println(Convert.dateToTimestamp(date));
 	}
 	private static void testInsertOrder() {
 		VrOrderDao vrOrderDao = new VrOrderDao();
 		VrOrder vrOrder = new VrOrder();
+		
 		vrOrder.setOrdDealTime(new Timestamp(110, 1, 1, 1, 1, 1, 0));
 		vrOrder.setUseStartTime(new Timestamp(110, 2, 1, 1, 1, 1, 0));
 		vrOrder.setUseEndTime(new Timestamp(110, 2, 2, 1, 1, 1, 0));
