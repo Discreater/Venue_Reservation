@@ -36,7 +36,7 @@
 					</tr>
 				</tbody>
 				<tfoot>
-					<button id="submit">提交订单</button>
+					<tr><td><input type="submit" value="提交订单" onsubmit="judgeDate()"></td></tr>
 				</tfoot>
 			</table>
 		</form>

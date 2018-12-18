@@ -41,6 +41,7 @@ public class Test2 {
 		bOrder.setUseStartTime(new Timestamp(System.currentTimeMillis()));
 		Thread.sleep(1);
 		bOrder.setUseEndTime(new Timestamp(System.currentTimeMillis()));
+		
 		assertEquals(false, Convert.orderTimeConflict(aOrder, bOrder));
 		
 		aOrder.setUseStartTime(new Timestamp(System.currentTimeMillis()));
@@ -52,5 +53,7 @@ public class Test2 {
 		bOrder.setUseEndTime(new Timestamp(System.currentTimeMillis()));
 
 		assertEquals(true, Convert.orderTimeConflict(aOrder, bOrder));
+		assertEquals(true, Convert.orderTimeConflict(bOrder, aOrder));
+		assertEquals(true, Convert.orderTimeConflict(aOrder, aOrder));
 	}
 }
