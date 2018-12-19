@@ -58,9 +58,9 @@
 				}
 				List<VrVenue> allList = vrVenueDao.findPageByVenueName(input, vrVenueDao.findCount(), 1);
 				colSize = allList.size();
-				rawSize = 2;
-				String[] headers = { "场馆名称", "场馆地址" };//表头
-				String[] types = { "string", "string" };
+				rawSize = 3;
+				String[] headers = { "场馆名称", "场馆地址","场馆状态" };//表头
+				String[] types = { "string", "string","string" };
 				String[][] data = new String[colSize][rawSize];//数据
 				//表头和属性赋值：
 				//数据赋值:
@@ -68,6 +68,7 @@
 					vrVenue = allList.get(raw);
 					data[raw][0] = vrVenue.getVenueName();
 					data[raw][1] = vrVenue.getVenueAddress();
+					data[raw][2] = vrVenue.getVenueState();
 				}
 	%>
 	<!-- using script for sorting table -->
@@ -96,7 +97,7 @@
 				%>
 				<td>
 					<!-- data here --> <%
- 	if (col == 0) {
+ 	if (col == 0 && "valid".equals(allList.get(raw).getVenueState())) {
  %> <a
 					href="/Venue_Reservation/main_pages/venue_info.jsp?venue_id=<%=allList.get(raw).getVenueId()%>">
 						<%=data[raw][col]%>
