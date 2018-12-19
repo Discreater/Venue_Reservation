@@ -32,13 +32,14 @@
 		vrOrder.setUseEndTime(endTime);
 		vrOrder.setVenueId(venueId);
 		vrOrder.setOrdSubmitReason(request.getParameter("request_reason"));//创建订单，填入信息
+		boolean venueOccupied=false;//是否有通过的订单
+		boolean venueRequested=false;//是否有相关订单
 		if(vrOrders.size()==0){
-			//无预约，直接insert成功			
-			vrOrderDao.insert(vrOrder);
+			//无预约，直接设置标记			
+			venueOccupied=venueRequested=false;
 		}else{
 			//有预约，判断该时间段是否被占用/被预约
-			boolean venueOccupied=false;//是否有通过的订单
-			boolean venueRequested=false;//是否有相关订单
+
 			Iterator iterator=vrOrders.iterator();
 			while(iterator.hasNext()){//遍历所有同个场馆的订单
 				VrOrder aVrOrder=(VrOrder)iterator.next();
