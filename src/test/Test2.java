@@ -1,5 +1,6 @@
 package test;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.lang.annotation.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import db.acess.VrVenueDao;
 import db.model.VrOrder;
@@ -55,5 +57,15 @@ public class Test2 {
 		assertEquals(true, Convert.orderTimeConflict(aOrder, bOrder));
 		assertEquals(true, Convert.orderTimeConflict(bOrder, aOrder));
 		assertEquals(true, Convert.orderTimeConflict(aOrder, aOrder));
+	}
+	@Test
+	public void testConvertDateToTimestamp() {
+		long nowMs=System.currentTimeMillis();
+		Timestamp timestamp=new Timestamp(nowMs);
+		Date date=new Date(nowMs);
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String convertedStr=Convert.dateToTimestamp(date).toString();
+		assertEquals(convertedStr,timestamp.toString());
+		assertEquals(convertedStr.substring(0, 18),simpleDateFormat.format(date).substring(0, 18));
 	}
 }

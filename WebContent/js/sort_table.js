@@ -99,8 +99,13 @@
                 for(var i = 0; i < len; i++){
                     //将排序完的 值 插入到 表格中
                     //:eq(index) 匹配一个给定索引值的元素
-                    $("tbody tr:eq(" + i + ")").html(trsValue[i].split(".separator")[2]);
+                    //Old implementation:
+                	$("tbody tr:eq(" + i + ")").html(trsValue[i].split(".separator")[2]);
                     //console.log($("tbody tr:eq(" + i + ")").html())
+                	//Darren_Daniel_Day's implementation:
+                	
+                	//var trs=$("#tableSort").children('tbody').find('tr');
+                	//trs[i].html(trsValue[i].split(".separator")[2]);
                 }
                 sortIndex = index;
             }

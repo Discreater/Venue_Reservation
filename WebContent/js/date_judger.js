@@ -14,11 +14,11 @@ function convertDate(date){
     var day = date.getDate();
     var hour=date.getHours();
     var minute=date.getMinutes();
-    var currentdate = year + "-" + add0IfSingle(month+1) + "-" + add0IfSingle(day) + "T" + add0IfSingle(hour) + "-" + add0IfSingle(minute) ;
+    var currentdate = year + "-" + add0IfSingle(month+1) + "-" + add0IfSingle(day) + " " + add0IfSingle(hour) + ":" + add0IfSingle(minute) ;
     return currentdate;
 }
 function convertTime(time){
-	return time.substring(0,10)+"T"+time.substring(11,16);
+	return time.substring(0,10)+" "+time.substring(11,16);
 }
 $(document).ready(function(){
 	alert("请填写必要信息！");

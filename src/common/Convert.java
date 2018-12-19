@@ -3,6 +3,7 @@ package common;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,42 +14,48 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 import db.model.VrOrder;
 
 public class Convert {
+	private static SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	public static Timestamp dateToTimestamp(Date date) {
-		return new Timestamp(Timestamp.parse(date.toString()));
+		return new Timestamp(date.getTime());
 	}
 
 	public static Timestamp urlParamaterToTimestamp(String paramater) throws ParseException {
 		String[] s = paramater.split("T");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date date = simpleDateFormat.parse(s[0] + " " + s[1]);
 		return Convert.dateToTimestamp((simpleDateFormat.parse(s[0] + " " + s[1])));
 	}
-	public static boolean orderTimeConflict(VrOrder aOrder,VrOrder bOrder) {
-		Timestamp aStart=aOrder.getUseStartTime(),
-				  bStart=bOrder.getUseStartTime(),
-				  aEnd=aOrder.getUseEndTime(),
-				  bEnd=bOrder.getUseEndTime();
-		return 
-				(aStart.before(bStart)&&aEnd.after(bStart)) ||
-				(bStart.before(aStart)&&bEnd.after(aStart)) ;
+
+	public static boolean orderTimeConflict(VrOrder aOrder, VrOrder bOrder) {
+		long aStart = aOrder.getUseStartTime().getTime(), bStart = bOrder.getUseStartTime().getTime(),
+				aEnd = aOrder.getUseEndTime().getTime(), bEnd = bOrder.getUseEndTime().getTime();
+		return (aStart <= bStart && aEnd >= bStart) || (bStart <= aStart && bEnd >= aStart);
 	}
-	public static void alertAndJump(JspWriter out,String msg,String url) throws Exception {
+
+	public static void alertAndJump(JspWriter out, String msg, String url) throws Exception {
 		out.println("<script type=\"text/javascript\">");
-		if(msg!=null) {
-			out.println("alert(\""+msg+"\");");
+		if (msg != null) {
+			out.println("alert(\"" + msg + "\");");
 		}
-		if(url!=null) {
-			out.println("window.location.href=\""+url +"\";");		
+		if (url != null) {
+			out.println("window.location.href=\"" + url + "\";");
 		}
 		out.println("</script>");
 	}
-	public static void alertAndBack(JspWriter out,String msg,int backPageNumberPositive) throws Exception {
+
+	public static void alertAndBack(JspWriter out, String msg, int backPageNumberPositive) throws Exception {
 		out.println("<script type=\"text/javascript\">");
-		if(msg!=null) {
-			out.println("alert(\""+msg+"\");");
+		if (msg != null) {
+			out.println("alert(\"" + msg + "\");");
 		}
-		if(backPageNumberPositive>0) {
-			out.println("history.go("+(-backPageNumberPositive) +");");		
+		if (backPageNumberPositive > 0) {
+			out.println("history.go(" + (-backPageNumberPositive) + ");");
 		}
 		out.println("</script>");
+	}
+	public static String vrOrderTimeFromAndTo(VrOrder vrOrder) {
+		
+		return simpleDateFormat.format(new Date(vrOrder.getUseStartTime().getTime()))
+				+ " ~ " +
+				simpleDateFormat.format(new Date(vrOrder.getUseEndTime().getTime()));
 	}
 }

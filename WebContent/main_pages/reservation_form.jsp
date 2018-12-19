@@ -1,3 +1,8 @@
+<%@page import="common.Convert"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="db.model.*" %>
@@ -15,7 +20,7 @@
 	<%@ include file="/includes/header_for_customer.jsp" %>
 	<script type="text/javascript" src="/Venue_Reservation/js/date_judger.js"></script>
 	<div class="reservation_form">
-		<form action="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id=<%=venueId %>">
+		<form id="dont_sort" onsubmit="return judgeDate()" action="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id=<%=venueId %>">
 			<table>
 				<thead>
 					<tr>
@@ -36,11 +41,75 @@
 					</tr>
 				</tbody>
 				<tfoot>
-					<tr><td><input type="submit" value="提交订单" onsubmit="judgeDate()"></td></tr>
+					<tr><td><input type="submit" value="提交订单" ></td></tr>
 				</tfoot>
 			</table>
 		</form>
 	</div>
-	
+	<%
+	//行数与列数设置：
+				int rawSize;//列数
+				int colSize;//行数
+				VrOrder vrOrder=new VrOrder();
+				VrOrderDao vrOrderDao=new VrOrderDao();
+				List<VrOrder> allList = vrOrderDao.findByVenueId(venueId, vrOrderDao.findCount(), 1);
+				List<VrOrder> passList= new ArrayList<VrOrder>();
+				for(VrOrder aOrder:allList){
+					if(aOrder.getOrdStatus().equals("pass")){
+						passList.add(aOrder);
+					}
+				}
+				colSize = passList.size();
+				rawSize = 1;
+				String[] headers = { "该场馆已经被预约的时间" };//表头
+				String[] types = { "string" };
+				String[][] data = new String[colSize][rawSize];//数据
+				//表头和属性赋值：
+				//数据赋值:
+				for (int raw = 0; raw < colSize; raw++) {
+					vrOrder = passList.get(raw);
+					data[raw][0] = Convert.vrOrderTimeFromAndTo(vrOrder);
+				}
+	%>
+	<!-- using script for sorting table -->
+	<table id="nottableSort" class="sortable_table">
+		<thead>
+			<tr>
+				<%
+					for (int col = 0; col < rawSize; col++) {
+				%>
+				<th type="<%=types[col]%>">
+					<!-- data here --> <%=headers[col]%>
+				</th>
+				<%
+					}
+				%>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+				for (int raw = 0; raw < colSize; raw++) {
+			%>
+			<tr>
+				<%
+					for (int col = 0; col < rawSize; col++) {
+				%>
+				<td>
+					<!-- data here -->  <%=data[raw][col]%>
+				</td>
+				<%
+					}
+				%>
+			</tr>
+			<%
+				}
+			%>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="<%=rawSize%>">再怎么找也没有啦!</td>
+			</tr>
+		</tfoot>
+	</table>
 </body>
 </html>
