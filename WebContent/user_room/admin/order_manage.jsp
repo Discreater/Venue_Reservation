@@ -38,13 +38,6 @@
 		} else {
 			waitChecked = "checked";
 		}
-		if (orders != null) {
-			Iterator<VrOrder> iterator = orders.iterator();
-			while (iterator.hasNext()) {
-				VrOrder in = iterator.next();
-				System.out.println(in.getOrdSubmitReason());
-			}
-		}
 		if (input == null) {
 			input = "";
 		}
