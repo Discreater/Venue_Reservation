@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <link type="text/css" href="/Venue_Reservation/css/menu.css"
 	rel="stylesheet">
+<script type="text/javascript"
+	src="/Venue_Reservation/js/room.js"></script>
 </head>
 <body>
 	<div>
