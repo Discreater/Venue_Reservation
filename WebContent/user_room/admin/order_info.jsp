@@ -52,8 +52,8 @@
 			venue = new VrVenueDao().findById(order.getVenueId());
 	%>
 	<div>
-		<form action="/Venue_Reservation/user_room/admin/order_change.jsp">
-			订单ID: <input type="text" name="id" value=<%=order.getOrdId()%>
+		<form action="/Venue_Reservation/user_room/admin/order_change.jsp" onsubmit="return checkPara()">
+			订单ID: <input type="text" name="id" id="id" value=<%=order.getOrdId()%>
 				readonly="readonly"><br /> 订单提交时间:
 			<%=order.getOrdSubmitTime()%><br /> 订单状态:
 			<%=order.getOrdStatus()%><br /> 订单拒绝理由:
@@ -63,7 +63,9 @@
 				value=<%=order.getOrdSubmitReason()%> readonly="readonly"><br />
 			开始时间:
 			<%=order.getUseStartTime()%><br> 结束时间:
-			<%=order.getUseEndTime()%><br /> <input type="radio" name="type"
+			<%=order.getUseEndTime()%><br /> 
+			
+			<input type="radio" name="type" id="type"
 				value="pass">通过<br /> <input type="radio" name="type"
 				value="reject">拒绝<br /> 若拒绝，请输入拒绝理由: <input type="text"
 				name="reason" value=""> <input type="submit" value="确认">
