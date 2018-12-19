@@ -21,16 +21,13 @@ public class VrCommitDao implements IVrCommitDao {
 			String sql = "insert into commit " 
 					+ "(commit_state, "
 					+ "commit_context, commit_submitTime, " 
-					+ "customer_cust_id, admin_admin_id, "
 					+ "commit_type) " 
-					+ "values(?,?,?,?,?,?)";
+					+ "values(?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getCommitState());
 			pStatement.setString(2, obj.getCommitContext());
 			pStatement.setTimestamp(3, obj.getCommitSubmitTime());
-			pStatement.setInt(4, obj.getCustId());
-			pStatement.setInt(5, obj.getAdminId());
-			pStatement.setString(6, obj.getCommitType());
+			pStatement.setString(4, obj.getCommitType());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);

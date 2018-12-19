@@ -23,7 +23,7 @@ public class VrVenue {
 	/**
 	 * valid,invalid
 	 */
-	private String venueState = "valid";
+	private String venueState = "invalid";
 	private Timestamp venueCreateTime = null;
 	
 	
