@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.servlet.jsp.JspWriter;
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
+import db.acess.VrCustomerDao;
+import db.model.VrCustomer;
 import db.model.VrOrder;
 
 public class Convert {
@@ -57,5 +59,23 @@ public class Convert {
 		return simpleDateFormat.format(new Date(vrOrder.getUseStartTime().getTime()))
 				+ " ~ " +
 				simpleDateFormat.format(new Date(vrOrder.getUseEndTime().getTime()));
+	}
+	public static String CustIdToName(int CustId) {
+		System.out.println("calling custIdtoname");
+		VrCustomerDao vrCustomerDao=new VrCustomerDao();
+		return vrCustomerDao.findById(CustId).getCustName();		
+	}
+	public static boolean isPoliteComment(String comment) {
+		String[] rudeWords= {"sb"};
+		comment=comment.toLowerCase();
+		for(String aString:rudeWords) {
+			if(comment.contains(aString)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public static String timestampToDateString(Timestamp ts) {
+		return simpleDateFormat.format(new Date(ts.getTime()).toString());
 	}
 }

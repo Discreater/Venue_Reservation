@@ -22,7 +22,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-		testDeleteCommit(22);
+		testDeleteCommit(23);
 	}
 	public static void testUpdateCommit() {
 		VrCommitDao  vrCommitDao = new VrCommitDao();
@@ -41,8 +41,6 @@ public class Test {
 		vrCommit.setCustId(1);
 		vrCommitDao.insert(vrCommit);
 		System.err.println(vrCommit.getCommitId());
-		vrCommit.setCommitId(1);
-		vrCommitDao.update(vrCommit);
 	}
 	
 	@SuppressWarnings("deprecation")
