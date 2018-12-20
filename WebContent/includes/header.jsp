@@ -12,6 +12,7 @@
 <link href="/Venue_Reservation/css/text_style.css" type="text/css" rel="stylesheet">
 <link href="/Venue_Reservation/css/room.css" type="text/css" rel="stylesheet">
 <link href="/Venue_Reservation/css/status.css" type="text/css" rel="stylesheet">
+<link href="/Venue_Reservation/css/cust.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="/Venue_Reservation/js/canvas-particle.js"></script>
 <script type="text/javascript" src="/Venue_Reservation/js/join_check.js"></script>
 <script type="text/javascript" src="/Venue_Reservation/js/jquery.min.js"></script>

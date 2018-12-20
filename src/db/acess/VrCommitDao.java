@@ -230,6 +230,39 @@ public class VrCommitDao implements IVrCommitDao {
 	}
 
 	@Override
+	public List<VrCommit> findByReverse(Integer pageSize, Integer pageNo) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		List<VrCommit> list = new ArrayList<>();
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from commit order by commit_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			pStatement = connection.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			VrCommit vrCommit = null;
+			while (rSet.next()) {
+				vrCommit = new VrCommit();
+				vrCommit.setCommitId(rSet.getInt("commit_id"));
+				vrCommit.setCommitState(rSet.getString("commit_state"));
+				vrCommit.setCommitContext(rSet.getString("commit_context"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
+				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
+				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
+				vrCommit.setCommitType(rSet.getString("commit_type"));
+				list.add(vrCommit);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
+		}
+		return list;
+	}
+	
+	@Override
 	public int findCount() {
 		Connection connection = null;
 		PreparedStatement pStatement = null;

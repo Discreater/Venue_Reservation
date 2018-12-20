@@ -195,6 +195,43 @@ public class VrOrderDao implements IVrOrderDao {
 	}
 
 	@Override
+	public List<VrOrder> findByReverse(Integer pageSize, Integer pageNo) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		List<VrOrder> list = new ArrayList<>();
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from `order` order by order_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			pStatement = connection.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			VrOrder vrOrder = null;
+			while (rSet.next()) {
+				vrOrder = new VrOrder();
+				vrOrder.setOrdId(rSet.getInt("order_id"));
+				vrOrder.setOrdSubmitTime(rSet.getTimestamp("order_submitTime"));
+				vrOrder.setOrdDealTime(rSet.getTimestamp("order_dealTime"));
+				vrOrder.setUseStartTime(rSet.getTimestamp("order_useStartTime"));
+				vrOrder.setUseEndTime(rSet.getTimestamp("order_useEndTime"));
+				vrOrder.setOrdStatus(rSet.getString("order_state"));
+				vrOrder.setOrdRejectReason(rSet.getString("order_rejectReason"));
+				vrOrder.setCustId(rSet.getInt("customer_cust_id"));
+				vrOrder.setAdminId(rSet.getInt("admin_admin_id"));
+				vrOrder.setVenueId(rSet.getInt("venue_venue_id"));
+				vrOrder.setOrdSubmitReason(rSet.getString("order_submitReason"));
+				list.add(vrOrder);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
+		}
+		return list;
+	}
+	
+	@Override
 	public List<VrOrder> findPage(int pageSize, int pageNo) {
 		Connection connection = null;
 		PreparedStatement pStatement = null;

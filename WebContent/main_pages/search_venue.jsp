@@ -30,6 +30,7 @@
 				value = new String(input);
 			}
 	%>
+	<div class="findvenue">
 	<div>
 	<form action="/Venue_Reservation/main_pages/search_venue.jsp">
 		<input id="search" name="search" type="text" value="<%=value%>">
@@ -126,6 +127,7 @@
 	<%
 		}
 	%>
+	</div>
 	</div>
 </body>
 </html>
