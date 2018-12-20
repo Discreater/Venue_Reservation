@@ -158,7 +158,7 @@
 		<form action="/Venue_Reservation/user_act/cust_delete.jsp" onsubmit="return checkCustDelete()">
 			<input hidden="hidden" type="text" name="id"
 				value=<%=cust.getCustId()%> readonly="readonly"><br /> <input
-				type="checkbox" name="delete" id="delete" value="true">确定删除<br> <input
+				type="checkbox" name="delete" id="delete" value="true">确定删除<br/> <input
 				type="submit" value="删除用户">
 		</form>
 	</div>

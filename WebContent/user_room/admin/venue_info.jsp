@@ -97,7 +97,7 @@
 					out.print("style=\"display:none;\"");
 				}%>>
 			<form action="/Venue_Reservation/user_room/admin/venue_delete.jsp" onsubmit="return checkDelete()">
-				<input type="text" hidden name="venue_id" value=<%=id %>>
+				<input type="text" hidde="hidden" name="venue_id" value=<%=id %>>
 				<input type="submit" value="删除">
 			</form>
 		</div>
