@@ -11,6 +11,7 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
+	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 		VrCommitDao vrCommitDao=new VrCommitDao();
 		String idInUrl=request.getParameter("comment_id");
