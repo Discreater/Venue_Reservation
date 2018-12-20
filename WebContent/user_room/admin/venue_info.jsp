@@ -42,10 +42,12 @@
 		}
 		try {
 	%>
+	<h2>场馆管理</h2>
 	<div
 		<%if (id == -1) {
 					out.print("style=\"display:none;\"");
 				}%>>
+				
 		<form>
 			原信息:<br /> 场馆ID:<input type="text" name="id" value=<%=id%>
 				readonly="readonly"><br /> 场馆名称:<input type="text"

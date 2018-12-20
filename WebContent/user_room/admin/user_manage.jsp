@@ -18,7 +18,7 @@
 	<br />
 	<br />
 	<%@ include file="/user_room/admin/left_list.jsp"%>
-	<div>
+	
 		<%
 			List<VrCustomer> customers = new ArrayList<VrCustomer>();
 			VrCustomerDao vrCustomerDao = new VrCustomerDao();
@@ -52,6 +52,7 @@
 			}
 		%>
 		<h2>用户管理</h2>
+		<div>
 		<form action="/Venue_Reservation/user_room/admin/user_manage.jsp">
 			<input id="search" name="search" type="text" value="<%=input%>">
 			<input type="radio" name="type" value="name" <%=nameChecked %>>按昵称查找

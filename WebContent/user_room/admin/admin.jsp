@@ -12,5 +12,6 @@
 	<br />
 	<br />
 	<%@ include file="/user_room/admin/left_list.jsp"%>
+	<h2>管理员空间</h2>
 </body>
 </html>

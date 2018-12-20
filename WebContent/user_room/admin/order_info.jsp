@@ -51,6 +51,7 @@
 			cust = new VrCustomerDao().findById(order.getCustId());
 			venue = new VrVenueDao().findById(order.getVenueId());
 	%>
+	<h2>订单管理</h2>
 	<div>
 		<form action="/Venue_Reservation/user_room/admin/order_change.jsp" onsubmit="return checkPara()">
 			订单ID: <input type="text" name="id" id="id" value=<%=order.getOrdId()%>
@@ -84,7 +85,7 @@
 		}
 	%>
 	<div>
-		该订单与以下订单冲突：
+		<p>该订单与以下订单冲突：</p>
 		<%
 		List<VrOrder> orders = new ArrayList<>();
 		List<VrOrder> allOrders = new ArrayList<>();

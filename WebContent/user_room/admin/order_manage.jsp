@@ -42,6 +42,7 @@
 			input = "";
 		}
 	%>
+	<h2>订单管理</h2>
 	<form action="">
 		<input type="text" name="search" value="<%=input%>"> <input
 			type="radio" name="type" value="wait" <%=waitChecked%>>查看未处理订单
