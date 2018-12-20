@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>个人空间</title>
+<title>场馆预约系统-个人空间</title>
 </head>
 <body>
-
+	<%@ include file="/includes/header_for_customer.jsp"%>
+	<div>
+		<form>
+			
+		</form>
+	</div>
+	
 </body>
 </html>

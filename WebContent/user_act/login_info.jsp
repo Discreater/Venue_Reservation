@@ -19,7 +19,6 @@
 		} else {
 	%>
 	<script type="text/javascript">
-		alert("登录成功！");
 		window.location.href = "/Venue_Reservation/index.jsp";
 	</script>
 	<%

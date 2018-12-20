@@ -3,13 +3,7 @@
 <%@page import="db.model.VrAdmin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 
-</head>
-<body>
 <div >
 	<%@ include file="/includes/login_status_handler.jsp" %>
 	<%
@@ -20,7 +14,7 @@
 	<%
 		} else if (customerLogin) {
 	%>
-	<a href="/Venue_Reservation//user_room/customer.jsp"><%=vrCustomer.getCustName()%> ,你好！</a>|
+	<a href="/Venue_Reservation//user_act/cust_info.jsp?cust_id=<%=vrCustomer.getCustId() %>"><%=vrCustomer.getCustName()%> ,你好！</a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
 		} else {
@@ -31,5 +25,3 @@
 		}
 	%>
 	</div>
-</body>
-</html>

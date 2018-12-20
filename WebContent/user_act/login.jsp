@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="common.Convert"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -17,6 +18,10 @@
 <script type="text/javascript" src="/Venue_Reservation/js/login.js"></script>
 </head>
 <body>
+<%@ include file="/includes/login_status_handler.jsp" %>
+	<%
+	if(!loginStatus){ 
+	%>
 	<div class="page">
 		<div class="loginwarrp">
 			<div class="logo">登陆</div>
@@ -47,6 +52,15 @@
 			</div>
 		</div>
 	</div>
+	<%
+	}else{
+		%>
+		<script type="text/javascript">
+			window.location.href = "/Venue_Reservation/index.jsp";
+		</script>
+	<%
+	}
+	%>
 	<script type="text/javascript">
 		window.onload = function() {
 			var config = {

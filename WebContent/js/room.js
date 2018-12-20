@@ -25,3 +25,11 @@ function checkVenuePara(){
 function checkDelete(){
 	return confirm("确认删除？");
 }
+function checkCustDelete(){
+	var sure = $("#delete").val();
+	if(sure == null){
+		alert("请勾选确认删除！");
+		return false;
+	}
+	return confirm("确认删除?")
+}

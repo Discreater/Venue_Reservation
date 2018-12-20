@@ -29,6 +29,7 @@
 			vrCustomer.setCustPassword(password);
 			vrCustomer.setCustEmail(usermail);
 			vrCustomerDao.insert(vrCustomer);
+			session.setAttribute("Customer", vrCustomerDao.findByName(name));
 	%>
 	<script type="text/javascript">
 		alert("注册成功！");

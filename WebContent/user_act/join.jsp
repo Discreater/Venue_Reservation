@@ -15,6 +15,10 @@
 <script type="text/javascript" src="/Venue_Reservation/js/join_check.js"></script>
 </head>
 <body>
+<%@ include file="/includes/login_status_handler.jsp" %>
+	<%
+	if(!loginStatus){ 
+	%>
 	<div class="page">
 		<div class="loginwarrp">
 			<div class="logo">注册</div>
@@ -46,6 +50,15 @@
 			</div>
 		</div>
 	</div>
+	<%
+	}else{
+		%>
+		<script type="text/javascript">
+			window.location.href = "/Venue_Reservation/index.jsp";
+		</script>
+	<%
+	}
+	%>
 	<script type="text/javascript">
 		window.onload = function() {
 			var config = {

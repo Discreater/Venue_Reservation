@@ -113,7 +113,7 @@
 					<%
  						if (col == 0) {
  					%> 
- 					<a href="/Venue_Reservation/user_room/admin/user_info.jsp?cust_id=<%=customers.get(raw).getCustId()%>">
+ 					<a href="/Venue_Reservation/user_act/cust_info.jsp?cust_id=<%=customers.get(raw).getCustId()%>">
 					<%=data[raw][col]%>
 				</a> <%
  	} else {

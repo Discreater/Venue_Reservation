@@ -45,11 +45,11 @@
 							</tr>
 							<tr>
 								<td>留言者</td>
-								<td><%=new VrCustomerDao().findById(commit.getCustId()) %></td>
+								<td><%=new VrCustomerDao().findById(commit.getCustId()).getCustName() %></td>
 							</tr>
 							<tr>
 								<td>留言内容</td>
-								<td><textarea ><%=commit.getCommitContext() %></textarea><td>
+								<td><textarea cols="30" rows="6" ><%=commit.getCommitContext() %></textarea><td>
 							</tr>
 							<tr>
 								<td>留言状态</td>

@@ -54,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("Customer", vrCustomer);
 			} else {
 				request.setAttribute("info", "登录失败");
-
 			}
 		}
 

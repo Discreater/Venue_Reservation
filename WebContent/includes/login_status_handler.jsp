@@ -3,13 +3,7 @@
 <%@ page import="db.model.VrCustomer"%>
 <%@ page import="db.model.VrCommit"%>
 <%@ page import="db.model.VrAdmin"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
 	<%
 		VrAdmin vrAdmin = null;
 		VrCustomer vrCustomer = null;
@@ -26,5 +20,3 @@
 		boolean adminLogin = (vrAdmin != null);
 		boolean loginStatus = adminLogin || customerLogin;
 	%>
-</body>
-</html>

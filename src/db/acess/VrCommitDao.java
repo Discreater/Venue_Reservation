@@ -57,7 +57,7 @@ public class VrCommitDao implements IVrCommitDao {
 		try {
 			connection = MySQLHelper.getConnection();
 			String sql = "update commit set " + "commit_state=?, " + "commit_context=?, commit_submitTime=?, "
-					+ (obj.getCustId()!=null ? "customer_cust_id=?, " : "") +  (obj.getAdminId() != null ?"admin_admin_id=?, " : "" )+ "commit_type=?, commit_hash=? " + "where commit_id=?";
+					+ (obj.getCustId()!=null ? "customer_cust_id=?, " : "") +  (obj.getAdminId() != null ? "admin_admin_id=?, " : "" )+ "commit_type=?, commit_hash=? " + "where commit_id=?";
 			pStatement = connection.prepareStatement(sql);
 			int i = 1;
 			pStatement.setString(i++, obj.getCommitState());

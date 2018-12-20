@@ -28,12 +28,16 @@
 			}
 			if(commit==null){
 				Convert.alertAndJump(out, "请求参数非法", "/Venue_Reservation/index.jsp");
-			}else{
+			}
+			else{
 				String type= request.getParameter("type");
 				if(type==null || (type != null && !"pass".equals(type) && !"reject".equals(type))){
 					Convert.alertAndJump(out, "请求参数非法", "/Venue_Reservation/index.jsp");
 				}else{
+					System.out.print(type);
 					commit.setCommitState(type);
+					commit.setAdminId(vrAdmin.getAdminId());
+					vrCommitDao.update(commit);
 					Convert.alertAndJump(out, "提交成功", "/Venue_Reservation/user_room/admin/commit_manage.jsp");
 				}
 			}

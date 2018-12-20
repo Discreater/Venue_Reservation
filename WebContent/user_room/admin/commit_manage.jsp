@@ -45,7 +45,7 @@
 		for (int raw = 0; raw < colSize; raw++) {
 			VrCommit tmp = list.get(raw);
 			data[raw][0] = tmp.getCommitId().toString();
-			data[raw][1] = tmp.getCommitContext().substring(0, 5)+"...";
+			data[raw][1] = tmp.getCommitContext().substring(0, 15)+"...";
 			data[raw][2] = tmp.getCommitSubmitTime().toString();
 			try{
 			data[raw][3] = new VrCustomerDao().findById(tmp.getCustId()).getCustName();
