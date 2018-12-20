@@ -11,6 +11,8 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp"%>
+	<%@ include file="/main_pages/comments_head.jsp" %>
+	<div class="allComments">
 	<%
 //行数与列数设置：
 int rawSize;//列数
@@ -114,6 +116,7 @@ if(col==2){
 	}
 	out.println("</div>");
 %>
+</div>
 <script type="text/javascript">
 function setPage(page){
 	var totalPages=<%=pageTotalNo %>;

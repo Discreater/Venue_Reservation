@@ -19,6 +19,7 @@
 </head>
 <body>
 	<%@ include file="/includes/header.jsp" %>
+	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 			//行数与列数设置：
 			int rawSize;//列数

@@ -11,6 +11,7 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
+	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 	String tmp=request.getParameter("comment_id");
 	if(tmp==null){
@@ -26,9 +27,11 @@
 		}
 		String commentContext=aCommit.getCommitContext();
 	%>
+	<div class="commentsInfo">
 	<p>留言详细内容：</p>
 	<textarea rows="6" cols="30" readonly="readonly"><%=commentContext %></textarea>
 	<p>留言者：<%=Convert.CustIdToName(aCommit.getCustId()) %></p>
 	<p>留言时间： <%=Convert.timestampToDateString(aCommit.getCommitSubmitTime()) %></p>
+	</div>
 </body>
 </html>

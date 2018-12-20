@@ -13,6 +13,7 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
+	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 		VrOrderDao vrOrderDao=new VrOrderDao();
 		List<VrOrder> customerOrders=vrOrderDao.findByCustId(vrCustomer.getCustId(), vrOrderDao.findCount(), 1);
@@ -36,7 +37,9 @@
 		}
 %>
 <!-- using script for sorting table -->
-<div>
+<div class="orderList" style="
+    padding-top: 0px;
+">
 <table id="nottableSort" class="sortable_table">
 <thead>
 	<tr>

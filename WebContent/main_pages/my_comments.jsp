@@ -1,4 +1,4 @@
-<%@page import="common.Convert"%>
+a<%@page import="common.Convert"%>
 <%@page import="db.acess.*"%>
 <%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,6 +11,8 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp"%>
+	<%@ include file="/main_pages/comments_head.jsp" %>
+	<div class="allComments">
 	<%
 //行数与列数设置：
 int rawSize;//列数
@@ -120,6 +122,7 @@ else{
 	}
 	out.println("</div>");
 %>
+</div>
 <script type="text/javascript">
 //翻页实现比较暴力，不适合大量的数据
 function setPage(page){

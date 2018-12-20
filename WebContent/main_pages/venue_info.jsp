@@ -15,7 +15,8 @@
 </head>
 <body>
 	<%@ include file="/includes/header.jsp"%>
-	
+	<%@ include file="/main_pages/comments_head.jsp" %>
+	<div class="findvenue">
 	<h1>
 		<%=venueName%>
 	</h1>
@@ -64,6 +65,11 @@
 		window.location.href="/Venue_Reservation/main_pages/reservation_form.jsp?venue_id="+venueId;
 	}
 	</script>
-	<input type="button" value="心动了，预定一下！" onclick="sendRequest(<%=venueId %>)">
+	<input type="button" value="心动了，预定一下！" onclick="sendRequest(<%=venueId %>)" style="
+    position: relative;
+    top: 10px;
+    left: 490px;
+">
+	</div>
 </body>
 </html>

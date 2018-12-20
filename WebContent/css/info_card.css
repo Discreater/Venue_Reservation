@@ -17,23 +17,24 @@
 
 .info_card th {
 	border-collapse: collapse;
-	margin: 0px;
-	text-align: center;
-	background: #7098da;
-	border-width: 1px;
-	padding: 0px;
-	border-style: solid;
-	border-color: #000000;
-	background: #7098da;
+    margin: 0px;
+    text-align: center;
+    /* background: #7098da; */
+    border-width: 1px;
+    padding: 0px;
+    border-style: solid;
+    border-color: #000000;
+    background: #7098da42;
 }
 
 .info_card td {
-	border-collapse: collapse;
-	margin: 0px;
-	text-align: center;
-	background: #b5ffff;
-	border-width: 1px;
-	padding: 0px;
-	border-style: solid;
-	border-color: #999999;
+    border-collapse: collapse;
+    margin: 0px;
+    text-align: center;
+    background: #8080805e;
+    border-width: 1px;
+    /* padding: 0px; */
+    border-style: solid;
+    border-color: #7098da;
+    padding: 2px;
 }

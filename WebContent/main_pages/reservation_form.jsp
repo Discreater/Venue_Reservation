@@ -18,8 +18,10 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
+	<%@ include file="/main_pages/comments_head.jsp" %>
 	<script type="text/javascript" src="/Venue_Reservation/js/date_judger.js"></script>
 	<div class="reservation_form">
+	<div>
 		<form id="dont_sort" onsubmit="return judgeDate()" action="/Venue_Reservation/main_pages/reservation_request.jsp?venue_id=<%=venueId %>">
 			<table>
 				<thead>
@@ -41,7 +43,11 @@
 					</tr>
 				</tbody>
 				<tfoot>
-					<tr><td><input type="submit" value="提交订单" ></td></tr>
+					<tr><td><input type="submit" value="提交订单" style="
+    position: relative;
+    left: 364px;
+    top: 10px;
+"></td></tr>
 				</tfoot>
 			</table>
 		</form>
@@ -72,7 +78,10 @@
 				}
 	%>
 	<!-- using script for sorting table -->
-	<table id="nottableSort" class="sortable_table">
+	<table id="nottableSort" class="sortable_table" style="
+    margin-top: 40px;
+    margin-left: 270px;
+">
 		<thead>
 			<tr>
 				<%
@@ -111,5 +120,6 @@
 			</tr>
 		</tfoot>
 	</table>
+	</div>
 </body>
 </html>
