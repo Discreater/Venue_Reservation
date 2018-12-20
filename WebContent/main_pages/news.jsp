@@ -14,6 +14,7 @@
 </head>
 <body>
 	<%@ include file="/includes/header.jsp" %>
+	<div class="orderNews">
 	<h1>最新消息：</h1>
 	<%
 		out.println("<p>");
@@ -35,7 +36,10 @@
 		}
 		out.println("</p>");
 	%>
-	
+	<p>...<p>
+	</div>
+	<div class="commentNews">
+	<h1>最新留言：</h1>
 	<%
 		out.println("<p>");
 		for(VrCommit aCommit:showCommit){
@@ -52,5 +56,7 @@
 		}
 	out.println("</p>");
 	%>
+	<p>...<p>
+	</div>
 </body>
 </html>

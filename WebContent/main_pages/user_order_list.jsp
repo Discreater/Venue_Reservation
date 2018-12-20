@@ -13,7 +13,6 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
-	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 		VrOrderDao vrOrderDao=new VrOrderDao();
 		List<VrOrder> customerOrders=vrOrderDao.findByCustId(vrCustomer.getCustId(), vrOrderDao.findCount(), 1);

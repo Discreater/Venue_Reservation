@@ -17,7 +17,7 @@
 //行数与列数设置：
 int rawSize;//列数
 int colSize;//行数			
-int pageSize=1;//页大小
+int pageSize=5;//页大小
 VrCommitDao vrCommitDao=new VrCommitDao();
 List<VrCommit> allList = vrCommitDao.findAll();
 List<VrCommit> showList=new ArrayList<VrCommit>();

@@ -18,7 +18,6 @@
 </head>
 <body>
 	<%@ include file="/includes/header_for_customer.jsp" %>
-	<%@ include file="/main_pages/comments_head.jsp" %>
 	<script type="text/javascript" src="/Venue_Reservation/js/date_judger.js"></script>
 	<div class="reservation_form">
 	<div>

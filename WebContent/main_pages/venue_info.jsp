@@ -15,7 +15,6 @@
 </head>
 <body>
 	<%@ include file="/includes/header.jsp"%>
-	<%@ include file="/main_pages/comments_head.jsp" %>
 	<div class="findvenue">
 	<h1>
 		<%=venueName%>

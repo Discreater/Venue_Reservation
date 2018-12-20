@@ -50,7 +50,7 @@
 			cust = new VrCustomerDao().findById(order.getCustId());
 			venue = new VrVenueDao().findById(order.getVenueId());
 	%>
-	<div>
+	<div class="allComments">
 		<form action="/Venue_Reservation/user_room/admin/order_change.jsp" onsubmit="return checkPara()">
 			订单ID: <input type="text" name="id" id="id" value=<%=order.getOrdId()%>
 				readonly="readonly"><br /> 订单提交时间:

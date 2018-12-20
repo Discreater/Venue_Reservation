@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
+.orderNews{
+	position: absolute;
+    left: 21px;
+    top: 140px;
+    background-color: #9999996e;
+    padding: 20px;
+    box-shadow: 15px 12px 12px #00000087;
+}
+.commentNews{
+	position: absolute;
+    left: 650px;
+    top: 440px;
+    background-color: #9999996e;
+    padding: 20px;
+    box-shadow: 15px 12px 12px #00000087;
+}
+
 .commentsInfo{
 	position: absolute;
     left: 230px;

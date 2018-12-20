@@ -10,12 +10,12 @@
 	<%
 		if (adminLogin) {			
 	%>
-	<a href="/Venue_Reservation/user_room/admin/admin.jsp"><%=vrAdmin.getAdminName()%> ,管理员您好！</a>|
+	<%=vrAdmin.getAdminName()%> ,管理员你好！<a href="/Venue_Reservation/user_room/admin/admin.jsp">管理员空间 </a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
 		} else if (customerLogin) {
 	%>
-	<a href="/Venue_Reservation//user_act/cust_info.jsp?cust_id=<%=vrCustomer.getCustId() %>"><%=vrCustomer.getCustName()%> ,你好！</a>|
+	<%=vrCustomer.getCustName()%> ,你好！<a href="/Venue_Reservation/user_act/cust_info.jsp?cust_id=<%=vrCustomer.getCustId() %>">个人空间 </a>|
 	<a href="/Venue_Reservation/Logout">注销</a>
 	<%
 		} else {
