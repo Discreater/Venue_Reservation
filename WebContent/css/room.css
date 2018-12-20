@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
-.rooms {
+ul.room {
+	list-style-type:none;
+}
+
+.locateLeft {
 	
 }
