@@ -45,7 +45,7 @@
 		try{
 		VrVenue venue = null;
 		VrVenueDao vrVenueDao = new VrVenueDao();
-		if(vrVenueDao.findByName(name) != null){
+		if(vrVenueDao.findByName(name) != null && id == -1){
 			Convert.alertAndBack(out, "场馆名称已存在!", 1);
 		}else{
 		if(id==-1){
@@ -61,7 +61,6 @@
 		venue.setVenueOwnerName(ownerName);
 		venue.setVenueOwnerPhone("null".equals(ownerPhone) ? null: ownerPhone);
 		venue.setVenueOwnerEmail(ownerEmail);
-		System.err.print(ownerEmail);
 		venue.setVenueOwnerAddress("null".equals(ownerAddress) ? null : ownerAddress);
 		venue.setVenuePicture("null".equals(imgPath)?null:imgPath);
 		venue.setVenueAddress("null".equals(address)?null:address);

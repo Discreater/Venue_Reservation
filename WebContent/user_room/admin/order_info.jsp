@@ -104,7 +104,7 @@
 		int rawSize;//列数
 		int colSize;//行数			
 		String[] headers = { "订单ID", "预定场馆", "订单提交时间", "订单处理时间", "开始时间", "结束时间", "订单状态", "提交者", "处理者" };//表头
-		String[] types = { "string", "string", "string", "string", "string", "string", "string", "string",
+		String[] types = { "number", "string", "string", "string", "string", "string", "string", "string",
 				"string" };
 		colSize = orders.size();
 		rawSize = headers.length;

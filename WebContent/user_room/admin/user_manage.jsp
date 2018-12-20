@@ -64,7 +64,7 @@
 				int rawSize;//列数
 				int colSize;//行数			
 				String[] headers = { "用户ID", "用户昵称","用户邮箱","真实姓名","电话号码","用户地址","创建时间" };//表头
-				String[] types = { "string", "string","string","string","string","string","string" };
+				String[] types = { "number", "string","string","string","string","string","string" };
 				colSize = customers.size();
 				rawSize = headers.length;
 				String[][] data = new String[colSize][rawSize];//数据

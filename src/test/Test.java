@@ -8,10 +8,12 @@ import java.util.List;
 
 import common.Convert;
 import db.acess.VrAdminDao;
+import db.acess.VrCommitDao;
 import db.acess.VrCustomerDao;
 import db.acess.VrOrderDao;
 import db.acess.VrVenueDao;
 import db.model.VrAdmin;
+import db.model.VrCommit;
 import db.model.VrCustomer;
 import db.model.VrOrder;
 import db.model.VrVenue;
@@ -20,10 +22,30 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("For test");
-		Date date = new Date();
-		Timestamp timestamp;
-		System.out.println(Convert.dateToTimestamp(date));
+		testDeleteCommit(22);
 	}
+	public static void testUpdateCommit() {
+		VrCommitDao  vrCommitDao = new VrCommitDao();
+
+	}
+	public static void testDeleteCommit(int i) {
+		VrCommitDao  vrCommitDao = new VrCommitDao();
+		vrCommitDao.delete(i);
+	}
+	public static void testInsertCommit() {
+		VrCommitDao  vrCommitDao = new VrCommitDao();
+		VrCommit vrCommit  = new VrCommit();
+		vrCommit.setCommitState("wait");
+		vrCommit.setCommitContext("测试_for_test.真的只是用于测试");
+		vrCommit.setCommitType("userCommit");
+		vrCommit.setCustId(1);
+		vrCommitDao.insert(vrCommit);
+		System.err.println(vrCommit.getCommitId());
+		vrCommit.setCommitId(1);
+		vrCommitDao.update(vrCommit);
+	}
+	
+	@SuppressWarnings("deprecation")
 	private static void testInsertOrder() {
 		VrOrderDao vrOrderDao = new VrOrderDao();
 		VrOrder vrOrder = new VrOrder();

@@ -71,7 +71,7 @@
 				int rawSize;//列数
 				int colSize;//行数			
 				String[] headers = { "场馆ID", "场馆名称","拥有者","拥有者邮箱","场馆地址","场馆状态" };//表头
-				String[] types = { "string", "string","string","string","string","string" };
+				String[] types = { "number", "string","string","string","string","string" };
 				colSize = venues.size();
 				rawSize = headers.length;
 				String[][] data = new String[colSize][rawSize];//数据

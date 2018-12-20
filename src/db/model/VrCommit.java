@@ -3,10 +3,11 @@ package db.model;
 import java.sql.Timestamp;
 
 public class VrCommit {
-	private Integer commitId = null;
+	private Integer commitId = 0;
 	/**
 	 * pass,wait,reject
 	 */
+	private Integer hash = 0;
 	private String commitState = "wait";
 	private String commitContext = null;
 	private Timestamp commitSubmitTime = null;
@@ -16,6 +17,12 @@ public class VrCommit {
 	
 	
 	
+	public Integer getHash() {
+		return hash;
+	}
+	public void setHash(Integer hash) {
+		this.hash = hash;
+	}
 	public Timestamp getCommitSubmitTime() {
 		return commitSubmitTime;
 	}
