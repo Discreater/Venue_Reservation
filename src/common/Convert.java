@@ -81,6 +81,6 @@ public class Convert {
 		return true;
 	}
 	public static String timestampToDateString(Timestamp ts) {
-		return simpleDateFormat.format(new Date(ts.getTime()).toString());
+		return simpleDateFormat.format(new Date(ts.getTime()));
 	}
 }

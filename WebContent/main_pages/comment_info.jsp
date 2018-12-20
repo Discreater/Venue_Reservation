@@ -29,6 +29,6 @@
 	<p>留言详细内容：</p>
 	<textarea rows="6" cols="30" readonly="readonly"><%=commentContext %></textarea>
 	<p>留言者：<%=Convert.CustIdToName(aCommit.getCustId()) %></p>
-	<p>留言时间： <%=Convert.dateToTimestamp(aCommit.getCommitSubmitTime()) %></p>
+	<p>留言时间： <%=Convert.timestampToDateString(aCommit.getCommitSubmitTime()) %></p>
 </body>
 </html>
