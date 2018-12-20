@@ -42,78 +42,161 @@
 		}
 		try {
 	%>
-	<h2>场馆管理</h2>
-	<div
-		<%if (id == -1) {
-					out.print("style=\"display:none;\"");
-				}%>>
-				
-		<form>
-			原信息:<br /> 场馆ID:<input type="text" name="id" value=<%=id%>
-				readonly="readonly"><br /> 场馆名称:<input type="text"
-				name="name" value=<%=venue.getVenueName()%> readonly="readonly"><br />
-			拥有者:<input type="text" name="owner_name"
-				value=<%=venue.getVenueOwnerName()%> readonly="readonly"><br />
-			拥有者邮箱:<input type="text" name="owner_email"
-				value=<%=venue.getVenueOwnerEmail()%> readonly="readonly"><br />
-			拥有者电话:<input type="text" name="owner_phone"
-				value=<%=venue.getVenueOwnerPhone()%> readonly="readonly"><br />
-			拥有者地址:<input type="text" name="owner_address"
-				value=<%=venue.getVenueOwnerAddress()%> readonly="readonly"><br />
-			图片:<input type="text" name="img" value=<%=venue.getVenuePicture()%>
-				readonly="readonly"><br /> 场馆地址:<input type="text"
-				name="address" value=<%=venue.getVenueAddress()%>
-				readonly="readonly"><br /> 场馆信息:<input type="text"
-				name="info" value=<%=venue.getVenueInfo()%> readonly="readonly"><br />
-			场馆状态:<input type="text" name="state"
-				value=<%=venue.getVenueState()%> readonly="readonly"> <br />
-			信息导入时间:<input type="text" name="create_time"
-				value=<%=venue.getVenueCreateTime()%> readonly="readonly"><br />
-		</form>
-	</div>
-	<div>
-		<form action="/Venue_Reservation/user_room/admin/venue_change.jsp">
-			提交信息:<br /> 场馆ID:<input type="text" name="id" value=<%=id%>
-				readonly="readonly"><br /> 场馆名称:<input type="text"
-				name="name" value=<%=venue.getVenueName()%>>*<br /> 拥有者:<input
-				type="text" name="owner_name" value=<%=venue.getVenueOwnerName()%>>*<br />
-			拥有者邮箱:<input type="text" name="owner_email"
-				value=<%=venue.getVenueOwnerEmail()%>>*<br /> 拥有者电话:<input
-				type="text" name="owner_phone"
-				value=<%=venue.getVenueOwnerPhone()%>><br /> 拥有者地址:<input
-				type="text" name="owner_address"
-				value=<%=venue.getVenueOwnerAddress()%>><br /> 图片:<input
-				type="text" name="img" value=<%=venue.getVenuePicture()%>
-				readonly="readonly"><br /> 场馆地址:<input type="text"
-				name="address" value=<%=venue.getVenueAddress()%>>*<br />
-			场馆信息:<input type="text" name="info" value=<%=venue.getVenueInfo()%>><br />
-			场馆状态: <select name="state">
-				<option value="valid">valid</option>
-				<option value="invalid" selected="selected">invalid</option>
-			</select><br /> 信息导入时间:<input type="text" name="create_time"
-				value=<%=venue.getVenueCreateTime()%> readonly="readonly"><br />
-			<input type="submit" value="提交">
-		</form>
+	<div class="venueInfo">
+		<h1>场馆管理</h1>
 		<div
 			<%if (id == -1) {
 					out.print("style=\"display:none;\"");
-				}%>>
-			<form action="/Venue_Reservation/user_room/admin/venue_delete.jsp" onsubmit="return checkDelete()">
-				<input type="text" hidde="hidden" name="venue_id" value=<%=id %>>
-				<input type="submit" value="删除">
+				}%> class="venueInfoLocate">
+
+			<form>
+				原信息:
+				<table>
+					<tr>
+						<td>场馆ID:</td>
+						<td><input type="text" name="id" value=<%=id%>
+							readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>场馆名称:</td>
+						<td><input type="text" name="name"
+							value=<%=venue.getVenueName()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>拥有者:</td>
+						<td><input type="text" name="owner_name"
+							value=<%=venue.getVenueOwnerName()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>拥有者邮箱:</td>
+						<td><input type="text" name="owner_email"
+							value=<%=venue.getVenueOwnerEmail()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>拥有者电话:</td>
+						<td><input type="text" name="owner_phone"
+							value=<%=venue.getVenueOwnerPhone()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>拥有者地址:</td>
+						<td><input type="text" name="owner_address"
+							value=<%=venue.getVenueOwnerAddress()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>图片:</td>
+						<td><img  alt=<%=venue.getVenuePicture()%>
+							src=<%=venue.getVenuePicture()%> ></td>
+					</tr>
+					<tr>
+						<td>场馆地址:</td>
+						<td><input type="text" name="address"
+							value=<%=venue.getVenueAddress()%> readonly="readonly"></td>
+					<tr>
+						<td>场馆信息:</td>
+						<td><input type="text" name="info"
+							value=<%=venue.getVenueInfo()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>场馆状态:</td>
+						<td><input type="text" name="state"
+							value=<%=venue.getVenueState()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>信息导入时间:</td>
+						<td><input type="text" name="create_time"
+							value=<%=venue.getVenueCreateTime()%> readonly="readonly"></td>
+					</tr>
+				</table>
 			</form>
 		</div>
+		<div>
+		<div class="venueInfoLocateChange">
+			<form action="/Venue_Reservation/user_room/admin/venue_change.jsp">
+			修改信息:
+				<table>
+					<tr>
+						<td>场馆ID:</td>
+						<td><input type="text" name="id" value=<%=id%>
+							readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>场馆名称:</td>
+						<td><input type="text" name="name"
+							value=<%=venue.getVenueName()%> ></td>
+					</tr>
+					<tr>
+						<td>拥有者:</td>
+						<td><input type="text" name="owner_name"
+							value=<%=venue.getVenueOwnerName()%>></td>
+					</tr>
+					<tr>
+						<td>拥有者邮箱:</td>
+						<td><input type="text" name="owner_email"
+							value=<%=venue.getVenueOwnerEmail()%>></td>
+					</tr>
+					<tr>
+						<td>拥有者电话:</td>
+						<td><input type="text" name="owner_phone"
+							value=<%=venue.getVenueOwnerPhone()%>></td>
+					</tr>
+					<tr>
+						<td>拥有者地址:</td>
+						<td><input type="text" name="owner_address"
+							value=<%=venue.getVenueOwnerAddress()%>></td>
+					</tr>
+					<tr>
+						<td>图片:</td>
+						<td><input type="file" name="img"
+							value=<%=venue.getVenuePicture()%>></td>
+					</tr>
+					<tr>
+						<td>场馆地址:</td>
+						<td><input type="text" name="address"
+							value=<%=venue.getVenueAddress()%>></td>
+					<tr>
+						<td>场馆信息:</td>
+						<td><input type="text" name="info"
+							value=<%=venue.getVenueInfo()%>></td>
+					</tr>
+					<tr>
+						<td>场馆状态: </td>
+						<td><select name="state">
+								<option value="valid">valid</option>
+								<option value="invalid" selected="selected">invalid</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>信息导入时间:</td>
+						<td><input type="text" name="create_time"
+							value=<%=venue.getVenueCreateTime()%> readonly="readonly"></td>
+					</tr>
+				</table>
+				<input type="submit" value="提交">
+			</form>
+			</div>
+			<div
+				<%if (id == -1) {
+					out.print("style=\"display:none;\"");
+				}%> class="venueDelete">
+				<form action="/Venue_Reservation/user_room/admin/venue_delete.jsp"
+					onsubmit="return checkDelete()">
+					<input type="text" hidden="hidden" name="venue_id" value=<%=id%>>
+					<input type="submit" value="删除">
+				</form>
+			</div>
+		</div>
+		<%
+			} catch (Exception e) {
+				System.err.println(e);
+		%>
+		<script>
+			alert("请求参数非法!");
+			window.location.href = "/Venue_Reservation/index.jsp"
+		</script>
+		<%
+			}
+		%>
 	</div>
-	<%
-		} catch (Exception e) {
-			System.err.println(e);
-	%>
-	<script>
-		alert("请求参数非法!");
-		window.location.href = "/Venue_Reservation/index.jsp"
-	</script>
-	<%
-		}
-	%>
 </body>
 </html>

@@ -51,7 +51,8 @@
 		}
 		
 	%>
-	<h2>场馆管理</h2>
+	<div class="roomInfo">
+	<h1>场馆管理</h1>
 	<a href="/Venue_Reservation/user_room/admin/venue_info.jsp?venue_id=-1">
 		<button>
 			新建场馆
@@ -144,6 +145,7 @@
 			</tr>
 		</tfoot>
 	</table>
+	</div>
 	</div>
 </body>
 </html>

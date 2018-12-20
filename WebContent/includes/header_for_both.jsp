@@ -10,5 +10,6 @@
 		window.location.href = "/Venue_Reservation/user_act/login.jsp";
 	</script>
 <%
+	return;
 	}
 %>

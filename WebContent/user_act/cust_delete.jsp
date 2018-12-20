@@ -38,13 +38,22 @@
 		} else {
 				VrCustomerDao vrCustomerDao = new VrCustomerDao();
 				vrCustomerDao.delete(id);
-			}
+				if(vrCustomer != null && vrCustomer.getCustId() == id){
+					session.invalidate();
+					%>
+					<script>
+						alert("删除成功！");
+						window.location.href = "/Venue_Reservation/index.jsp";
+					</script>
+					<%
+				}
 	%>
 	<script>
 		alert("删除成功！返回后请刷新页面");
 		window.history.go(-2);
 	</script>
 	<%
+		}
 		}else{
 			%>
 			<script>

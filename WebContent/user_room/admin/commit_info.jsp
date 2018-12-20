@@ -36,7 +36,8 @@
 			Convert.alertAndJump(out, "请求参数非法", "/Venue_Reservation/index.jsp");
 		}else{
 			%>
-			<h2>留言管理</h2>
+			<div class="roomInfo">
+			<h1>留言管理</h1>
 			<div>
 				<form action="/Venue_Reservation/user_room/admin/commit_change.jsp">
 					<table>
@@ -63,7 +64,7 @@
 					
 				</form>
 			</div>
-			
+			</div>
 			<%
 		}
 	%>

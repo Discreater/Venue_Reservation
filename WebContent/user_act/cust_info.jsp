@@ -54,7 +54,9 @@
 		}else{
 		try {
 	%>
-	<div>
+	<div class="custInfo">
+	<h1>用户信息管理</h1>
+	<div class="custInfoLocate">
 		<form>
 			原用户信息:
 			<table>
@@ -103,7 +105,8 @@
 			</table>
 		</form>
 	</div>
-	<div>
+	<div class="custInfoLocateChange">
+	
 		<form action="/Venue_Reservation/user_act/cust_change.jsp">
 			修改信息:
 			<table>
@@ -150,17 +153,31 @@
 					</tr>
 				</tbody>
 			</table>
-			<input type="submit" value="提交修改">
+			<input type="submit" value="提交修改" style="
+    position: absolute;
+    top: 275px;
+    left: 100px;
+			">
 		</form>
 	</div>
-	<div>
-		<a href="/Venue_Reservation/user_room/admin/user_manage.jsp"><button>取消修改</button></a>
-		<form action="/Venue_Reservation/user_act/cust_delete.jsp" onsubmit="return checkCustDelete()">
+	<div class="custButton1">
+		<a href="/Venue_Reservation/user_room/admin/user_manage.jsp" href="
+    position: absolute;
+    top: -2px;
+    left: -168px;
+		"><button>取消修改</button></a>
+		<form action="/Venue_Reservation/user_act/cust_delete.jsp" onsubmit="return checkCustDelete()" style="
+    position: absolute;
+    left: 691px;
+    top: 30px;
+    width: max-content;
+">
 			<input hidden="hidden" type="text" name="id"
 				value=<%=cust.getCustId()%> readonly="readonly"><br /> <input
 				type="checkbox" name="delete" id="delete" value="true">确定删除<br/> <input
 				type="submit" value="删除用户">
 		</form>
+	</div>
 	</div>
 	<%
 		} catch (Exception e) {

@@ -17,7 +17,8 @@
 	<br />
 	<br />
 	<%@ include file="/user_room/admin/left_list.jsp"%>
-	<h2>留言审核</h2>
+	<div class="roomInfo">
+	<h1>留言审核</h1>
 	<%
 		VrCommitDao vrCommitDao = new VrCommitDao();
 		List<VrCommit> allList = null;
@@ -112,6 +113,6 @@
 			</tfoot>
 		</table>
 	</div>
-
+</div>
 </body>
 </html>

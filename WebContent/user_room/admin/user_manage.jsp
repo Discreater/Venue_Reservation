@@ -51,7 +51,8 @@
 				input="";
 			}
 		%>
-		<h2>用户管理</h2>
+		<div class="roomInfo">
+		<h1>用户管理</h1>
 		<div>
 		<form action="/Venue_Reservation/user_room/admin/user_manage.jsp">
 			<input id="search" name="search" type="text" value="<%=input%>">
@@ -139,7 +140,7 @@
 		</tfoot>
 	</table>
 	</div>
-		
+		</div>
 	</div>
 </body>
 </html>

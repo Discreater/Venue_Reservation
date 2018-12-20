@@ -2,10 +2,11 @@
 
 table.sortable_table {
 	font-size: 24px;
-	color: #333333;
-	border-width: 1px;
-	border-color: #999999;
-	border-collapse: collapse;
+    color: #333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 .sortable_table tr {
@@ -17,25 +18,24 @@ table.sortable_table {
 
 .sortable_table th {
 	border-collapse: collapse;
-	margin: 0px;
-	text-align: center;
-	background: #7098da;
-	border-width: 1px;
-	padding: 0px;
-	border-style: solid;
-	border-color: #000000;
-	background: #7098da;
+    margin: 0px;
+    text-align: center;
+    border-width: 1px;
+    padding: 0px;
+    border-style: solid;
+    border-color: #000000;
+    background: #7098da24;
 }
 
 .sortable_table td {
 	border-collapse: collapse;
-	margin: 0px;
-	text-align: center;
-	background: #b5ffff;
-	border-width: 1px;
-	padding: 0px;
-	border-style: solid;
-	border-color: #999999;
+    margin: 0px;
+    text-align: center;
+    background: #ced3df70;
+    border-width: 1px;
+    padding: 0px;
+    border-style: solid;
+    border-color: #999999;
 }
 
 .sequence {

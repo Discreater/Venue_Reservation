@@ -1,9 +1,148 @@
 @charset "UTF-8";
-
-ul.room {
-	list-style-type:none;
+body {
+	padding: 0px;
+    margin: 0px;
+    width: 1536px;
+}
+a{
+text-decoration:none;
+}
+.venueDelete{
+	position: absolute;
+    top: 410px;
+    left: 850px;
+}
+.venueInfoLocate{
+	position: absolute;
 }
 
-.locateLeft {
-	
+.venueInfoLocateChange{
+	position: absolute;
+    left: 350px;
+}
+.venueInfo{
+	position: absolute;
+    top: 122px;
+    left: 336px;
+    background-color: #99999973;
+    width: 1079px;
+    padding-left: 24px;
+    padding-bottom: 15px;
+    box-shadow: 20px 19px 6px #00000091;
+    height: 450px;
+}
+
+.custButton1{
+	position: absolute;
+    left: 300px;
+    top: 360px;
+}
+
+.custInfoLocate{
+	position:absolute;
+	left: 40px;
+	background-color: #999999a8;
+	box-shadow: 6px 6px 7px #00000069;
+	padding: 5px;
+}
+.custInfoLocateChange{
+    position: absolute;
+    left: 305px;
+    top: 84px;
+    background-color: #999999a8;
+    box-shadow: 6px 6px 7px #00000069;
+    padding: 5px;
+}
+
+.custInfo{
+	position: absolute;
+    top: 122px;
+    left: 336px;
+    background-color: #99999973;
+    width: 1079px;
+    padding-left: 24px;
+    padding-bottom: 15px;
+    box-shadow: 20px 19px 6px #00000091;
+    height: 450px;
+}
+
+.roomInfo{
+    position: absolute;
+    top: 122px;
+    left: 336px;
+    background-color: #99999973;
+    width: 1079px;
+    padding-left: 24px;
+    padding-bottom: 15px;
+    box-shadow: 20px 19px 6px #00000091;
+}
+
+.roomLocate{
+	position: absolute;
+    top: 141px;
+    left: 0px;
+    box-shadow: 20px 18px 7px #0000006b;
+}
+
+.rightUpConer {
+	float: right;
+    margin-right: 31px;
+}
+.rightUpConer a{
+		text-decoration:none;
+}
+
+li.uncheckLi {
+	margin-right:10px;
+}
+li.checkli{
+	margin-right:0;
+}
+
+.room ul{
+	list-style-type: none;
+    background-color: #85827d;
+    width: 150px;
+    height: 400px;
+    padding-top: 6px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.room ul li {
+	background-color: white;
+    -moz-border-radius: 10%;
+    -webkit-border-radius: 10%;
+    border-radius: 10%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 20px;
+    /* width: 129px; */
+    font-size: 1.5em;
+    margin: 10px;
+    /* margin-right: 0; */
+    text-align: left;
+    border: 5px solid white;
+    /* border-right-width: 24px; */
+}
+.room ul li a:link{
+	text-decoration:none;
+}
+
+.room ul li a:visited {
+	text-decoration:none;
+}
+
+.room ul li a:hover{
+	text-decoration:none;
+}
+
+.room ul li a:active{
+	text-decoration:none;
+}
+.halfVisual ul {
+    filter:alpha(opacity=40); /*支持 IE 浏览器*/
+    -moz-opacity:0.40; /*支持 FireFox 浏览器*/
+    opacity:0.40; /*支持 Chrome, Opera, Safari 等浏览器*/
 }

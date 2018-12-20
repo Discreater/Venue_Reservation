@@ -51,7 +51,8 @@
 			cust = new VrCustomerDao().findById(order.getCustId());
 			venue = new VrVenueDao().findById(order.getVenueId());
 	%>
-	<h2>订单管理</h2>
+	<div class="roomInfo">
+	<h1>订单管理</h1>
 	<div>
 		<form action="/Venue_Reservation/user_room/admin/order_change.jsp" onsubmit="return checkPara()">
 			订单ID: <input type="text" name="id" id="id" value=<%=order.getOrdId()%>
@@ -211,7 +212,7 @@
 				</tfoot>
 			</table>
 		</div>
-
+	</div>
 	</div>
 </body>
 </html>
