@@ -12,15 +12,21 @@ import javax.servlet.jsp.JspWriter;
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
 import db.acess.VrCustomerDao;
+import db.acess.VrVenueDao;
 import db.model.VrCustomer;
 import db.model.VrOrder;
 
 public class Convert {
 	private static SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	public static String cutStringWithDots(String string, int length) {
+		return string.length()>length?string.substring(0, length)+"...":string;
+	}
 	public static Timestamp dateToTimestamp(Date date) {
 		return new Timestamp(date.getTime());
 	}
-
+	public static String venueIdToString(int venueId) {
+		return new VrVenueDao().findById(venueId).getVenueName();
+	}
 	public static Timestamp urlParamaterToTimestamp(String paramater) throws ParseException {
 		String[] s = paramater.split("T");
 		Date date = simpleDateFormat.parse(s[0] + " " + s[1]);
@@ -61,12 +67,11 @@ public class Convert {
 				simpleDateFormat.format(new Date(vrOrder.getUseEndTime().getTime()));
 	}
 	public static String CustIdToName(int CustId) {
-		System.out.println("calling custIdtoname");
 		VrCustomerDao vrCustomerDao=new VrCustomerDao();
 		return vrCustomerDao.findById(CustId).getCustName();		
 	}
 	public static boolean isPoliteComment(String comment) {
-		String[] rudeWords= {"sb"};
+		String[] rudeWords= {"sb","nmsl"};
 		comment=comment.toLowerCase();
 		for(String aString:rudeWords) {
 			if(comment.contains(aString)) {

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.pass{
+	background:#80ff00;
+}
+.reject{
+	background:#ff8080;
+}
+.wait{
+	background:#80ffff;
+}

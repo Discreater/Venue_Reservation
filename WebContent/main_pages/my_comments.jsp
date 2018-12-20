@@ -20,7 +20,7 @@ VrCommitDao vrCommitDao=new VrCommitDao();
 List<VrCommit> allList = vrCommitDao.findAll();
 List<VrCommit> showList=new ArrayList<VrCommit>();
 for(VrCommit aCommit:allList){
-	if(!aCommit.getCommitState().equals("reject")){
+	if(aCommit.getCommitType().equals("userCommit")&&aCommit.getCustId()==vrCustomer.getCustId()){
 		showList.add(aCommit);
 		System.out.println("Comment :"+aCommit.getCommitContext());
 	}
@@ -29,7 +29,7 @@ for(VrCommit aCommit:allList){
 int pageTotalNo=showList.size()/pageSize+((showList.size()%pageSize)==0?0:1);
 colSize = showList.size();
 rawSize = 3;
-String[] headers = { "评论时间", "评论用户","评论内容" };//表头
+String[] headers = { "评论时间","评论内容" ,""};//表头
 String[] types = { "string", "string","string" };
 String[][] data = new String[colSize][rawSize];//数据
 //表头和属性赋值：
@@ -37,8 +37,8 @@ String[][] data = new String[colSize][rawSize];//数据
 for (int raw = 0; raw < colSize; raw++) {
 	 VrCommit aCommit= showList.get(raw);
 	data[raw][0] = simpleDateFormat.format(aCommit.getCommitSubmitTime().getTime());
-	data[raw][1] = Convert.CustIdToName(aCommit.getCustId());
-	data[raw][2] = aCommit.getCommitContext();
+	data[raw][1] = aCommit.getCommitContext();
+	data[raw][2] = "";
 }
 for(int pageNo=0;pageNo<pageTotalNo;pageNo++){
 	
@@ -63,22 +63,28 @@ for(int pageNo=0;pageNo<pageTotalNo;pageNo++){
 				<%
 for (int raw = 0;raw<pageSize && pageSize*pageNo+raw<colSize; raw++) {
 	int rawInList=pageNo*pageSize+raw;
+	String status=showList.get(rawInList).getCommitState();
+		%>
+		<tr class="<%=status %>">
+		<%
 
-%>
-				<tr>
-					<%
 	for (int col = 0; col < rawSize; col++) {
 		
 %>
 					<td>
 						<!-- data here --> <%
-if(col==2){
+if(col==1){
 	String tmp=data[rawInList][col];
 	String show=tmp.length()>15?tmp.substring(0,15)+"...":tmp;
 	out.println("<a href=\"/Venue_Reservation/main_pages/comment_info.jsp?comment_id="+showList.get(rawInList).getCommitId()+"\">");
 	out.println(show);
 	out.println("</a>");
-}else{
+}else if(col==2){
+	out.println("<a href=\"/Venue_Reservation/main_pages/delete_comment.jsp?comment_id="+showList.get(rawInList).getCommitId()+"\">");
+	out.println("删除");
+	out.println("</a>");
+}
+else{
 	out.println(data[pageNo*pageSize+raw][col]);
 }
 %>
@@ -115,6 +121,7 @@ if(col==2){
 	out.println("</div>");
 %>
 <script type="text/javascript">
+//翻页实现比较暴力，不适合大量的数据
 function setPage(page){
 	var totalPages=<%=pageTotalNo %>;
 	for(var i=1;i<=totalPages;i++){
