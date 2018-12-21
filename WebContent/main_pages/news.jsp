@@ -45,13 +45,32 @@
 		for(VrCommit aCommit:showCommit){
 			if((!aCommit.getCommitState().equals("reject"))
 					&& aCommit.getCommitType().equals("userCommit")){
-			out.println("<p>");
+			out.println("<p><a href=\"/Venue_Reservation/main_pages/comment_info.jsp?comment_id="+aCommit.getCommitId()+"\">");
 			out.println(Convert.CustIdToName(aCommit.getCustId())+
 					" 在 "+
 					Convert.timestampToDateString(aCommit.getCommitSubmitTime())+
 					" 留言道 ："+
 					Convert.cutStringWithDots(aCommit.getCommitContext(), 30));			
-			out.println("<p>");
+			out.println("<p></a>");
+			}
+		}
+	out.println("</p>");
+	%>
+	<p>...<p>
+	</div>
+	<div class="adminNews">
+	<h1>最新新闻：</h1>
+	<%
+		out.println("<p>");
+		for(VrCommit aCommit:showCommit){
+			if((!aCommit.getCommitState().equals("reject"))
+					&& aCommit.getCommitType().equals("news")){
+			out.println("<p><a href=\"/Venue_Reservation/main_pages/comment_info.jsp?comment_id="+aCommit.getCommitId()+"\">");
+			out.println(
+					Convert.timestampToDateString(aCommit.getCommitSubmitTime())+
+					" 的消息 ："+
+					Convert.cutStringWithDots(aCommit.getCommitContext(), 30));			
+			out.println("<p></a>");
 			}
 		}
 	out.println("</p>");
