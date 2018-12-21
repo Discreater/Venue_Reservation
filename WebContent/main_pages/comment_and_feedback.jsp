@@ -1,3 +1,4 @@
+<%@page import="common.Convert"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,5 +17,8 @@
 	<li><a href="/Venue_Reservation/main_pages/new_comment.jsp">新建留言</a></li>
 </ul>
 </div>
+<%
+	Convert.alertAndJump(out, null, "/Venue_Reservation/main_pages/all_comments.jsp");
+%>
 </body>
 </html>
