@@ -15,7 +15,7 @@ public class MySQLHelper {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.1.100:3306/venue_reservation?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false", "root", "159753");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://172.30.241.82:3306/venue_reservation?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false", "root", "159753");
 			return connection;
 		}catch (SQLException e) {
 			System.out.println("数据库连接失败");
