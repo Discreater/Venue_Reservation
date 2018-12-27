@@ -24,7 +24,6 @@ List<VrCommit> showList=new ArrayList<VrCommit>();
 for(VrCommit aCommit:allList){
 	if(!aCommit.getCommitState().equals("reject")&&aCommit.getCommitType().equals("userCommit")){
 		showList.add(aCommit);
-		System.out.println("Comment :"+aCommit.getCommitContext());
 	}
 }//获取可见列表
 
