@@ -8,7 +8,7 @@
 <title>场馆预约系统 - 用户留言</title>
 </head>
 <body>
-<%@ include file="/includes/header_for_customer.jsp" %>
+<%@ include file="/includes/header.jsp" %>
 <%@ include file="/main_pages/comments_head.jsp" %>
 <div class="room halfVisual roomLocate">
 <ul>

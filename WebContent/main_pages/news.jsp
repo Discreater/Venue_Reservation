@@ -68,9 +68,10 @@
 					&& aCommit.getCommitType().equals("news")){
 			out.println("<p><a href=\"/Venue_Reservation/main_pages/news_info.jsp?comment_id="+aCommit.getCommitId()+"\">");
 			out.println(
-					Convert.timestampToDateString(aCommit.getCommitSubmitTime())+
-					" 的消息 ："+
-					Convert.cutStringWithDots(aCommit.getCommitContext(), 30));			
+					Convert.cutStringWithDots(aCommit.getCommitContext(), 30)+
+					"    "+ 
+					Convert.timestampToDateString(aCommit.getCommitSubmitTime())
+					);			
 			out.println("<p></a>");
 			}
 		}
