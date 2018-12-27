@@ -24,7 +24,7 @@ List<VrCommit> showList=new ArrayList<VrCommit>();
 for(VrCommit aCommit:allList){
 	if(aCommit.getCommitType().equals("userCommit")&&aCommit.getCustId()==vrCustomer.getCustId()){
 		showList.add(aCommit);
-		System.out.println("Comment :"+aCommit.getCommitContext());
+		//System.out.println("Comment :"+aCommit.getCommitContext());
 	}
 }//获取可见列表
 

@@ -47,7 +47,16 @@ public class Convert {
 		}
 		out.println("</script>");
 	}
-
+	public static void alertAndJump(PrintWriter out, String msg, String url){
+		out.println("<script type=\"text/javascript\">");
+		if (msg != null) {
+			out.println("alert(\"" + msg + "\");");
+		}
+		if (url != null) {
+			out.println("window.location.href=\"" + url + "\";");
+		}
+		out.println("</script>");
+	}
 	public static void alertAndBack(JspWriter out, String msg, int backPageNumberPositive) throws Exception {
 		out.println("<script type=\"text/javascript\">");
 		if (msg != null) {
@@ -58,6 +67,17 @@ public class Convert {
 		}
 		out.println("</script>");
 	}
+	public static void alertAndBack(PrintWriter out, String msg, int backPageNumberPositive){
+		out.println("<script type=\"text/javascript\">");
+		if (msg != null) {
+			out.println("alert(\"" + msg + "\");");
+		}
+		if (backPageNumberPositive > 0) {
+			out.println("history.go(" + (-backPageNumberPositive) + ");");
+		}
+		out.println("</script>");
+	}
+	
 	public static String vrOrderTimeFromAndTo(VrOrder vrOrder) {
 		
 		return simpleDateFormat.format(new Date(vrOrder.getUseStartTime().getTime()))

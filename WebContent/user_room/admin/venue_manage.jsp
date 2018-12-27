@@ -36,7 +36,7 @@
 				id = Integer.valueOf(input);
 			}catch (Exception e){
 				id = 0;
-				System.err.println(id);
+				//System.err.println(id);
 			}
 			if(id!=0){
 				VrVenue tempVenue = vrVenueDao.findById(id);

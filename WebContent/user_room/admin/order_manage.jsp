@@ -29,7 +29,7 @@
 		String allChecked = "";
 		if ("wait".equals(type)) {
 			int t = vrOrderDao.findCount();
-			System.out.println(t);
+			//System.out.println(t);
 			orders = vrOrderDao.findByState("wait", t, 1);
 			waitChecked = "checked";
 		} else if ("all".equals(type)) {

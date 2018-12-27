@@ -38,12 +38,12 @@
 		boolean venueRequested = false;//是否有相关订单
 		int competeOrderNum=0;//竞争订单数
 		boolean secondVisit = secondVisitStr != null;
-		System.out.println(startTimeInUrl + " ~ " + endTimeInUrl + " secondvisitstr= " + secondVisitStr);
+		//System.out.println(startTimeInUrl + " ~ " + endTimeInUrl + " secondvisitstr= " + secondVisitStr);
 		if (!secondVisit) {
-			System.out.println("First visit");
+			//System.out.println("First visit");
 			if (vrOrders.size() == 0) {
 				//无预约，直接设置标记			
-				System.out.println("Relevant order list null.");
+				//System.out.println("Relevant order list null.");
 				venueOccupied = venueRequested = false;
 			} else {
 				//有预约，判断该时间段是否被占用/被预约
@@ -67,12 +67,12 @@
 						if (Convert.orderTimeConflict(aVrOrder, vrOrder)) {//有待处理并且时间冲突的订单时
 							venueRequested = true;
 							competeOrderNum++;
-							System.out.println("Compete : order_id=" + aVrOrder.getOrdId());
+							//System.out.println("Compete : order_id=" + aVrOrder.getOrdId());
 						}
 					} else if ("pass".equals(orderStatus)) {//有通过并且时间冲突的订单时
 						if (Convert.orderTimeConflict(aVrOrder, vrOrder)) {
 							venueOccupied = true;
-							System.out.println("Conflict : order_id=" + aVrOrder.getOrdId());
+							//System.out.println("Conflict : order_id=" + aVrOrder.getOrdId());
 							break;
 						}
 					}
@@ -82,7 +82,7 @@
 					if (venueOccupied) {
 						Convert.alertAndBack(out, "订单提交失败！原因：预约时间与其他成交订单冲突！", 1);
 					} else if (venueRequested) {
-						System.out.println("Handling compete:");
+						//System.out.println("Handling compete:");
 	%>
 	<script type="text/javascript">
 				var jsconfirm;
@@ -120,9 +120,9 @@
 
 			}
 		} else {//二次访问：
-			System.out.println("Second visit");			
+			//System.out.println("Second visit");			
 			if ("still_request".equals(secondVisitStr)) {
-				System.out.println("Still Request:");
+				//System.out.println("Still Request:");
 				vrOrderDao.insert(vrOrder);
 				%>
 				<script type="text/javascript">
@@ -131,7 +131,7 @@
 				</script>
 				<%
 			} else {
-				System.out.println("Given Up:");
+				//System.out.println("Given Up:");
 				%>
 				<script type="text/javascript">
 					alert("订单取消成功！");

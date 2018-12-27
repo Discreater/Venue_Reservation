@@ -43,7 +43,7 @@
 		else{
 			cust = new VrCustomer();
 		}
-		System.err.println(realName);
+		//System.err.println(realName);
 		cust.setCustId(id);
 		cust.setCustName(name);
 		cust.setCustPassword(password);
@@ -56,7 +56,15 @@
 	%>
 	<script type="text/javascript">
 		alert("修改成功");
-		window.history.go(-2);
+		<%if(vrAdmin != null){%>
+		window.location.href="/Venue_Reservation/user_room/admin/user_manage.jsp?search=&type=name";
+		<%}%>
+		<%else if(vrCustomer != null){%>
+		window.location.href="/Venue_Reservation/user_act/cust_info.jsp?cust_id=<%=vrCustomer.getCustId()%>";
+		<%}%>
+		<%else{%>
+		window.history.back();
+		<%}%>
 		</script>
 
 </body>

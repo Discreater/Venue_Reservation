@@ -42,8 +42,8 @@
 		<%=thisVrVenue.getVenueOwnerEmail() %>
 	</td>
 	<td>
-		图片：
-		<img height="60" width="60" src="<%=thisVrVenue.getVenuePicture() %>" alt="<%=thisVrVenue.getVenuePicture() %>.png">
+		<P>图片<span style="font-size:10px">(点击查看大图)</span>:</P>
+		<a href=<%=thisVrVenue.getVenuePicture() %> target="_blank"><img height="60" width="60" src="<%=thisVrVenue.getVenuePicture() %>" alt="<%=thisVrVenue.getVenuePicture() %>"></a>
 	</td>
 	<td>
 		创建时间：

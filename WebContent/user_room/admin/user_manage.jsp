@@ -37,7 +37,7 @@
 					id = Integer.valueOf(input);
 				}catch (Exception e){
 					id = 0;
-					System.err.println(id);
+					//System.err.println(id);
 				}
 				if(id!=0){
 				customers.add(vrCustomerDao.findById(id));

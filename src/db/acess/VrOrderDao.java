@@ -67,7 +67,7 @@ public class VrOrderDao implements IVrOrderDao {
 			pStatement.setString(5, obj.getOrdSubmitReason());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println(e);
 		} finally {
 			MySQLHelper.closePreparedStatement(pStatement);
 			MySQLHelper.closeConnection(connection);

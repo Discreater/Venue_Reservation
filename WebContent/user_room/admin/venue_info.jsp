@@ -83,11 +83,6 @@
 							value=<%=venue.getVenueOwnerAddress()%> readonly="readonly"></td>
 					</tr>
 					<tr>
-						<td>图片:</td>
-						<td><img  alt=<%=venue.getVenuePicture()%>
-							src=<%=venue.getVenuePicture()%> ></td>
-					</tr>
-					<tr>
 						<td>场馆地址:</td>
 						<td><input type="text" name="address"
 							value=<%=venue.getVenueAddress()%> readonly="readonly"></td>
@@ -95,6 +90,10 @@
 						<td>场馆信息:</td>
 						<td><input type="text" name="info"
 							value=<%=venue.getVenueInfo()%> readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>图片<span style="font-size:10px">(点击查看大图)</span>:</td>
+						<td><a href=<%=venue.getVenuePicture() %> target="_blank"><img height="60" width="60" src="<%=venue.getVenuePicture() %>" alt="<%=venue.getVenuePicture() %>"></a></td>
 					</tr>
 					<tr>
 						<td>场馆状态:</td>
@@ -111,7 +110,7 @@
 		</div>
 		<div>
 		<div class="venueInfoLocateChange">
-			<form action="/Venue_Reservation/user_room/admin/venue_change.jsp">
+			<form action="/Venue_Reservation/UploadServlet" enctype="multipart/form-data" method="post">
 			修改信息:
 				<table>
 					<tr>
@@ -145,11 +144,6 @@
 							value=<%=venue.getVenueOwnerAddress()%>></td>
 					</tr>
 					<tr>
-						<td>图片:</td>
-						<td><input type="file" name="img"
-							value=<%=venue.getVenuePicture()%>></td>
-					</tr>
-					<tr>
 						<td>场馆地址:</td>
 						<td><input type="text" name="address"
 							value=<%=venue.getVenueAddress()%>></td>
@@ -157,6 +151,11 @@
 						<td>场馆信息:</td>
 						<td><input type="text" name="info"
 							value=<%=venue.getVenueInfo()%>></td>
+					</tr>
+					<tr>
+						<td>图片:</td>
+						<td><input type="file" name="img"
+							value=<%=venue.getVenuePicture()%>></td>
 					</tr>
 					<tr>
 						<td>场馆状态: </td>

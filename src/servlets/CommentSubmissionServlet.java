@@ -32,7 +32,7 @@ public class CommentSubmissionServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		String comment=request.getParameter("comment");
-		System.out.println(comment);
+		//System.out.println(comment);
 		out.println(comment);
 	}
 

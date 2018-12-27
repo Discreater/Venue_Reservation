@@ -1,3 +1,12 @@
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="org.apache.commons.fileupload.FileUploadBase.FileSizeLimitExceededException"%>
+<%@page import="org.apache.commons.fileupload.FileItem"%>
+<%@page import="java.util.*"%>
+<%@page import="org.apache.commons.fileupload.ProgressListener"%>
+<%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+<%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@page import="java.io.File"%>
 <%@page import="common.Convert"%>
 <%@page import="db.acess.VrVenueDao"%>
 <%@page import="db.model.VrVenue"%>
@@ -20,14 +29,14 @@
 			id = Integer.valueOf(idString);
 		} catch (Exception e) {
 			id = 0;
-			Convert.alertAndJump(out, "请求参数非法", "/Venue_Reservation/index.jsp");
+			Convert.alertAndJump(out, "请求参数非法1", "/Venue_Reservation/index.jsp");
 		}
 		String name = request.getParameter("name");
 		String ownerName = request.getParameter("owner_name");
 		String ownerEmail = request.getParameter("owner_email");
 		String ownerPhone = request.getParameter("owner_phone");
 		String ownerAddress = request.getParameter("owner_address");
-		String imgPath = request.getParameter("img");
+		String imgPath = null;
 		String address = request.getParameter("address");
 		String info = request.getParameter("info");
 		String state = request.getParameter("state");
@@ -54,9 +63,10 @@
 		else{
 			venue = vrVenueDao.findById(id);
 			if(venue == null){
-				Convert.alertAndJump(out, "请求参数非法", "/Venue_Reservation/index.jsp");
+				Convert.alertAndJump(out, "请求参数非法2", "/Venue_Reservation/index.jsp");
 			}
 		}
+
 		venue.setVenueName(name);
 		venue.setVenueOwnerName(ownerName);
 		venue.setVenueOwnerPhone("null".equals(ownerPhone) ? null: ownerPhone);
@@ -68,9 +78,9 @@
 		venue.setVenueState(state);
 		if(id == -1){
 			vrVenueDao.insert(venue);
-			System.err.print(venue.getVenueOwnerEmail());
+			//System.err.print(venue.getVenueOwnerEmail());
 			venue = vrVenueDao.findByName(name);
-			System.err.print(venue.getVenueOwnerEmail());
+			//System.err.print(venue.getVenueOwnerEmail());
 		}
 		vrVenueDao.update(venue);
 		

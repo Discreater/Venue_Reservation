@@ -13,7 +13,6 @@ public class VrAdmin {
 	private String adminName = null;
 	private String adminPassword = null;
 	private Timestamp adminCreatTime = null;
-	private List<VrRole> vrRoleList = null;
 	
 	
 	public Timestamp getAdminCreatTime() {
@@ -39,11 +38,5 @@ public class VrAdmin {
 	}
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
-	}
-	public List<VrRole> getVrRoleList() {
-		return vrRoleList;
-	}
-	public void setVrRoleList(List<VrRole> vrRoleList) {
-		this.vrRoleList = vrRoleList;
 	}
 }
