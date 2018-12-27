@@ -1,7 +1,6 @@
 package db.model;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * 管理员数据

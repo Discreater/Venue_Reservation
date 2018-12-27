@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="TestServlet", urlPatterns= {"/TestServlet"},loadOnStartup=1)
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       private static void main(String[] args) {
+
+	public static void main(String[] args) {
     	System.out.println("Calling ");
 		return;
 	}

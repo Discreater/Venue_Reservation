@@ -1,16 +1,11 @@
 package common;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.servlet.jsp.JspWriter;
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
-
 import db.acess.*;
 import db.model.*;
 
@@ -27,7 +22,6 @@ public class Convert {
 	}
 	public static Timestamp urlParamaterToTimestamp(String paramater) throws ParseException {
 		String[] s = paramater.split("T");
-		Date date = simpleDateFormat.parse(s[0] + " " + s[1]);
 		return Convert.dateToTimestamp((simpleDateFormat.parse(s[0] + " " + s[1])));
 	}
 

@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.catalina.startup.Tomcat.ExistingStandardWrapper;
-
 import common.Convert;
 import db.acess.VrVenueDao;
 import db.model.VrVenue;
