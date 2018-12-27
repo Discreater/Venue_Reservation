@@ -18,11 +18,12 @@ public class VrCommitDao implements IVrCommitDao {
 		PreparedStatement pStatement = null;
 		VrCommitDao vrCommitDao = new VrCommitDao();
 		VrCommit vrCommit = null;
-		Integer hash = ("" + obj.getAdminId() + obj.getCustId() + System.currentTimeMillis() % Integer.MAX_VALUE + obj.getCommitContext()).hashCode();
+		Integer hash = ("" + obj.getAdminId() + obj.getCustId() + System.currentTimeMillis() % Integer.MAX_VALUE
+				+ obj.getCommitContext()).hashCode();
 		int i = 1;
-		while(true) {
+		while (true) {
 			vrCommit = vrCommitDao.findByHash(hash);
-			if(vrCommit == null){
+			if (vrCommit == null) {
 				break;
 			}
 			hash = (hash + (i * i) % Integer.MAX_VALUE) % Integer.MAX_VALUE;
@@ -31,8 +32,8 @@ public class VrCommitDao implements IVrCommitDao {
 		obj.setHash(hash);
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "insert into commit " + "(commit_state, " + "commit_context, "
-					+ "commit_type, commit_hash) " + " values(?,?,?,?)";
+			String sql = "insert into commit " + "(commit_state, " + "commit_context, " + "commit_type, commit_hash) "
+					+ " values(?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, obj.getCommitState());
 			pStatement.setString(2, obj.getCommitContext());
@@ -57,21 +58,27 @@ public class VrCommitDao implements IVrCommitDao {
 		try {
 			connection = MySQLHelper.getConnection();
 			String sql = "update commit set " + "commit_state=?, " + "commit_context=?, commit_submitTime=?, "
-					+ (obj.getCustId()!=null ? "customer_cust_id=?, " : "") +  (obj.getAdminId() != null ? "admin_admin_id=?, " : "" )+ "commit_type=?, commit_hash=? " + "where commit_id=?";
+					+ ((obj.getCustId() != null && obj.getCustId() != 0) ? "customer_cust_id=?, " : "")
+					+ ((obj.getAdminId() != null && obj.getAdminId() != 0) ? "admin_admin_id=?, " : "")
+					+ "commit_type=?, commit_hash=? " + "where commit_id=?";
 			pStatement = connection.prepareStatement(sql);
 			int i = 1;
 			pStatement.setString(i++, obj.getCommitState());
 			pStatement.setString(i++, obj.getCommitContext());
 			pStatement.setTimestamp(i++, obj.getCommitSubmitTime());
-			if(obj.getCustId()!=null){pStatement.setInt(i++, obj.getCustId()); System.err.println(i);}
-			if(obj.getAdminId()!=null) {pStatement.setInt(i++, obj.getAdminId());System.err.println(i);}
+			if ((obj.getCustId() != null && obj.getCustId() != 0)) {
+				pStatement.setInt(i++, obj.getCustId());
+			}
+			if (obj.getAdminId() != null && obj.getAdminId() != 0) {
+				pStatement.setInt(i++, obj.getAdminId());
+			}
 			pStatement.setString(i++, obj.getCommitType());
 			pStatement.setInt(i++, obj.getHash());
 			pStatement.setInt(i++, obj.getCommitId());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);
-			for(StackTraceElement ste: e.getStackTrace()) {
+			for (StackTraceElement ste : e.getStackTrace()) {
 				System.err.println(ste);
 			}
 		} finally {
@@ -163,7 +170,7 @@ public class VrCommitDao implements IVrCommitDao {
 		}
 		return vrCommit;
 	}
-	
+
 	@Override
 	public List<VrCommit> findAll() {
 		Connection connection = null;
@@ -238,7 +245,8 @@ public class VrCommitDao implements IVrCommitDao {
 		List<VrCommit> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from commit order by commit_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from commit order by commit_id desc limit " + (pageNo - 1) * pageSize + ","
+					+ pageSize;
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
 			VrCommit vrCommit = null;
@@ -262,7 +270,7 @@ public class VrCommitDao implements IVrCommitDao {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<VrCommit> findByReverse(String type, Integer pageSize, Integer pageNo) {
 		Connection connection = null;
@@ -271,7 +279,8 @@ public class VrCommitDao implements IVrCommitDao {
 		List<VrCommit> list = new ArrayList<>();
 		try {
 			connection = MySQLHelper.getConnection();
-			String sql = "select * from commit where commit_type=? and commit_state<>'reject' order by commit_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			String sql = "select * from commit where commit_type=? and commit_state<>'reject' order by commit_id desc limit "
+					+ (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, type);
 			rSet = pStatement.executeQuery();
@@ -296,7 +305,7 @@ public class VrCommitDao implements IVrCommitDao {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public int findCount() {
 		Connection connection = null;
