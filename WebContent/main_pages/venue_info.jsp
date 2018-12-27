@@ -43,7 +43,7 @@
 	</td>
 	<td>
 		图片：
-		<%=thisVrVenue.getVenuePicture() %>
+		<img height="60" width="60" src="<%=thisVrVenue.getVenuePicture() %>" alt="<%=thisVrVenue.getVenuePicture() %>.png">
 	</td>
 	<td>
 		创建时间：
