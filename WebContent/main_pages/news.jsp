@@ -21,7 +21,8 @@
 		VrOrderDao vrOrderDao=new VrOrderDao();
 		VrCommitDao vrCommitDao=new VrCommitDao();
 		List<VrOrder> showOrder=vrOrderDao.findByReverse(3, 1);
-		List<VrCommit> showCommit=vrCommitDao.findByReverse(3, 1);
+		List<VrCommit> showCommit=vrCommitDao.findByReverse("userCommit", 3, 1);
+		List<VrCommit> showNews=vrCommitDao.findByReverse("news", 3, 1);
 		for(VrOrder aOrder:showOrder){
 			out.println("<p>");
 			out.println(Convert.CustIdToName(aOrder.getCustId())+
@@ -62,10 +63,10 @@
 	<h1>最新新闻：</h1>
 	<%
 		out.println("<p>");
-		for(VrCommit aCommit:showCommit){
+		for(VrCommit aCommit:showNews){
 			if((!aCommit.getCommitState().equals("reject"))
 					&& aCommit.getCommitType().equals("news")){
-			out.println("<p><a href=\"/Venue_Reservation/main_pages/comment_info.jsp?comment_id="+aCommit.getCommitId()+"\">");
+			out.println("<p><a href=\"/Venue_Reservation/main_pages/news_info.jsp?comment_id="+aCommit.getCommitId()+"\">");
 			out.println(
 					Convert.timestampToDateString(aCommit.getCommitSubmitTime())+
 					" 的消息 ："+

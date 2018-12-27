@@ -10,7 +10,7 @@
 <title>场馆预约系统 - 用户留言 - 全部留言</title>
 </head>
 <body>
-	<%@ include file="/includes/header_for_customer.jsp"%>
+	<%@ include file="/includes/header.jsp"%>
 	<%@ include file="/main_pages/comments_head.jsp" %>
 	<div class="allComments">
 	<%
@@ -22,7 +22,7 @@ VrCommitDao vrCommitDao=new VrCommitDao();
 List<VrCommit> allList = vrCommitDao.findAll();
 List<VrCommit> showList=new ArrayList<VrCommit>();
 for(VrCommit aCommit:allList){
-	if(!aCommit.getCommitState().equals("reject")){
+	if(!aCommit.getCommitState().equals("reject")&&aCommit.getCommitType().equals("userCommit")){
 		showList.add(aCommit);
 		System.out.println("Comment :"+aCommit.getCommitContext());
 	}

@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="/includes/header_for_customer.jsp" %>
+	<%@ include file="/includes/header.jsp" %>
 	<%@ include file="/main_pages/comments_head.jsp" %>
 	<%
 	String tmp=request.getParameter("comment_id");
@@ -23,6 +23,9 @@
 		VrCommit aCommit=vrCommitDao.findById(commentId);
 		if(aCommit==null||aCommit.getCommitState().equals("reject")){
 			Convert.alertAndBack(out, "啊呀，你查看的留言好像被删除了！", 1);
+			return;
+		}else if(!aCommit.getCommitType().equals("userCommit")){
+			Convert.alertAndBack(out, "请求参数非法！", 1);
 			return;
 		}
 		String commentContext=aCommit.getCommitContext();

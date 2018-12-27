@@ -11,10 +11,8 @@ import java.util.Date;
 import javax.servlet.jsp.JspWriter;
 import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
 
-import db.acess.VrCustomerDao;
-import db.acess.VrVenueDao;
-import db.model.VrCustomer;
-import db.model.VrOrder;
+import db.acess.*;
+import db.model.*;
 
 public class Convert {
 	private static SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -69,6 +67,10 @@ public class Convert {
 	public static String CustIdToName(int CustId) {
 		VrCustomerDao vrCustomerDao=new VrCustomerDao();
 		return vrCustomerDao.findById(CustId).getCustName();		
+	}
+	public static String AdminIdToName(int AdminId) {
+		VrAdminDao vrAdminDao=new VrAdminDao();
+		return vrAdminDao.findById(AdminId).getAdminName();		
 	}
 	public static boolean isPoliteComment(String comment) {
 		String[] rudeWords= {"sb","nmsl"};
