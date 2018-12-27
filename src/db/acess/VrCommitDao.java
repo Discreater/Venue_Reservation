@@ -63,13 +63,14 @@ public class VrCommitDao implements IVrCommitDao {
 			pStatement.setString(i++, obj.getCommitState());
 			pStatement.setString(i++, obj.getCommitContext());
 			pStatement.setTimestamp(i++, obj.getCommitSubmitTime());
-			if(obj.getCustId()!=null)pStatement.setInt(i++, obj.getCustId());
-			if(obj.getAdminId()!=null)pStatement.setInt(i++, obj.getAdminId());
+			if(obj.getCustId()!=null){pStatement.setInt(i++, obj.getCustId()); System.err.println(i);}
+			if(obj.getAdminId()!=null) {pStatement.setInt(i++, obj.getAdminId());System.err.println(i);}
 			pStatement.setString(i++, obj.getCommitType());
 			pStatement.setInt(i++, obj.getHash());
 			pStatement.setInt(i++, obj.getCommitId());
 			pStatement.executeUpdate();
 		} catch (Exception e) {
+			System.err.println(e);
 			for(StackTraceElement ste: e.getStackTrace()) {
 				System.err.println(ste);
 			}
@@ -239,6 +240,40 @@ public class VrCommitDao implements IVrCommitDao {
 			connection = MySQLHelper.getConnection();
 			String sql = "select * from commit order by commit_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
 			pStatement = connection.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			VrCommit vrCommit = null;
+			while (rSet.next()) {
+				vrCommit = new VrCommit();
+				vrCommit.setCommitId(rSet.getInt("commit_id"));
+				vrCommit.setCommitState(rSet.getString("commit_state"));
+				vrCommit.setCommitContext(rSet.getString("commit_context"));
+				vrCommit.setCommitSubmitTime(rSet.getTimestamp("commit_submitTime"));
+				vrCommit.setCustId(rSet.getInt("customer_cust_id"));
+				vrCommit.setAdminId(rSet.getInt("admin_admin_id"));
+				vrCommit.setCommitType(rSet.getString("commit_type"));
+				list.add(vrCommit);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			MySQLHelper.closeResult(rSet);
+			MySQLHelper.closePreparedStatement(pStatement);
+			MySQLHelper.closeConnection(connection);
+		}
+		return list;
+	}
+	
+	@Override
+	public List<VrCommit> findByReverse(String type, Integer pageSize, Integer pageNo) {
+		Connection connection = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		List<VrCommit> list = new ArrayList<>();
+		try {
+			connection = MySQLHelper.getConnection();
+			String sql = "select * from commit where commit_type=? and commit_state<>'reject' order by commit_id desc limit " + (pageNo - 1) * pageSize + "," + pageSize;
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, type);
 			rSet = pStatement.executeQuery();
 			VrCommit vrCommit = null;
 			while (rSet.next()) {

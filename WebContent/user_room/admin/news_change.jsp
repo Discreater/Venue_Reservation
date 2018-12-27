@@ -1,12 +1,12 @@
-<%@page import="db.acess.VrCommitDao"%>
 <%@page import="common.Convert"%>
+<%@page import="db.acess.VrCommitDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>场馆预约系统-留言信息处理</title>
+<title>场馆预约系统-新闻修改</title>
 </head>
 <body>
 		<%@ include file="/includes/header_for_admin.jsp"%>
@@ -37,7 +37,7 @@
 					commit.setCommitState(type);
 					commit.setAdminId(vrAdmin.getAdminId());
 					vrCommitDao.update(commit);
-					Convert.alertAndJump(out, "提交成功", "/Venue_Reservation/user_room/admin/commit_manage.jsp");
+					Convert.alertAndJump(out, "修改成功", "/Venue_Reservation/user_room/admin/commit_manage.jsp");
 				}
 			}
 		%>

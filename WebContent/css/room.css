@@ -7,6 +7,17 @@ body {
 a{
 text-decoration:none;
 }
+
+.newsInfo{
+	position: absolute;
+    top: 122px;
+    left: 336px;
+    background-color: #99999973;
+    width: 1079px;
+    padding-left: 24px;
+    padding-bottom: 15px;
+    box-shadow: 20px 19px 6px #00000091;
+}
 .venueDelete{
 	position: absolute;
     top: 410px;
