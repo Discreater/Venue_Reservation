@@ -36,8 +36,8 @@
 		//行数与列数设置：
 		int rawSize;//列数
 		int colSize;//行数			
-		String[] headers = { "新闻ID", "新闻内容", "发布时间", "发布者"};//表头
-		String[] types = { "number", "string", "string", "string"};
+		String[] headers = { "新闻ID", "新闻内容", "发布时间", "发布者", "新闻状态"};//表头
+		String[] types = { "number", "string", "string", "string","string"};
 		colSize = list.size();
 		rawSize = headers.length;
 		String[][] data = new String[colSize][rawSize];//数据
@@ -54,6 +54,7 @@
 			}catch(Exception e){
 				data[raw][3] = "null";
 			}
+			data[raw][4] = tmp.getCommitState();
 		}
 	%>
 	<!-- using script for sorting table -->
