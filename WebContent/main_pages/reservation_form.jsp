@@ -60,7 +60,7 @@
 				List<VrOrder> allList = vrOrderDao.findByVenueId(venueId, vrOrderDao.findCount(), 1);
 				List<VrOrder> passList= new ArrayList<VrOrder>();
 				for(VrOrder aOrder:allList){
-					if(aOrder.getOrdStatus().equals("pass")&&aOrder.getUseEndTime().before(new Date())){
+					if(aOrder.getOrdStatus().equals("pass")&&aOrder.getUseEndTime().after(new Date())){
 						passList.add(aOrder);
 					}
 				}

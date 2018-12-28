@@ -44,7 +44,8 @@
 			if (vrOrders.size() == 0) {
 				//无预约，直接设置标记			
 				//System.out.println("Relevant order list null.");
-				venueOccupied = venueRequested = false;
+				venueOccupied = false;
+				venueRequested = false;
 			} else {
 				//有预约，判断该时间段是否被占用/被预约
 
@@ -77,6 +78,7 @@
 						}
 					}
 				}
+			}
 				//遍历结束后，判断标志变量
 				if (!selfInvolved) {
 					if (venueOccupied) {
@@ -108,6 +110,7 @@
 	</script>
 	<%
 		} else {
+			//System.out.println("Ok");
 						vrOrderDao.insert(vrOrder);
 	%>
 	<script type="text/javascript">
@@ -117,8 +120,6 @@
 	<%
 		}
 				}
-
-			}
 		} else {//二次访问：
 			//System.out.println("Second visit");			
 			if ("still_request".equals(secondVisitStr)) {

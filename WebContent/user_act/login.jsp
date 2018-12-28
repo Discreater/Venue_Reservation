@@ -24,7 +24,7 @@
 	%>
 	<div class="page">
 		<div class="loginwarrp">
-			<div class="logo">登陆</div>
+			<div class="logo">登录</div>
 			<div class="login_form">
 				<form id="Login" name="Login" method="post" onsubmit="return validate()" action="../Login">
 					<div class="login-item">
